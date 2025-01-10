@@ -1,0 +1,51 @@
+<!-- your-component.component.html -->
+<!-- <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slide of slidesStore; let i = index">
+      <div class="flex justify-center items-center h-60 bg-gray-200 border border-gray-300 rounded-lg">
+        <h3 class="text-lg font-bold">Slide {{ i + 1 }}</h3>
+      </div>
+    </ng-template>
+  </owl-carousel-o> -->
+
+<div class>
+  <ng-container *ngIf="platform() === 'Facebook'">
+    <div class="tw-flex tw-items-center tw-justify-start tw-gap-4">
+      <h1 class="heading-medium !tw-text-black tw-mb-2">Connect to {{platform()}}
+        profile</h1>
+    </div>
+    <!-- <div class="content tw-flex tw-gap-6 tw-my-6">
+      <p class="Paragraph_Large tw-text-[#838383]">
+        Log in to your Facebook profile and visit your page settings to approve Balke Tech's management request before creating a campaign.
+      </p>
+    </div> -->
+  </ng-container>
+  <div class="tw-mb-6">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide
+        *ngFor="let slide of slidesStore; let i = index">
+        <div class="tw-container tw-mx-auto">
+          <div
+            class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-my-2 tw-space-y-4">
+            <span
+              class="tw-bg-[#d8ecfc] tw-text-[#175CD3] tw-text-[14px] tw-font-medium tw-rounded-2xl tw-py-1 tw-px-2">{{slide.step}}</span>
+
+            <h1
+              class="tw-text-base tw-font-semibold tw-text-center">{{slide.heading}}</h1>
+            <p
+              class="tw-text-sm tw-font-normal tw-text-center">{{slide.detail}}</p>
+            <img class="tw-rounded-[10px] tw-object-cover tw-mt-2"
+              src="{{slide.img}}">
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <ng-container *ngIf="platform() === 'Facebook'">
+    <div class="tw-flex tw-justify-end tw-gap-4">
+      <button class="btn !tw-rounded-md btn-ghost"
+        (click)="onCancel()">Cancel</button>
+      <a class="btn !tw-rounded-md btn-primary btn-8xl" target="_blank"
+        (click)="onCancel()"> Got It </a>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import './assets/css/typography.scss';
+@import './assets/css/var';
+@import './assets/css/mixin.scss';
+@import './assets/css/responsive.scss';
+@import './assets/css/button.scss';
+
+a { 
+  text-decoration: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+p,
+a,
+span,
+b,
+small,
+strong,
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+a,
+i,
+.btn,
+div {
+  text-decoration: none !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.dropdown-toggle,
+textarea {
+  outline: 2px solid transparent !important;
+  box-shadow: none !important;
+}
+
+.form-check-input,
+input,
+.navbar-toggler,
+button,
+input {
+  outline: 2px solid transparent !important;
+  box-shadow: none !important;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+html {
+  --scrollbarBG: #cfd8dc;
+  --thumbBG: #90a4ae;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+.animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}

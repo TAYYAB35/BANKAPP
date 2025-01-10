@@ -1,0 +1,63 @@
+<div class="tw-pt-[50px] tw-pb-[30px] tw-px-[30px]">
+  <form [formGroup]="creditForm" (ngSubmit)="onCreditSubmit()">
+    <h6 class="heading-large tw-mb-2 !tw-text-center xl:!tw-text-[34px] xl:!tw-leading-[44px] xl:!tw-font-semibold">
+      {{ 'modal.recharge' | translate }}
+    </h6>
+    <p class="Paragraph_small !tw-font-normal !tw-text-center !tw-text-[#303030]">
+      {{ 'modal.limit' | translate }}
+    </p>
+    <div class="tw-my-[30px] position-relative amount tw-flex tw-flex-col">
+      <label
+        for="Username"
+        class="form-label xl:!tw-text-[12px] xl:!tw-leading-4 xl:!tw-font-semibold px-2"
+        [ngClass]="{ requiredField: isRequired('amount') }"
+        style="direction: rtl"
+        >{{ 'modal.amount' | translate }}</label
+      >
+      <nz-input-number-group nzAddOnBefore="USD" class="!tw-h-10">
+        <nz-input-number
+          formControlName="amount"
+          [nzStep]="1"
+          [nzMax]="5000"
+          [nzMin]="5"
+          class="!tw-h-full"
+          numbersOnly
+          (keydown)="validateNumericInput($event)">
+          ></nz-input-number
+        >
+      </nz-input-number-group>
+    </div>
+    <div class="tw-flex tw-justify-center tw-gap-4 tw-mt-[46px] tw-mb-[10px]">
+      <button
+        class="btn btn-outline btn-outline-lg xl:!tw-text-[14px] xl:!tw-leading-6 xl:!tw-font-medium"
+        type="button"
+        (click)="onCancel()">
+        {{ 'modal.cancel' | translate }}
+      </button>
+      <button
+        nz-button
+        [nzLoading]="isLoading"
+        class="btn btn-primary disabled:tw-text-white hover:tw-text-white xl:!tw-text-[14px] xl:!tw-leading-6 xl:!tw-font-medium"
+        type="submit"
+        style="border-radius: 20px"
+        [disabled]="creditForm.invalid">
+        {{ 'modal.rechargeButton' | translate }}
+      </button>
+    </div>
+  </form>
+  <div class="tw-w-full tw-flex tw-justify-center">
+    <p class="tw-mt-14 tw-font-outfit tw-font-normal tw-flex tw-text-xs tw-text-[#949494] rtl:tw-flex-row-reverse rtl:tw-gap-3">
+      <svg width="18" height="21" viewBox="0 0 18 21" fill="none" class="tw-mr-3" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.77948 1.63934C9.27645 1.45355 8.72355 1.45355 8.22052 1.63934L1.99016 3.94032C1.69561 4.0491 1.5 4.32986 1.5 4.64387V10.302C1.5 13.0665 2.96974 15.3175 4.71683 16.9074C5.58696 17.6992 6.50775 18.3091 7.30665 18.7177C8.13772 19.1428 8.74253 19.302 9 19.302C9.25747 19.302 9.86227 19.1428 10.6933 18.7177C11.4922 18.3091 12.413 17.6992 13.2832 16.9074C15.0302 15.3175 16.5 13.0665 16.5 10.302V4.64387C16.5 4.32986 16.3044 4.0491 16.0098 3.94032L9.77948 1.63934ZM7.70085 0.232238C8.53928 -0.0774128 9.46072 -0.0774128 10.2991 0.232238L16.5295 2.53322C17.4132 2.85957 18 3.70186 18 4.64387V10.302C18 13.6311 16.2286 16.2551 14.2927 18.0168C13.3213 18.9008 12.2901 19.5858 11.3764 20.0532C10.4948 20.5041 9.62648 20.802 9 20.802C8.37352 20.802 7.50518 20.5041 6.62362 20.0532C5.70989 19.5858 4.67866 18.9008 3.70727 18.0168C1.77133 16.2551 0 13.6311 0 10.302V4.64387C0 3.70186 0.586822 2.85957 1.47049 2.53322L7.70085 0.232238Z"
+          fill="#00C07B" />
+        <path
+          d="M12.2179 8.61517H12.0278V7.72604C12.0278 6.08146 10.7217 4.70766 9.08918 4.67834C9.04455 4.67753 8.95545 4.67753 8.91082 4.67834C7.2783 4.70766 5.97218 6.08146 5.97218 7.72604V8.61517H5.78203C5.48901 8.61517 5.25 8.91727 5.25 9.29039V13.7501C5.25 14.1228 5.48901 14.4277 5.78205 14.4277H12.2179C12.511 14.4277 12.75 14.1228 12.75 13.7501V9.29039C12.75 8.91734 12.511 8.61517 12.2179 8.61517ZM9.60292 11.5157V12.8632C9.60292 13.0176 9.4737 13.1482 9.31913 13.1482H8.68095C8.52638 13.1482 8.39708 13.0176 8.39708 12.8632V11.5157C8.24715 11.3683 8.15992 11.1644 8.15992 10.9389C8.15992 10.5115 8.49052 10.1443 8.9109 10.1274C8.95545 10.1256 9.04463 10.1256 9.08918 10.1274C9.50955 10.1443 9.84015 10.5115 9.84015 10.9389C9.84015 11.1644 9.75285 11.3683 9.60292 11.5157ZM10.7746 8.61517H7.22542V7.72604C7.22542 6.74639 8.02215 5.93637 9 5.93637C9.97785 5.93637 10.7746 6.74639 10.7746 7.72604V8.61517Z"
+          fill="#00C07B" />
+      </svg>
+      {{ 'modal.payment' | translate }}
+    </p>
+  </div>
+</div>
