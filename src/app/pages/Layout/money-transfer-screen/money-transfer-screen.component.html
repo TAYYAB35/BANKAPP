@@ -1,6 +1,6 @@
 <section class="px-16 py-12 bg-[#fbfbfb] h-full ">
     <h1 class="font-medium text-lg leading-[48px] text-gray_600 mb-[61px]">Payment Service</h1>
-    <div class="grid gap-7 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <div class="grid gap-7 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <div class="service-card p-3 bg-white flex flex-col rounded-lg justify-center">
             <span class="w-[72px] h-[72px] mx-auto rounded-full bg-[#fdf8ec] mb-2 flex justify-center items-center">
                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,9 @@
             <p class="text-sm text-center font-normal text-[#343434] mb-4">
                 At Syber, our digital payments strategy is centered on providing choice. We offer an array of produ
             </p>
-            <button class="h-12 w-[205px] mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary">
+            <button
+                class="h-12 max-w-[205px] w-full mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary"
+                (click)="teleServiceModal()">
                 Proceed Payment
             </button>
         </div>
@@ -35,7 +37,8 @@
             <p class="text-sm text-center font-normal text-[#343434] mb-4">
                 At Syber, our digital payments strategy is centered on providing choice. We offer an array of produ
             </p>
-            <button class="h-12 w-[205px] mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary">
+            <button
+                class="h-12 max-w-[205px] w-full mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary">
                 Proceed Payment
             </button>
         </div>
@@ -54,9 +57,82 @@
             <p class="text-sm text-center font-normal text-[#343434] mb-4">
                 At Syber, our digital payments strategy is centered on providing choice. We offer an array of produ
             </p>
-            <button class="h-12 w-[205px] mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary">
+            <button
+                class="h-12 max-w-[205px] w-full mx-auto rounded-lg bg-gray_150 py-2 text-center font-semibold text-primary">
                 Proceed Payment
             </button>
         </div>
     </div>
+
+    <div class="mt-10">
+        <div class="flex justify-between items-center mb-5">
+            <h5 class="font-medium text-lg text-primary capitalize">to al khaleej bank transfer </h5>
+            <button (click)="opendDetail()"
+                class="h-12 w-full max-w-[383px] rounded-lg bg-[#e9f8ef] text-[#21B65C] gap-2.5 font-semibold capitalize mb-10 flex justify-center items-center">
+                send to Direct account
+                <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.7623 0.654297L30.6801 6.64805V8.64596H28.691C28.691 8.91652 28.5848 9.15065 28.3725 9.34836C28.1601 9.54607 27.9089 9.64493 27.6188 9.64493H3.90574C3.61567 9.64493 3.36445 9.54607 3.15208 9.34836C2.93971 9.15065 2.83353 8.91652 2.83353 8.64596H0.844482V6.64805L15.7623 0.654297ZM4.82256 10.6439H8.80065V22.6314H10.7897V10.6439H14.7678V22.6314H16.7568V10.6439H20.7349V22.6314H22.7239V10.6439H26.702V22.6314H27.6188C27.9089 22.6314 28.1601 22.7303 28.3725 22.928C28.5848 23.1257 28.691 23.3598 28.691 23.6304V24.6293H2.83353V23.6304C2.83353 23.3598 2.93971 23.1257 3.15208 22.928C3.36445 22.7303 3.61567 22.6314 3.90574 22.6314H4.82256V10.6439ZM29.6079 25.6283C29.8979 25.6283 30.1491 25.7271 30.3615 25.9248C30.5739 26.1226 30.6801 26.3567 30.6801 26.6272V28.6252H0.844482V26.6272C0.844482 26.3567 0.950666 26.1226 1.16303 25.9248C1.37541 25.7271 1.62663 25.6283 1.9167 25.6283H29.6079Z"
+                        fill="#21B65C" />
+                </svg>
+            </button>
+        </div>
+
+        <div>
+            <div class="relative my-6">
+                <input id="id-s04" type="search" name="id-s04" placeholder="Search here" aria-label="Search content"
+                    class="relative w-full h-14 px-4 pl-12 transition-all border rounded outline-none focus-visible:outline-none peer border-warning text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-yellow-400 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="absolute w-6 h-6 cursor-pointer top-4 left-2 stroke-warning peer-disabled:cursor-not-allowed"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"
+                    aria-label="Search icon" role="graphics-symbol">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </div>
+            <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Card / Account Number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (data of filterTable.data; track data) {
+                    <tr>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.accountNo }}</td>
+                        <td>
+                            <a>
+                                <button
+                                    class="h-11 w-full max-w-[383px] rounded-lg bg-[#e9f8ef] text-[#21B65C] gap-2.5 font-semibold capitalize flex justify-center items-center">
+                                    Send
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <mask id="mask0_29_3241" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                            x="0" y="0" width="30" height="30">
+                                            <rect x="0.303955" y="0.706055" width="28.7147" height="28.7147"
+                                                fill="#D9D9D9" />
+                                        </mask>
+                                        <g mask="url(#mask0_29_3241)">
+                                            <path
+                                                d="M25.4995 5.38036V5.77186C25.4212 6.19469 25.3429 6.61752 25.2802 7.04035C24.9827 9.04486 24.6851 11.0494 24.3876 13.0539C24.1057 14.9488 23.8238 16.8437 23.5419 18.7386C23.3384 20.0697 23.1504 21.4008 22.9468 22.7163C22.8685 23.2174 22.477 23.468 21.9916 23.2957C18.7812 22.1995 15.5865 21.1033 12.3918 20.0071C12.3918 20.0071 12.3762 20.0071 12.3448 19.9757C15.4456 16.2329 18.5463 12.5058 21.647 8.76298C21.6314 8.74732 21.6157 8.73166 21.6001 8.716C21.4591 8.84128 21.3025 8.96656 21.1616 9.09184C17.3405 12.3648 13.5037 15.6378 9.68259 18.9108C9.57297 19.0048 9.47901 19.0048 9.35372 18.9735C7.50581 18.3471 5.67356 17.705 3.82565 17.0786C3.51244 16.969 3.30886 16.781 3.2932 16.4522C3.26188 16.1233 3.4498 15.9041 3.73168 15.7475C9.18146 12.913 14.6156 10.0628 20.0654 7.21261C21.4748 6.47658 22.8999 5.74054 24.3093 5.00451C24.8887 4.72263 25.1863 4.81659 25.4995 5.38036Z"
+                                                fill="#21B65C" />
+                                            <path
+                                                d="M15.7963 22.374C15.765 22.4209 15.7493 22.4523 15.7336 22.4992C14.935 23.5798 14.1519 24.6604 13.3533 25.7409C13.0714 26.1324 12.6172 26.2107 12.304 25.9132C12.1788 25.7879 12.0691 25.5843 12.0691 25.412C12.0535 24.0026 12.0535 22.5932 12.0535 21.1838C12.0535 21.1681 12.0535 21.1524 12.0691 21.1055C13.322 21.5283 14.5591 21.9511 15.7963 22.374Z"
+                                                fill="#21B65C" />
+                                        </g>
+                                    </svg>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </nz-table>
+        </div>
+
+    </div>
+
 </section>

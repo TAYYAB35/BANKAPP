@@ -29,6 +29,7 @@ module.exports = {
 
         warning_lt : '#fdf8ec',
         warning : '#e7b742',
+        red:"#F14821",
 
         border : "#C4C4C4",
 
