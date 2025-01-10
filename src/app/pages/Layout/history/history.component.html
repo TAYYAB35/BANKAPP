@@ -1,0 +1,56 @@
+<div class="py-12 px-16 welcome" >
+    <h1 class="font-medium text-lg leading-[48px] text-gray_600 mb-[61px] capitalize">transaction history</h1>
+
+
+    <div class="relative">
+
+        <!-- Buttons -->
+        <div class="flex gap-2 absolute right-0 -top-5">
+            <button class="bg-white btn-white gap-2">
+                <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.5 1.5C0.5 1.10218 0.658035 0.720644 0.93934 0.43934C1.22064 0.158035 1.60218 0 2 0H20C20.3978 0 20.7794 0.158035 21.0607 0.43934C21.342 0.720644 21.5 1.10218 21.5 1.5V6C21.4999 6.39779 21.3418 6.77926 21.0605 7.0605L14 14.121V19.5C13.9999 19.8978 13.8418 20.2793 13.5605 20.5605L10.5605 23.5605C10.3507 23.7702 10.0835 23.913 9.79255 23.9709C9.50162 24.0287 9.20007 23.999 8.92602 23.8855C8.65197 23.772 8.41772 23.5798 8.2529 23.3332C8.08807 23.0866 8.00006 22.7966 8 22.5V14.121L0.9395 7.0605C0.658176 6.77926 0.500085 6.39779 0.5 6V1.5Z"
+                        fill="#D69D2F" />
+                </svg>
+
+                Filter
+            </button>
+            <button class="bg-white btn-white gap-2">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292786 7.70679C0.105315 7.51926 0 7.26495 0 6.99979C0 6.73462 0.105315 6.48031 0.292786 6.29279L6.29279 0.292786C6.48031 0.105315 6.73462 0 6.99979 0C7.26495 0 7.51926 0.105315 7.70679 0.292786L13.7068 6.29279C13.8889 6.48139 13.9897 6.73399 13.9875 6.99619C13.9852 7.25838 13.88 7.5092 13.6946 7.6946C13.5092 7.88001 13.2584 7.98518 12.9962 7.98746C12.734 7.98974 12.4814 7.88894 12.2928 7.70679L7.99979 3.41379V14.9998C7.99979 15.265 7.89443 15.5194 7.70689 15.7069C7.51936 15.8944 7.265 15.9998 6.99979 15.9998C6.73457 15.9998 6.48022 15.8944 6.29268 15.7069C6.10514 15.5194 5.99979 15.265 5.99979 14.9998V3.41379L1.70679 7.70679C1.51926 7.89426 1.26495 7.99957 0.999786 7.99957C0.734622 7.99957 0.480314 7.89426 0.292786 7.70679Z"
+                        fill="#D69D2F" />
+                </svg>
+
+                Export
+            </button>
+        </div>
+        <nz-tabset>
+
+            <nz-tab nzTitle="Succeeded">
+                <app-table></app-table>
+            </nz-tab>
+
+            <nz-tab nzTitle="Failed">
+                <app-table></app-table>
+            </nz-tab>
+
+            <nz-tab nzTitle="Pending">
+                <app-table></app-table>
+            </nz-tab>
+
+            <nz-tab nzTitle="Dispute">
+                <app-table></app-table>
+            </nz-tab>
+
+            <nz-tab nzTitle="Invalid">
+                <app-table></app-table>
+            </nz-tab>
+
+            <nz-tab nzTitle="Cancelled">
+                <app-table></app-table>
+            </nz-tab>
+
+        </nz-tabset>
+    </div>
+</div>
