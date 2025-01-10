@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import './assets/css/typography.scss';
-@import './assets/css/var';
 @import './assets/css/mixin.scss';
 @import './assets/css/responsive.scss';
 @import './assets/css/button.scss';
+@import './assets/css/var';
 
-a { 
+a {
   text-decoration: none;
 }
 
@@ -18,16 +19,38 @@ a {
   box-sizing: border-box;
 }
 
+
+@font-face {
+  font-family: 'optima';
+  src: url('./assets/fonts/OptimaLTPro-Medium.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'optima';
+  src: url('./assets/fonts/OptimaLTPro-DemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'optima';
+  src: url('./assets/fonts/OptimaLTPro-Bold.otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'optima';
+  src: url('./assets/fonts/OptimaLTPro-ExtraBlack.otf');
+  font-weight: 800;
+}
+
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: 'Outfit', sans-serif;
-}
-
-p,
+h6 p,
 a,
 span,
 b,
@@ -39,7 +62,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans Arabic', serif !important;
 }
 
 body {
@@ -85,7 +108,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $primary;
+  background: #003649;
 }
 
 .animated {
@@ -99,5 +122,342 @@ html {
 
   100% {
     transform: translateY(-10px);
+  }
+}
+
+:root {
+  --Highlight: #d69d2f;
+  --border-color: #ced4da;
+}
+
+
+
+.circle-checkbox-container {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.circle-checkbox {
+  display: none;
+}
+
+.circle-checkbox+label {
+  width: 17px;
+  height: 17px;
+  border-radius: 2px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.circle-checkbox:checked+label {
+  width: 20px;
+  height: 20px;
+  background-color: var(--Highlight);
+  border-color: var(--Highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.circle-checkbox:checked+label::after {
+  content: '✔';
+  color: white;
+}
+
+/* floating label */
+
+.form-md {
+  width: 100%;
+  text-align: center;
+  margin: 32px auto;
+}
+
+.form-group {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.form-md .form-control {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #00000080;
+  border-radius: 0px;
+  background-color: transparent;
+  margin: 0px auto;
+  padding: 8px;
+  height: 39px;
+  outline: none !important;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-md label {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  text-align: left;
+  display: inline-block;
+  padding: 0 4px;
+  height: 14px;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  background: #fff;
+  color: #999999;
+  margin: 0px auto;
+  cursor: text;
+  transition: all 0.15s ease-in-out;
+}
+
+/* input:hover, input:focus { border: 1px solid #000; } */
+
+.form-control:valid+label,
+.form-control:focus+label {
+  top: -12px;
+  color: #000;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+
+  path {
+    fill: $yellow;
+  }
+
+  span {
+    color: $yellow;
+    font-weight: 700;
+  }
+}
+
+.nav-link.active {
+  path {
+    fill: $yellow;
+  }
+
+  span {
+    color: $yellow !important;
+    font-weight: 700;
+  }
+}
+
+.text-gradient {
+  color: linear-gradient(93.14deg, #ffdc5d -3.23%, $yellow 100.76%);
+}
+
+/* ribben */
+
+.ribbon {
+  width: 30px;
+  height: 30px;
+  background-color: #cc3f3f;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  animation: drop forwards 0.8s 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: -20px;
+    border-left: 15px solid #cc3f3f;
+    border-right: 15px solid #cc3f3f;
+    border-bottom: 20px solid transparent;
+  }
+
+  &:after {
+    content: '';
+    width: 200px;
+    height: 270px;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: -120px;
+    transform: skewY(35deg) skewX(0);
+  }
+}
+
+@keyframes drop {
+  0% {
+    top: -350px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+.balance {
+  border: 1px solid !important;
+  border-image-source: linear-gradient(180deg,
+      rgba(196, 196, 196, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%) !important;
+  box-shadow: 4px 9px 30px -6px #00000014 !important;
+}
+
+
+.welcome {
+  .ant-tabs-tab {
+    padding: 7px 0px !important;
+
+    &:hover .ant-tabs-tab-btn {
+      font-weight: 500 !important;
+    }
+
+    .ant-tabs-tab-btn {
+      font-weight: 400 !important;
+      font-size: 16px !important;
+      line-height: 24px !important;
+      letter-spacing: -0.6% !important;
+      color: $gray_600 !important;
+    }
+  }
+
+  .ant-tabs-tab+.ant-tabs-tab {
+    margin: 0 0 0 20px !important;
+  }
+
+  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-weight: 600 !important;
+  }
+
+  .ant-tabs-top>.ant-tabs-nav::before {
+    border-color: #FFDC5D !important;
+  }
+
+  .ant-tabs-ink-bar {
+    background: #DBA434 !important;
+  }
+
+}
+
+.custom-table {
+  .nz-table-hide-scrollbar {
+    overflow: hidden !important;
+  }
+
+  .ant-table-cell::before {
+    display: none !important;
+  }
+
+  .ant-table-thead>tr>th {
+    position: relative !important;
+    transition: background 0.3s ease !important;
+    padding: 12px 16px !important;
+    // font-family: Outfit !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 15px !important;
+    text-align: left !important;
+    color: $primary !important;
+    background-color: white;
+    border: none !important;
+    color: #84919A !important;
+  }
+
+  .ant-table-tbody>tr>td {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    text-align: left;
+    line-height: 24px;
+  }
+}
+
+.service-card {
+  box-shadow: 5px 6px 24px -2px #0000000F;
+}
+
+.opt-modal {
+  .ant-modal-content {
+    border-radius: 6px !important;
+
+    .ant-modal-body {
+      padding: 32px !important;
+    }
+  }
+}
+
+.ant-modal-content {
+  border-radius: 6px !important;
+
+  .ant-modal-body {
+    padding: 32px !important;
+  }
+}
+
+
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: $yellow !important;
+
+  &::after {
+    background-color: $yellow !important;
+  }
+}
+
+.ant-radio-input:focus+.ant-radio-inner {
+  box-shadow: 0 0 0 2px rgb(255, 237, 194) !important;
+}
+
+.account-modal {
+  .ant-radio-inner {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  .ant-radio-inner::after {
+    width: 30px !important;
+    height: 30px !important;
+    margin-top: -15px !important;
+    margin-left: -15px !important;
+  }
+
+  .ant-radio {
+    margin-left: auto !important;
+    margin-right: 0px !important;
+  }
+}
+
+.taxi-modal {
+
+  .ant-radio {
+    margin-right: 4px !important;
+  }
+
+}
+
+.bank {
+  opacity: 0.5;
+}
+
+.active-bank {
+  opacity: 1 !important;
+}
+
+.active-service {
+  background-color: #fff9e6;
+  border: 1.27px solid #E7B742;
+
+  span {
+    color: $primary;
+    font-weight: 500;
   }
 }

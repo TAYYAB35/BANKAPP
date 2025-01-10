@@ -1,0 +1,45 @@
+<form>
+    <h1 class="font-semibold text-lg text-primary text-center mb-6 capitalize">sudani Telecom services </h1>
+
+    <h6 class="font-medium text-sm text-primary mb-8 text-center">Pleas inter your password <br> in order to pressed
+    </h6>
+
+    <div id="otp" class="inputs flex justify-start items-center gap-2 mt-6 mb-8 max-w-[260px] mx-auto">
+        <input
+            class="w-10 h-8 text-lg border-b focus:border-b-2 focus:border-warning focus:text-warning focus:font-medium font-Inter placeholder:text-lg placeholder:text-gray-400 text-Gray/900 text-center form-control rounded-tl rounded-tr"
+            maxlength="1" (keyup)="onInput($event, null, firstCharInput, secondCharInput)" #firstCharInput type="text"
+            id="first" maxlength="1" placeholder="0" [(ngModel)]="firstChar" />
+
+        <input
+            class="w-10 h-8 text-lg border-b focus:border-b-2 focus:border-warning focus:text-warning focus:font-medium font-Inter placeholder:text-lg placeholder:text-gray-400 text-Gray/900 text-center form-control rounded-tl rounded-tr"
+            maxlength="1" (keyup)="onInput($event, firstCharInput, secondCharInput, thirdCharInput)" #secondCharInput
+            type="text" id="second" maxlength="1" placeholder="0" [(ngModel)]="secondChar" />
+
+        <input
+            class="w-10 h-8 text-lg border-b focus:border-b-2 focus:border-warning focus:text-warning focus:font-medium font-Inter placeholder:text-lg placeholder:text-gray-400 text-Gray/900 text-center form-control rounded-tl rounded-tr"
+            maxlength="1" (keyup)="onInput($event, secondCharInput, thirdCharInput, fourthCharInput)" #thirdCharInput
+            type="text" id="third" maxlength="1" placeholder="0" [(ngModel)]="thirdChar" />
+
+        <input
+            class="w-10 h-8 text-lg border-b focus:border-b-2 focus:border-warning focus:text-warning focus:font-medium font-Inter placeholder:text-lg placeholder:text-gray-400 text-Gray/900 text-center form-control rounded-tl rounded-tr"
+            maxlength="1" (keyup)="onInput($event, thirdCharInput, fourthCharInput, fivthCharInput)" #fourthCharInput
+            type="text" id="fourth" maxlength="1" placeholder="0" [(ngModel)]="forthChar" />
+
+        <input
+            class="w-10 h-8 text-lg border-b focus:border-b-2 focus:border-warning focus:text-warning focus:font-medium font-Inter placeholder:text-lg placeholder:text-gray-400 text-Gray/900 text-center form-control rounded-tl rounded-tr"
+            maxlength="1" (keyup)="onInput($event, fourthCharInput, fivthCharInput )" #fivthCharInput type="text"
+            id="fifth" maxlength="1" placeholder="0" [(ngModel)]="fivthChar" />
+
+    </div>
+    <!-- 6-digit OTP end -->
+
+    <div class="w-full max-w-[358px] mx-auto mt-7 ">
+        <button class="h-12 w-full rounded-lg bg-black font-semibold capitalize text-white mb-6" (click)="verify()" >
+            Continue
+        </button>
+        <button class="h-12 w-full rounded-lg font-semibold bg-gray_50 capitalize text-black" (click)="closeModal()"
+            type="button">
+            cancel
+        </button>
+    </div>
+</form>

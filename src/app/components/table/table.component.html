@@ -1,0 +1,53 @@
+<div class="custom-table mb-7">
+    <nz-table #headerTable [nzData]="listOfData" nzShowPagination="false" [nzScroll]="{ y: '240px' }">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th></th>
+                <th><span class="uppercase"> Description</span></th>
+                <th><span class="uppercase"> services</span></th>
+                <th><span class="uppercase"> Date</span></th>
+                <th nzWidth="84px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (data of headerTable.data; track data) {
+            <tr>
+                <td>
+                    <p class="!font-semibold text-black"> ${{ data.amount }}</p>
+                </td>
+                <td>
+                    <p
+                        class="font-normal bg-success_lt text-success rounded-md px-1 py-0.5 flex gap-1 items-center justify-center ">
+                        <i class="fa-solid fa-check text-success"></i>
+                        {{ data.status }}
+                    </p>
+                </td>
+                <td>
+                    <p class="font-normal">{{ data.description }}</p>
+                </td>
+                <td>
+                    <p class="font-medium !text-[#003649]">{{ data.service }}</p>
+                </td>
+                <td>
+                    <p class="font-normal">{{ data.date }}</p>
+                </td>
+                <td>
+
+                    <a nz-dropdown [nzDropdownMenu]="menu">
+                        <i class="fa-solid fa-ellipsis text-Highlight text-lg"></i>
+                    </a>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li nz-menu-item>1st menu item</li>
+                            <li nz-menu-item>2nd menu item</li>
+                            <li nz-menu-item>3rd menu item</li>
+                        </ul>
+                    </nz-dropdown-menu>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </nz-table>
+</div>

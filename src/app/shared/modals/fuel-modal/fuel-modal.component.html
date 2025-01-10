@@ -1,0 +1,119 @@
+<div id="step-1" class="pt-12 pb-5">
+    <span class="w-[60px] h-[60px] mx-auto rounded-full bg-[#fdf8ec] mb-3.5 flex justify-center items-center">
+        <img src="./../../../../assets/images/SVG/taxi.svg" alt="">
+
+    </span>
+
+    <h1 class="font-semibold text-lg text-primary text-center mb-6">Taxi Services</h1>
+
+    <form class="" [formGroup]="teleForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <h6 class="text-sm font-normal text-primary mb-3.5">Select Telecom Provider</h6>
+            <nz-radio-group class="grid grid-cols-4 gap-4 px-2" formControlName="service">
+                <div [ngClass]="{ 'active-bank' : teleForm.get('service')?.value === 'lemon' }"
+                    (click)="teleForm.get('service')?.setValue('lemon')" class="bank cursor-pointer">
+                    <div class="h-[70px] w-full bg-primary mb-2.5 rounded flex justify-center items-center">
+                        <img src="./../../../../assets/images/SVG/lemon.svg" alt="">
+                    </div>
+                    <label nz-radio class="accent-Highlight" nzValue="lemon"><span
+                            class="font-semibold text-sm text-primary capitalize">Lemon</span></label>
+                </div>
+                <div [ngClass]="{ 'active-bank' : teleForm.get('service')?.value === 'moshwar' }"
+                    (click)="teleForm.get('service')?.setValue('moshwar')" class="bank cursor-pointer">
+                    <div class="h-[70px] w-full mb-2.5 bg-black rounded flex justify-center items-center">
+                        <img src="./../../../../assets/images/SVG/mishwar.svg" alt="">
+                    </div>
+                    <label nz-radio class="accent-Highlight" nzValue="moshwar"><span
+                            class="font-semibold  text-sm text-primary capitalize">moshwar</span></label>
+                </div>
+
+            </nz-radio-group>
+        </div>
+
+        <div class="mt-3.5 ">
+            <h6 class="text-sm font-normal text-primary mb-3.5">select beneficiary</h6>
+            <div class="grid grid-cols-3 gap-4" formControlName="beneficiary">
+                <div [ngClass]="{ 'active-service' : teleForm.get('beneficiary')?.value === 'driver' }"
+                    (click)="teleForm.get('beneficiary')?.setValue('driver')"
+                    class="h-9 border border-border text-[#C4C4C4] flex justify-center items-center rounded-full bg-[#fbfbfb] p-1.5 cursor-pointer">
+                    <span class="text-[#C4C4C4]">
+                        Driver
+                    </span>
+                </div>
+                <div [ngClass]="{ 'active-service' : teleForm.get('beneficiary')?.value === 'passanger' }"
+                    (click)="teleForm.get('beneficiary')?.setValue('passanger')"
+                    class="h-9 border border-border text-[#C4C4C4] flex justify-center items-center rounded-full bg-[#fbfbfb] p-1.5 cursor-pointer">
+                    <span class="text-[#C4C4C4]">
+                        Passanger
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-10">
+
+            <!-- Component: Plain trailing icon input  -->
+            <div class="relative my-6">
+                <input id="id-b14" type="text" name="id-b14" placeholder="your account" formControlName="account"
+                    class="relative w-full h-10 px-4 pr-12 text-sm placeholder-transparent focus:bg-yellow-50 transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-warning focus:border-b-2 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <label for="id-b14"
+                    class="cursor-text peer-focus:cursor-default font-medium peer-autofill:-top-2 absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-warning peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+                    bank Account
+                </label>
+
+                <svg width="23" height="25"
+                    class="absolute top-2.5 right-4 h-5 w-5 cursor-pointer peer-disabled:cursor-not-allowed"
+                    viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4.94908 12.584C4.94908 12.8231 4.84161 13.0525 4.65032 13.2216C4.45902 13.3907 4.19957 13.4857 3.92904 13.4857H1.88992C1.61938 13.4857 1.35993 13.3907 1.16864 13.2216C0.977344 13.0525 0.869875 12.8231 0.869875 12.584C0.869875 12.3448 0.977344 12.1154 1.16864 11.9463C1.35993 11.7772 1.61938 11.6822 1.88992 11.6822H3.92904C4.19957 11.6822 4.45902 11.7772 4.65032 11.9463C4.84161 12.1154 4.94908 12.3448 4.94908 12.584ZM4.94908 6.81452C4.94908 6.57537 4.84161 6.34601 4.65032 6.1769C4.45902 6.00779 4.19957 5.91279 3.92904 5.91279H1.88992C1.61938 5.91279 1.35993 6.00779 1.16864 6.1769C0.977344 6.34601 0.869875 6.57537 0.869875 6.81452C0.869875 7.05368 0.977344 7.28304 1.16864 7.45215C1.35993 7.62126 1.61938 7.71626 1.88992 7.71626H3.92904C4.19957 7.71626 4.45902 7.62126 4.65032 7.45215C4.84161 7.28304 4.94908 7.05368 4.94908 6.81452ZM4.94908 18.3534C4.94921 18.2349 4.92291 18.1176 4.8717 18.0082C4.82048 17.8987 4.74535 17.7993 4.6506 17.7155C4.55586 17.6318 4.44336 17.5653 4.31954 17.5201C4.19573 17.4748 4.06303 17.4515 3.92904 17.4516H1.88992C1.75585 17.4515 1.62307 17.4748 1.49919 17.5201C1.37532 17.5655 1.26277 17.632 1.16802 17.7158C1.07326 17.7997 0.99815 17.8992 0.946989 18.0088C0.895828 18.1183 0.869623 18.2357 0.869875 18.3542C0.869875 18.5934 0.977344 18.8227 1.16864 18.9919C1.35993 19.161 1.61938 19.256 1.88992 19.256H3.92904C4.19957 19.256 4.45902 19.161 4.65032 18.9919C4.84161 18.8227 4.94908 18.5934 4.94908 18.3542V18.3534ZM22.8989 3.74946V21.4193C22.8989 22.1844 22.5551 22.9181 21.9432 23.4591C21.3312 24.0001 20.5012 24.304 19.6358 24.304H5.3571C4.49165 24.304 3.66165 24.0001 3.04969 23.4591C2.43772 22.9181 2.09392 22.1844 2.09392 21.4193V19.9799H3.92904C4.40861 19.9702 4.86485 19.795 5.20015 19.4917C5.53545 19.1885 5.72318 18.7813 5.72318 18.3572C5.72318 17.9331 5.53545 17.5259 5.20015 17.2226C4.86485 16.9194 4.40861 16.7442 3.92904 16.7345H2.09392V14.2071H3.93C4.41683 14.2071 4.88372 14.0361 5.22796 13.7318C5.5722 13.4275 5.7656 13.0147 5.7656 12.5844C5.7656 12.154 5.5722 11.7413 5.22796 11.437C4.88372 11.1326 4.41683 10.9617 3.93 10.9617H2.09392V8.43765H3.93C4.41683 8.43765 4.88372 8.26669 5.22796 7.96237C5.5722 7.65806 5.7656 7.24532 5.7656 6.81495C5.7656 6.38458 5.5722 5.97184 5.22796 5.66752C4.88372 5.36321 4.41683 5.19224 3.93 5.19224H2.09392V3.75285C2.09342 3.37374 2.17745 2.99826 2.34122 2.64788C2.50498 2.29749 2.74527 1.97909 3.04833 1.71086C3.3514 1.44263 3.71129 1.22984 4.10745 1.08466C4.50361 0.939474 4.92825 0.864746 5.3571 0.864747H19.6339C20.0625 0.864524 20.4871 0.938975 20.8832 1.08385C21.2793 1.22872 21.6393 1.44117 21.9425 1.70906C22.2457 1.97695 22.4863 2.29504 22.6504 2.64514C22.8145 2.99524 22.8989 3.37049 22.8989 3.74946ZM9.96022 9.41644C9.96022 9.96655 10.1447 10.5043 10.4905 10.9617C10.8362 11.4191 11.3276 11.7756 11.9025 11.9861C12.4774 12.1967 13.11 12.2517 13.7204 12.1444C14.3307 12.0371 14.8913 11.7722 15.3313 11.3832C15.7714 10.9942 16.071 10.4986 16.1924 9.95907C16.3138 9.41953 16.2515 8.86028 16.0134 8.35204C15.7752 7.8438 15.372 7.4094 14.8545 7.10378C14.3371 6.79815 13.7288 6.63502 13.1065 6.63502C12.6934 6.63502 12.2842 6.70697 11.9025 6.84675C11.5208 6.98653 11.1739 7.1914 10.8818 7.44968C10.5896 7.70796 10.3578 8.01458 10.1997 8.35204C10.0416 8.6895 9.96022 9.05118 9.96022 9.41644ZM18.0056 16.2163C18.0054 15.3967 17.637 14.6108 16.9814 14.0313C16.3258 13.4517 15.4368 13.1261 14.5097 13.1258H11.713C10.7857 13.1258 9.8964 13.4514 9.24064 14.031C8.58487 14.6105 8.21634 15.3966 8.21609 16.2163V17.4525H18.0018L18.0056 16.2163Z"
+                        fill="#E7B742" />
+                </svg>
+
+            </div>
+            <!-- End Plain trailing icon input  -->
+
+            <!-- Component: Plain trailing icon input  -->
+            <div class="relative my-6">
+                <input id="id-b14" type="text" name="id-b14" placeholder="your amount" formControlName="amount"
+                    class="relative w-full h-10 focus:border-b-2 px-4 pr-12 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-warning focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <label for="id-b14"
+                    class="cursor-text peer-focus:cursor-default peer-autofill:-top-2 font-medium absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-warning peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+                    Amount
+                </label>
+                <svg width="21" height="25" viewBox="0 0 21 25"
+                    class="absolute top-2.5 right-4 h-5 w-5 cursor-pointer peer-disabled:cursor-not-allowed"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_21_2457)">
+                        <path
+                            d="M9.88193 3.44777C4.69233 3.45814 0.532361 7.62737 0.563405 12.8441C0.59445 17.9467 4.70267 22.0485 9.78362 22.0745C15.0301 22.1056 19.2005 17.9364 19.1901 12.7352C19.1849 7.617 14.9939 3.4374 9.88193 3.44777ZM10.7253 16.2614C10.6529 16.2925 10.5804 16.3185 10.4976 16.3496C10.4976 16.5674 10.4976 16.7852 10.4976 17.0081C10.4925 17.3919 10.2338 17.6615 9.88193 17.6615C9.52492 17.6615 9.26104 17.3919 9.25587 17.0133C9.25587 16.8007 9.25587 16.5881 9.25587 16.3599C9.15239 16.3133 9.04373 16.2718 8.94025 16.2251C8.47458 16.0021 8.12792 15.6547 7.90543 15.188C7.74503 14.8561 7.86404 14.4983 8.16931 14.3427C8.4901 14.182 8.84194 14.3012 9.02303 14.6331C9.26622 15.0843 9.63875 15.2865 10.063 15.188C10.5183 15.0843 10.8288 14.6746 10.7926 14.2235C10.7512 13.7256 10.3838 13.3627 9.88193 13.3419C8.62463 13.2849 7.68812 12.3203 7.70364 11.1017C7.71916 10.1891 8.27279 9.41641 9.13686 9.11046C9.17308 9.10009 9.2093 9.07934 9.25069 9.06379C9.25069 8.83562 9.25069 8.61264 9.25069 8.38447C9.25587 8.01629 9.51457 7.74664 9.86124 7.74664C10.2182 7.74146 10.4821 8.01111 10.4873 8.38966C10.4925 8.62301 10.4873 8.85636 10.4873 9.08971C11.1082 9.28677 11.5583 9.6705 11.8326 10.2513C11.9826 10.5676 11.874 10.9099 11.5842 11.0706C11.2841 11.2366 10.9271 11.1328 10.7408 10.8321C10.7253 10.8113 10.715 10.7854 10.7046 10.7647C10.4614 10.3291 10.0423 10.1372 9.61805 10.2772C9.20413 10.412 8.9299 10.8373 8.98164 11.2573C9.04373 11.7292 9.41109 12.0714 9.90263 12.1026C10.7046 12.1492 11.3203 12.5122 11.7446 13.1915C12.4379 14.2961 11.9412 15.7584 10.7253 16.2614Z"
+                            fill="#E7B742" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_21_2457">
+                            <rect width="19.4725" height="23.4393" fill="white"
+                                transform="translate(0.563232 0.907715)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+
+
+            </div>
+            <!-- End Plain trailing icon input  -->
+
+        </div>
+
+        <div class="w-[calc(100%-34px)] mx-auto mt-7 ">
+            <button class="h-12 w-full rounded-lg bg-black font-semibold capitalize text-white mb-6">
+                Continue
+            </button>
+            <button class="h-12 w-full rounded-lg font-semibold bg-gray_50 capitalize text-black" (click)="closeModal()"
+                type="button">
+                cancel
+            </button>
+        </div>
+
+    </form>
+
+</div>

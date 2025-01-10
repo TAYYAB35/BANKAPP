@@ -1,5 +1,9 @@
 @import './../../../../styles.scss';
 
-.ant-divider-inner-text {
-  color: #b3b3b3;
+.login-content {
+  box-shadow: 4px 9px 30px -6px #00000014;
+  border: 1px solid;
+  border-image-source: linear-gradient(180deg,
+      rgba(196, 196, 196, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%);
 }

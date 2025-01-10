@@ -7,13 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule } from '../../../ng-zorro-antd.module';
 import { SharedService } from '../../../services/shared.service';
 import { SharedModule } from '../../../shared/shared.module';
-import {
-  RECAPTCHA_SETTINGS,
-  RecaptchaComponent,
-  RecaptchaFormsModule,
-  RecaptchaModule,
-  RecaptchaSettings,
-} from 'ng-recaptcha';
+
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -24,16 +18,12 @@ import { environment } from '../../../../environments/environment';
     FormsModule,
     CommonModule,
     NgZorroAntdModule,
-    RouterLink,
-    SharedModule,
-    RecaptchaModule,
   ],
   providers: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('captcha') captcha!: RecaptchaComponent;
   loginForm: FormGroup;
   isshowPassword: boolean = false;
   currentLanguage: any;
@@ -148,18 +138,15 @@ export class LoginComponent implements OnInit {
             this.authService.setToken(response.data);
             this.router.navigate(['/home']);
             this.isLoading = false;
-            this.captcha.reset();
           } else {
             this.sharedService.createNotification('error', response?.message);
             this.isLoading = false;
-            this.captcha.reset();
           }
         },
         (error) => {
           this.isLoading = false;
           this.sharedService.createNotification('error', error?.message);
           console.error('failed', error);
-          this.captcha.reset();
         },
       );
     }

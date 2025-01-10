@@ -1,0 +1,1 @@
+export * from './telecom-service/telecom-service.component'

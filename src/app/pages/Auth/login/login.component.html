@@ -1,146 +1,50 @@
-<div
-  class="tw-flex tw-gap-10 md:tw-gap-20 login tw-justify-center tw-items-center tw-relative tw-flex-col xl:tw-flex-row tw-z-50 !tw-px-10 !tw-pt-[150px] !tw-pb-20 xl:!tw-py-20">
-  <div class="tw-max-w-[600px] tw-w-full tw-my-6 tw-relative">
-    <div class="tw-flex tw-justify-center xl:tw-mb-10">
-      <img src="../../../../assets/images/logo_signup.png" [routerLink]="'/'" class="tw-cursor-pointer" />
-    </div>
-    <div class="tw-flex-col tw-items-center tw-hidden xl:tw-flex">
-      <h1 class="heading-large">{{ 'login.heading_1' | translate }}</h1>
-      <h6 class="label-medium-Reg !tw-text-center tw-leading-5">
-        {{ 'login.heading_1_desc_1' | translate }}<br />{{ 'login.heading_1_desc_2' | translate }}
-        <span class="tw-px-3 tw-rounded-full tw-py-0.5 tw-bg-[#fffb00]">{{ 'login.heading_1_desc_3' | translate }}</span
-        >.
-      </h6>
-    </div>
-    <div class="tw-mt-12 tw-justify-center tw-hidden xl:tw-flex">
-      <img src="../../../../assets/images/Group 28.png" alt class />
-    </div>
-  </div>
+<div class="w-screen min-h-screen login pt-[72px] pb-[52px] bg-no-repeat !bg-center !bg-cover"
+  style="background: url('./../../../../assets/images/Rectangle\ 1781.png');">
+  <div class="h-full w-full max-w-[443px] mx-auto">
+    <h1 class="font-semibold text-[32px] leading-9 mb-[50px] text-white">
+      Access your money anytime
+    </h1>
+    <div class="pb-9 px-[38px] pt-4 bg-white login-content rounded">
+      <img src="./../../../../assets/images/logo.svg" alt="alkhaleej bank" class="mb-7 mx-auto">
+      <div class="w-full px-8">
+        <h2 class="!text-2xl !text-center !font-bold !mb-2.5 text-primary_dark">Login to your account</h2>
+        <div class="flex justify-center gap-0.5 mb-9">
+          <span class="font-normal text-base text-gray_500">Don't have an account?</span>
+          <span class="font-normal text-base text-Highlight hover:underline  cursor-pointer">Sign
+            Up</span>
+        </div>
 
-  <div class="login-container tw-w-full sm:!tw-min-w-[565px] sm:!tw-max-w-[565px]">
-    <div class="login-container-content !tw-w-full">
-      <h1 class="text-center">{{ 'login.sign_in' | translate }}</h1>
-      <p>{{ 'login.enter_credentials' | translate }}</p>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="Form">
-        <div class="tw-mb-[30px] position-relative">
-          <label for="Username" class="form-label" [ngClass]="{ requiredField: isRequired('email') }">
-            {{ 'login.email' | translate }}
-          </label>
-          <nz-input-group
-            class="!tw-z-50"
-            [nzSuffix]="suffixSearch"
-            [ngClass]=" {'error-border' : loginForm.controls['email'].invalid && loginForm.controls['email'].touched  }">
-            <input
-              nz-input
-              type="email"
-              class="form-control rtl:placeholder:!tw-text-right"
-              id="Username"
-              [attr.placeholder]="'login.emailPlaceholder' | translate"
-              formControlName="email" />
-          </nz-input-group>
-          <ng-template #suffixSearch>
-            <i class="fa-light fa-envelope"></i>
-          </ng-template>
-          <div class="tw-w-full tw-relative">
-            <small
-              class="error"
-              *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
-              <ng-container *ngIf="loginForm.controls['email']?.errors?.['required']">
-                {{ 'login.email_required' | translate }}
-              </ng-container>
-              <ng-container *ngIf="loginForm.controls['email']?.errors?.['email']">
-                {{ 'login.valid_email' | translate }}
-              </ng-container>
-            </small>
+
+        <form class="form-md">
+          <div class="form-group">
+            <input id="form_name1" class="form-control" type="text" required>
+            <label for="form_name1">Phone Number</label>
           </div>
-        </div>
-        <div class="tw-mb-[30px] position-relative">
-          <label for="Password" class="form-label" [ngClass]="{ requiredField: isRequired('password') }">
-            {{ 'login.password' | translate }}
-          </label>
-          <!-- <input type="password" class="form-control" id="Password" placeholder="Password" formControlName="password"> -->
-          <nz-input-group
-            class="!tw-z-50"
-            [nzSuffix]="suffixIconSearch"
-            [ngClass]=" {'error-border' : loginForm.controls['password'].invalid && loginForm.controls['password'].touched  }">
-            <input
-              class="rtl:placeholder:!tw-text-right"
-              [type]="!isshowPassword ? 'password' : 'text'"
-              nz-input
-              [attr.placeholder]="'login.passwordPlaceholder' | translate"
-              formControlName="password" />
-          </nz-input-group>
-          <ng-template #suffixIconSearch>
-            <i class="fa-regular fa-eye-slash" (click)="togglePasswordType()" *ngIf="!isshowPassword"></i>
-            <i class="fa-regular fa-eye" (click)="togglePasswordType()" *ngIf="isshowPassword"></i>
-          </ng-template>
 
-          <div class="tw-w-full tw-relative">
-            <small
-              class="error"
-              *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
-              <ng-container *ngIf="loginForm.controls['password']?.errors?.['required']">
-                {{ 'login.password_required' | translate }}
-              </ng-container>
-            </small>
+          <div class="form-group">
+            <input id="form_name2" class="form-control" type="password" placeholder="" required>
+            <label for="form_name2">Password</label>
           </div>
-          <p class="forgot">
-            <a [routerLink]="'/auth/email-verification'">{{ 'login.forgot_password' | translate }}</a>
-          </p>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-          <re-captcha
-            class="captcha"
-            #captcha
-            siteKey="6Le_dSoqAAAAAC_-zLuUUL-fUnodxiyTJHhmBuy0"
-            (resolved)="onCaptchaResolved($event)">
-          </re-captcha>
-        </div>
-        <button
-          id="logonbutton"
-          nz-button
-          nzType="primary"
-          type="submit"
-          class="btn btn-primary w-100 my-4"
-          [nzLoading]="isLoading">
-          {{ 'login.log_in' | translate }}
-        </button>
-      </form>
+        </form>
 
-      <nz-divider [nzText]="text" class="!tw-capitalize">
-        <ng-template #text>
-          {{ 'login.or' | translate }}
-        </ng-template>
-      </nz-divider>
-      <!-- <div class="row"> -->
-      <div class="d-flex justify-content-center">
-        <button id="login-google-btn"></button>
-        <!-- <button class="btn btn-ghost btn-social"> -->
-        <!-- ======= -->
-        <!-- <button class="btn btn-ghost btn-social tw-w-72 tw-mx-auto">
-            <img src="../../../../assets/images/Google-removebg-preview.png" alt="Google Logo">
-            Sign in with Google Ads
-          </button> -->
+        <div class="flex gap-2.5 items-center">
+          <div class="circle-checkbox-container">
+            <input type="checkbox" id="circle-checkbox1" class="circle-checkbox" />
+            <label for="circle-checkbox1"></label>
+          </div>
+          <span class="text-base font-medium text-gray_400">Remember my ID</span>
+        </div>
+
       </div>
-      <!-- <div class="col-md-12 mb-3">
-            <button class="btn btn-ghost btn-social w-100">
-              <img src="../../../../assets/images/MiscroSoft.png" alt="Microsoft Logo">
-              Sign in with Microsoft Ads
-            </button>
-          </div>
-          <div class="col-md-12 mb-3">
-            <button class="btn btn-ghost btn-social w-100">
-              <img src="../../../../assets/images/FacebookLogo.png" alt="Facebook Logo">
-              Sign in with Facebook Ads
-            </button>
-          </div> -->
-      <!-- </div> -->
-      <div class="mt-3 have-account">
-        <p>
-          {{ 'login.dont_have_account' | translate }}
-          <a [routerLink]="'/auth/signup'">{{ 'login.sign_up' | translate }}</a>
-        </p>
-      </div>
+      <button
+        class="w-full h-[46px] bg-primary_dark rounded-sm flex justify-center mt-16 items-center text-lg text-white font-semibold">
+        Login
+      </button>
     </div>
+    <p class="text-base text-center text-white mt-8">
+      At Al-Khaleej Bank, the speed, accuracy, and simplicity of our cutting edge solutions allow us to truly
+      contribute and expand the scope of financial services in the corporate sector. At Al-Khaleej Bankwe help
+      out clients adapt and grow in this evolving economic climate.
+    </p>
   </div>
 </div>

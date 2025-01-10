@@ -1,16 +1,15 @@
 $border: #e7e5e4;
-$border-light: rgba(
-  $color: #fff,
-  $alpha: 0.1,
-);
-$border-color: #b3b3b3;
-$primary: #2e64db;
-$btnprimary: #2e64db;
-$primaryHover: #2e64db;
-$textPrimary: #5d778d;
-$bg-white: #fff;
-$TextGray: #838383;
-$TextlightBlue: #b2b6ff;
-$yellow: #ffcc00;
-$NavyBlue: #241ea2;
-$red: #b3261e;
+$border-light: rgba($color: #fff,
+    $alpha: 0.1,
+  );
+$gray_100: #e5e9eb;
+$gray_300: #00212D;
+$gray_400: #666666;
+$gray_500: #44525F;
+$gray_600: #252C32;
+$yellow: #e7b742;
+$red : #cc3f3f;
+$highlight_light: #D69D2F;
+$Highlight: #D69D2F;
+$primary_dark: #2D385E;
+$primary: #003649;
