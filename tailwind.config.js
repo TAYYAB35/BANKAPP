@@ -36,9 +36,9 @@ module.exports = {
         gray_50: '#f2f2f2',
         gray_100: '#e5e9eb',
         gray_150: '#e5ebed',
-        gray_300: '#00212D',
         gray_400: '#666666',
         gray_500: '#44525F',
+        gray_300: '#00212D',
         gray_600: '#252C32',
       },
       boxShadow: {
