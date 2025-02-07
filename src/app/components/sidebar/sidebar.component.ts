@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { IncorrectpasswordComponent } from '@shared/modals/incorrectpassword/incorrectpassword.component';
 import { MoneyDetailModalComponent } from '@shared/modals/money-detail-modal/money-detail-modal.component';
 import { TimeoutComponent } from '@shared/modals/timeout/timeout.component';
 import { NzModalService } from 'ng-zorro-antd/modal';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -15,17 +16,38 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 })
 export class SidebarComponent {
 
+  @Input() isMobileMenuOpen = false;
+  @Output() closeMenu = new EventEmitter<void>();
+  @Output() pageChanged = new EventEmitter<string>();
+
+  menuItems = [
+    { name: 'Main', route: '/' },
+    { name: 'Services', route: '/services' },
+    { name: 'Transactions History', route: '/transactions' },
+    { name: 'Manage Beneficiaries', route: '/benefiters' },
+    { name: 'Transactions', route: '/transactions' },
+    { name: 'Settings', route: '/setting' },
+    { name: 'Logout', route: '/logout' },
+    { name: 'Support', route: '/support' },
+  ];
+
+  changePage(page: string): void {
+    this.pageChanged.emit(page);
+    this.closeMenu.emit();
+  }
+
   router = inject(Router)
   modal = inject(NzModalService)
 
   isActive(route: string): boolean {
     return this.router.isActive(route, {
-      paths: 'exact',
+      paths: 'exact', // Allows partial matches (use 'exact' for strict matching)
       queryParams: 'ignored',
       fragment: 'ignored',
       matrixParams: 'ignored',
     });
   }
+
 
   openModal(): void {
     const modal = this.modal.create<TimeoutComponent>({

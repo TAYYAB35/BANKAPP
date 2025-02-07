@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { Layout } from './layout.component';
 import { WelcomeComponent } from 'src/app/components';
 import { ServiceScreenComponent,BankScreenComponent ,MoneyTransferScreenComponent} from './index';
-import { SettingandprofileComponent } from './settingandprofile/settingandprofile.component';
+import { SettingComponent } from './settingScreen/setting.component';
 import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
       {path: 'services', component: ServiceScreenComponent},
       {path: 'bank-services', component: BankScreenComponent},
       {path: 'money-transfer', component: MoneyTransferScreenComponent},
-      {path: 'setting', component: SettingandprofileComponent},
+      {path: 'setting', component: SettingComponent},
       {path: 'history', component: HistoryComponent},
     ],
   },

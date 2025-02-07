@@ -1,12 +1,27 @@
-<div class="w-full min-w-screen overflow-hidden h-screen flex">
+<div class="max-h-screen h-full flex flex-col lg:flex-row overflow-hidden">
+  <!-- Mobile Header -->
+  <header class="lg:hidden bg-[#003049] text-white p-4 flex justify-between items-center">
+    <img src="../.././../assets/images/logo (2).svg" alt="Bank Logo" class="h-8">
+    <button (click)="toggleMobileMenu()">
+      <!-- <lucide-x *ngIf="isMobileMenuOpen" class="w-6 h-6"></lucide-x> -->
+      <!-- <lucide-menu *ngIf="!isMobileMenuOpen" class="w-6 h-6"></lucide-menu> -->
+    </button>
+  </header>
 
-    <div class="max-w-[250px] w-full">
-        <app-sidebar></app-sidebar>
-    </div>
+  <!-- Sidebar -->
+  <app-sidebar [isMobileMenuOpen]="isMobileMenuOpen" (closeMenu)="isMobileMenuOpen = false"
+    (pageChanged)="setActivePage($event)">
+  </app-sidebar>
 
-    <div class="max-w-[100%-250px] w-full h-full min-h-screen overflow-y-auto overflow-x-hidden">
-        <!-- h-[calc(100vh-56px)] -->
-        <router-outlet></router-outlet>
+  <!-- Main Content -->
+  <div class="flex-1 overflow-y-auto bg-[#ffffff]">
+    <!-- Desktop Header -->
+    <app-header [activePage]="activePage"></app-header>
 
-    </div>
+    <!-- Page Content -->
+    <main class="py-4 px-[50px]">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
 </div>

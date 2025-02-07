@@ -20,9 +20,9 @@ module.exports = {
         '3xl': '1920px', // Custom breakpoint for large screens
       },
       colors: {
-        highlight_light: '#D69D2F',
+        highlight_light: '#ffb629',
         Highlight: '#D69D2F',
-        primary_dark: '#2D385E',
+        primary_dark: '#0D475B',
         primary: "#003649",
         success_lt: "#ebfff1",
         success: "#119C2B",
@@ -36,13 +36,14 @@ module.exports = {
         gray_50: '#f2f2f2',
         gray_100: '#e5e9eb',
         gray_150: '#e5ebed',
+        gray_200: '#F1F1F0',
         gray_400: '#666666',
         gray_500: '#44525F',
-        gray_300: '#00212D',
         gray_600: '#252C32',
+        gray_700: '#00212D',
       },
       boxShadow: {
-        custom: '0px 2px 8px 0px #00000026'
+        custom: '4px 14px 32px 0px #00000014'
       }
     }
   },
