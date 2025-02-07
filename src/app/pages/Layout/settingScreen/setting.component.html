@@ -3,54 +3,67 @@
 
         <div class="flex-1 space-y-4 lg:col-span-2 w-full min-h-full">
             <!-- Dynamic Sections -->
-            <div>
-                <h2 class="text-lg font-semibold text-slate-900 mb-4">Profile Management</h2>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+            <div class="rounded-lg bg-white px-3 py-6">
+                <h2 class="text-base font-semibold text-black mb-4">Profile Management</h2>
+                <div class="bg-white rounded-lg shadow-sm">
                     <div class="space-y-4">
                         <!-- Profile Info -->
-                        <div class="flex items-center justify-between pb-4 border-b">
+                        <div class="flex items-center justify-between pb-4 border-b bg-[#F9F9F9] py-4 px-2 rounded-lg">
                             <div>
-                                <h3 class="font-medium text-slate-900">{{ profile.name }}</h3>
-                                <p class="text-sm text-slate-600">{{ profile.email }}</p>
-                                <span class="text-xs text-slate-500">{{ profile.accountType }}</span>
+                                <h3 class="font-bold text-sm text-[#0D475B]">{{ profile.name }}</h3>
+                                <p class="text-xs font-light text-black">{{ profile.email }}</p>
+                                <span class="text-[8px] font-bold text-[#003649]">{{ profile.accountType }}</span>
                             </div>
-                            <button class="p-2 border border-emerald-500 text-emerald-500 rounded-lg">
-                                <span class="material-icons text-emerald-500">edit</span>
-                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <rect width="32" height="32" rx="6" fill="#08C487" />
+                                <path
+                                    d="M6 26.548V23.548H26V26.548H6ZM10 18.9615H11.2365L19.5365 10.6767L18.9078 10.0385L18.2848 9.425L10 17.725V18.9615ZM8.5 20.4615V17.0865L19.7098 5.89225C19.8546 5.74741 20.019 5.63783 20.203 5.5635C20.3868 5.48916 20.5782 5.452 20.777 5.452C20.976 5.452 21.1687 5.48916 21.355 5.5635C21.5413 5.63783 21.7121 5.75258 21.8673 5.90775L23.0693 7.125C23.2244 7.26983 23.3366 7.43575 23.4058 7.62275C23.4749 7.80958 23.5095 8.00275 23.5095 8.20225C23.5095 8.38925 23.4744 8.57516 23.4042 8.76C23.3341 8.945 23.2224 9.11408 23.0693 9.26725L11.875 20.4615H8.5ZM19.5365 10.6767L18.9078 10.0385L18.2848 9.425L19.5365 10.6767Z"
+                                    fill="white" />
+                            </svg>
                         </div>
 
                         <!-- Reset Password -->
-                        <div class="flex items-center justify-between pt-2">
+                        <div class="flex items-center justify-between pt-2 bg-[#F9F9F9] py-4 px-2 rounded-lg">
                             <div>
-                                <h3 class="font-medium text-slate-900">Reset Password</h3>
+                                <h3 class="font-bold text-sm text-[#0D475B]">Reset Password</h3>
                             </div>
-                            <button class="p-2 border border-emerald-500 text-emerald-500 rounded-lg">
-                                <span class="material-icons text-emerald-500">edit</span>
-                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <rect width="32" height="32" rx="6" fill="#08C487" />
+                                <path
+                                    d="M6 26.548V23.548H26V26.548H6ZM10 18.9615H11.2365L19.5365 10.6767L18.9078 10.0385L18.2848 9.425L10 17.725V18.9615ZM8.5 20.4615V17.0865L19.7098 5.89225C19.8546 5.74741 20.019 5.63783 20.203 5.5635C20.3868 5.48916 20.5782 5.452 20.777 5.452C20.976 5.452 21.1687 5.48916 21.355 5.5635C21.5413 5.63783 21.7121 5.75258 21.8673 5.90775L23.0693 7.125C23.2244 7.26983 23.3366 7.43575 23.4058 7.62275C23.4749 7.80958 23.5095 8.00275 23.5095 8.20225C23.5095 8.38925 23.4744 8.57516 23.4042 8.76C23.3341 8.945 23.2224 9.11408 23.0693 9.26725L11.875 20.4615H8.5ZM19.5365 10.6767L18.9078 10.0385L18.2848 9.425L19.5365 10.6767Z"
+                                    fill="white" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- User Management Section -->
-            <div>
-                <h2 class="text-lg font-semibold text-slate-900 mb-4">User Management</h2>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+            <div class="rounded-lg bg-white px-3 py-6">
+                <h2 class="text-base font-semibold text-black mb-4">User Management</h2>
+                <div class="bg-white rounded-lg shadow-sm">
                     <div class="space-y-6">
                         <!-- Loop Through Users -->
                         <div *ngFor="let user of users; let last = last"
-                            class="flex items-center justify-between pb-6 border-b" [class.border-b-0]="last">
+                            class="flex items-center justify-between pb-6 border-b bg-[#F9F9F9] py-4 px-2 rounded-lg"
+                            [class.border-b-0]="last">
                             <div>
-                                <h3 class="font-medium text-slate-900">{{ user.name }}</h3>
-                                <p class="text-sm text-slate-600">{{ user.email }}</p>
-                                <span class="inline-block px-3 py-1 text-xs font-medium rounded-full mt-2"
+                                <h3 class="font-bold text-sm text-[#0D475B]">{{ user.name }}</h3>
+                                <p class="text-xs font-light text-black">{{ user.email }}</p>
+                                <span class="inline-block px-3 py-1 text-xs font-medium rounded-full mt-2 text-white"
                                     [ngClass]="user.roleColor">
                                     {{ user.role }}
                                 </span>
                             </div>
-                            <button class="p-2 border border-emerald-500 text-emerald-500 rounded-lg">
-                                <span class="material-icons text-emerald-500">edit</span>
-                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <rect width="32" height="32" rx="6" fill="#08C487" />
+                                <path
+                                    d="M6 26.548V23.548H26V26.548H6ZM10 18.9615H11.2365L19.5365 10.6767L18.9078 10.0385L18.2848 9.425L10 17.725V18.9615ZM8.5 20.4615V17.0865L19.7098 5.89225C19.8546 5.74741 20.019 5.63783 20.203 5.5635C20.3868 5.48916 20.5782 5.452 20.777 5.452C20.976 5.452 21.1687 5.48916 21.355 5.5635C21.5413 5.63783 21.7121 5.75258 21.8673 5.90775L23.0693 7.125C23.2244 7.26983 23.3366 7.43575 23.4058 7.62275C23.4749 7.80958 23.5095 8.00275 23.5095 8.20225C23.5095 8.38925 23.4744 8.57516 23.4042 8.76C23.3341 8.945 23.2224 9.11408 23.0693 9.26725L11.875 20.4615H8.5ZM19.5365 10.6767L18.9078 10.0385L18.2848 9.425L19.5365 10.6767Z"
+                                    fill="white" />
+                            </svg>
                         </div>
                     </div>
                 </div>

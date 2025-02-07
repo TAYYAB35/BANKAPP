@@ -24,13 +24,13 @@ export class SettingComponent {
       name: 'Mohamed M. Raouf',
       email: 'Mohamed.M.Raouf@Org.Com',
       role: 'Checker',
-      roleColor: 'bg-amber-100 text-amber-600'
+      roleColor: 'bg-[#FFB629] text-amber-600'
     },
     {
       name: 'Omer Khalid',
       email: 'Omerkhalid@Org.Com',
       role: 'Reader',
-      roleColor: 'bg-emerald-100 text-emerald-600'
+      roleColor: 'bg-[#08C487] text-emerald-600'
     }
   ];
 }
