@@ -32,7 +32,7 @@
                                 <h3 class="font-bold text-sm text-[#0D475B]">Reset Password</h3>
 
                                 <!-- SVG Edit Icon (Show First Step on Click) -->
-                                <div class="cursor-pointer" *ngIf="!showStep1" (click)="showFirstStep()">
+                                <div class="cursor-pointer" *ngIf="resetFlow" (click)="showFirstStep()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
                                         fill="none">
                                         <rect width="32" height="32" rx="6" fill="#08C487" />
@@ -88,57 +88,96 @@
                             </div>
 
                             <div *ngIf="showStep2" class="mt-8">
-                                <div class="mb-6">
-                                    <label class="block text-black font-normal text-sm mb-2">New Password</label>
-                                    <div class="flex items-center border-b-2 border-yellow-500 py-2">
-                                        <span class="text-yellow-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
-                                                    stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <defs>
-                                                    <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3"
-                                                        x2="24.6663" y2="30.9068" gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                                        <stop offset="1" stop-color="#DBA434" />
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                        </span>
-                                        <input type="password"
-                                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                                            placeholder="Enter new password">
+                                <form [formGroup]="passwordForm">
+                                    <div class="relative mb-6">
+                                        <label class="block text-black font-normal text-sm mb-2">New Password</label>
+                                        <div class="flex items-center border-b-2 border-yellow-500 py-2">
+                                            <span class="text-yellow-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
+                                                        stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <defs>
+                                                        <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3"
+                                                            x2="24.6663" y2="30.9068" gradientUnits="userSpaceOnUse">
+                                                            <stop stop-color="#FCD759" stop-opacity="0.9686" />
+                                                            <stop offset="1" stop-color="#DBA434" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <input [type]="isshowPassword ? 'text' : 'password'" id="changePassword"
+                                                formControlName="password"
+                                                class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
+                                                placeholder="Enter new password">
+                                            <button class="btn-password" type="button"
+                                                (click)="togglePasswordVisibility('password')">
+                                                <i [class.fa-eye-slash]="!isshowPassword"
+                                                    [class.fa-eye]="isshowPassword" class="fa-regular">
+                                                </i>
+                                            </button>
+                                        </div>
+                                        <div class="px-1 w-100 position-absolute mt-1">
+                                            <small class="error text-red d-flex flex-column space-y-1.5"
+                                                *ngIf="f['password'].invalid && (f['password'].touched || submitted)">
+                                                <span *ngIf="f['password'].errors?.['required']">Password is
+                                                    required</span>
+                                                <span *ngIf="f['password'].errors?.['minlength']">8 characters
+                                                    minimum</span>
+                                                <span *ngIf="f['password'].errors?.['pattern']">
+                                                    Password must contain at least one uppercase letter and one special
+                                                    character.
+                                                </span>
+                                            </small>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="mb-6">
-                                    <label class="block text-black font-normal text-sm mb-2">Re-New Password</label>
-                                    <div class="flex items-center border-b-2 border-yellow-500 py-2">
-                                        <span class="text-yellow-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
-                                                    stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <defs>
-                                                    <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3"
-                                                        x2="24.6663" y2="30.9068" gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                                        <stop offset="1" stop-color="#DBA434" />
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                        </span>
-                                        <input type="password"
-                                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                                            placeholder="Re-enter new password">
+                                    <div class="mb-6">
+                                        <label class="block text-black font-normal text-sm mb-2">Re-New Password</label>
+                                        <div class="flex items-center border-b-2 border-yellow-500 py-2">
+                                            <span class="text-yellow-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
+                                                        stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <defs>
+                                                        <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3"
+                                                            x2="24.6663" y2="30.9068" gradientUnits="userSpaceOnUse">
+                                                            <stop stop-color="#FCD759" stop-opacity="0.9686" />
+                                                            <stop offset="1" stop-color="#DBA434" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <input [type]="isshowConfirmPassword ? 'text' : 'password'"
+                                                formControlName="confirmPassword"
+                                                class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
+                                                placeholder="Re-enter new password">
+                                            <button class="btn-password" type="button"
+                                                (click)="togglePasswordVisibility('confirmPassword')">
+                                                <i [class.fa-eye-slash]="!isshowConfirmPassword"
+                                                    [class.fa-eye]="isshowConfirmPassword" class="fa-regular">
+                                                </i>
+                                            </button>
+                                        </div>
+                                        <div class="px-1 w-100 position-absolute mt-1">
+                                            <small class="error text-red d-flex flex-column space-y-1.5"
+                                                *ngIf="f['confirmPassword'].invalid && (f['confirmPassword'].touched || submitted)">
+                                                <span *ngIf="f['confirmPassword'].errors?.['required']">Confirm password
+                                                    is
+                                                    required.</span>
+                                                <span *ngIf="f['confirmPassword'].errors?.['mismatch']">Passwords do not
+                                                    match.</span>
+                                            </small>
+                                        </div>
                                     </div>
-                                </div>
-                                <button
-                                    class="w-full max-w-[117px] bg-[#003649] text-white py-2 px-4 rounded-full text-lg font-medium">Save</button>
+                                    <button (click)="savePassword()" type="submit"
+                                        class="w-full max-w-[117px] bg-[#003649] text-white py-2 px-4 rounded-full text-lg font-medium">Save</button>
+                                </form>
                             </div>
                         </div>
                     </div>
