@@ -3,100 +3,7 @@
 
         <!-- left Sections -->
         <div class="flex-1 space-y-4 lg:col-span-2 w-full min-h-full bg-white py-6 px-3">
-            <!-- Provider Selection -->
-            <div class="mb-8 ">
-                <h3 class="mb-5 text-sm font-normal">Select Provider</h3>
-                <div class="flex gap-4">
-                    <button *ngFor="let provider of providers" class="flex items-center gap-2"
-                        [class.opacity-40]="!provider.active" (click)="toggleProvider(provider)">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-full" [ngClass]="provider.color">
-                            <img [src]="provider.src" alt="">
-                        </div>
-                        <span class="text-xs font-medium">{{ provider.label }}</span>
-                    </button>
-                </div>
-            </div>
-
-            <nz-tabset class="mb-8 provider">
-                <nz-tab nzTitle="Top Up"> <!-- Form Fields -->
-                    <form [formGroup]="topForm" (ngSubmit)="onSubmit()" class="">
-                        <!-- Number Field -->
-                        <div class="relative mb-6">
-                            <label class="block text-black font-normal text-sm mb-2">Number</label>
-                            <div class="flex items-center border-b-2 border-yellow-500 py-2">
-                                <span class="text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <path
-                                            d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
-                                            stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <defs>
-                                            <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3" x2="24.6663"
-                                                y2="30.9068" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                                <stop offset="1" stop-color="#DBA434" />
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                </span>
-                                <input type="text" formControlName="number"
-                                    class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                                    placeholder="Enter number">
-                            </div>
-                            <div class="px-1 w-100 position-absolute mt-1">
-                                <small class="error text-red d-flex flex-column space-y-1.5"
-                                    *ngIf="f['number'].invalid && (f['number'].touched || submitted)">
-                                    <span *ngIf="f['number'].errors?.['required']">This Field is required</span>
-                                </small>
-                            </div>
-                        </div>
-
-                        <!-- Amount Field -->
-                        <div class="relative mb-6">
-                            <label class="block text-black font-normal text-sm mb-2">Amount</label>
-                            <div class="flex items-center border-b-2 border-yellow-500 py-2">
-                                <span class="text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <path
-                                            d="M3 20C5.33579 17.5226 8.50702 16 12 16C15.493 16 18.6642 17.5226 21 20M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
-                                            stroke="url(#paint0_linear_238_128)" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <defs>
-                                            <linearGradient id="paint0_linear_238_128" x1="3.66349" y1="3" x2="24.6663"
-                                                y2="30.9068" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                                <stop offset="1" stop-color="#DBA434" />
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                </span>
-                                <input type="text" formControlName="amount"
-                                    class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                                    placeholder="Enter amount">
-                            </div>
-                            <div class="px-1 w-100 position-absolute mt-1">
-                                <small class="error text-red d-flex flex-column space-y-1.5"
-                                    *ngIf="f['amount'].invalid && (f['amount'].touched || submitted)">
-                                    <span *ngIf="f['amount'].errors?.['required']">Amount is required</span>
-                                </small>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex gap-3 pt-4">
-                            <button type="submit"
-                                class="flex-1 bg-primary text-white hover:bg-primary/90 py-2 rounded-lg">Submit</button>
-                            <button type="button" class="flex-1 border border-gray-300 py-2 rounded-lg"
-                                (click)="topForm.reset()">Cancel</button>
-                        </div>
-                    </form>
-                </nz-tab>
-                <nz-tab nzTitle="Bill Inquiry">Content of Tab Pane 2</nz-tab>
-                <nz-tab nzTitle="Scratches">Content of Tab Pane 3</nz-tab>
-            </nz-tabset>
-
+            <app-provider></app-provider>
         </div>
 
         <!-- right Section -->
@@ -115,7 +22,8 @@
             </h4>
             <div class="space-y-4">
                 <div *ngFor="let beneficiary of transactions" class="flex flex-col bg-gray-50 rounded-lg px-2 py-4">
-                    <span class="w-fit h-5 rounded flex justify-center items-center mb-4 px-2.5 text-white text-xs" [ngClass]="getHighlightClass(beneficiary.type)" >
+                    <span class="w-fit h-5 rounded flex justify-center items-center mb-4 px-2.5 text-white text-xs"
+                        [ngClass]="getHighlightClass(beneficiary.type)">
                         {{ beneficiary.type }}
                     </span>
                     <p class="text-sm font-bold text-primary">{{ beneficiary.phoneNumber }}</p>
@@ -128,9 +36,4 @@
 
     </div>
 
-    <!-- Info Message -->
-    <div class="flex items-center justify-start gap-3 bg-gray_200 py-6 h-[70px] px-3 rounded-lg ">
-        <i class="fa-light fa-circle-exclamation text-black"></i>
-        <p class="text-xs text-black">You Can Make Quick Transfer By Clicking On The Following</p>
-    </div>
 </div>
