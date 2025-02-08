@@ -19,7 +19,6 @@ a {
   box-sizing: border-box;
 }
 
-
 @font-face {
   font-family: 'optima';
   src: url('./assets/fonts/OptimaLTPro-Medium.otf');
@@ -134,7 +133,16 @@ html {
   --border-color: #ced4da;
 }
 
-
+// ! Buttons 
+@layer components  {
+  .btn-primary{
+    @apply rounded-3xl bg-primary hover:bg-primary_dark px-2.5 h-fit w-fit text-white font-semibold
+  }
+  .btn-ghost{
+    @apply rounded-3xl px-2.5 h-fit w-fit text-primary hover:bg-gray-200 bg-gray-100 hover:text-primary_dark font-semibold
+  }
+}
+// ! Buttons 
 
 .circle-checkbox-container {
   position: relative;
