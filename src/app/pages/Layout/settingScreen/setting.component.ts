@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { OptComponent } from 'src/app/components/opt/opt.component';
 
 @Component({
   selector: 'app-setting',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,OptComponent],
   templateUrl: './setting.component.html',
   styles: `
   .card{
@@ -35,6 +36,13 @@ export class SettingComponent {
       },
       { validator: this.passwordMatchValidator('password', 'confirmPassword') }
     );
+
+     // Effect runs automatically when nextStep changes
+    
+  }
+
+  onNextStepChange(nextStep: boolean) {
+    this.showStep2 = nextStep; // Update step based on child's event
   }
 
   passwordMatchValidator(password: string, confirmPassword: string) {
@@ -79,19 +87,7 @@ export class SettingComponent {
     this.resetFlow = false;
   }
 
-  // OTP enter hone ke baad second step show karna
-  moveToNext(event: Event, nextField: HTMLInputElement | null) {
-    const input = event.target as HTMLInputElement;
-
-    if (input.value.length === 1 && nextField) {
-      nextField.focus();
-    }
-
-    // Jab 5 OTP boxes fill ho jayein, dusra step show karein
-    if (this.otp1 && this.otp2 && this.otp3 && this.otp4 && this.otp5) {
-      this.showStep2 = true;
-    }
-  }
+  
 
   savePassword() {
     this.submitted = true;
@@ -131,4 +127,5 @@ export class SettingComponent {
       roleColor: 'bg-[#08C487] text-emerald-600'
     }
   ];
+
 }
