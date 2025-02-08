@@ -8,9 +8,7 @@
                 <h3 class="mb-5 text-sm font-normal">Select Provider</h3>
                 <div class="flex gap-4">
                     <button *ngFor="let provider of providers" class="flex items-center gap-2"
-                        [class.opacity-40]="!provider.active"
-                        (click)="toggleProvider(provider)"
-                        >
+                        [class.opacity-40]="!provider.active" (click)="toggleProvider(provider)">
                         <div class="flex h-12 w-12 items-center justify-center rounded-full" [ngClass]="provider.color">
                             <img [src]="provider.src" alt="">
                         </div>
@@ -103,7 +101,28 @@
 
         <!-- right Section -->
         <div
-            class="lg:w-80 flex-shrink-0 flex flex-col lg:col-span-1 justify-between relative bg-white rounded-lg h-full py-4 px-2 shadow-custom min-h-full">
+            class="lg:w-80 relative flex-shrink-0 flex flex-col lg:col-span-1 justify-between bg-white rounded-lg h-full py-4 px-2 shadow-custom min-h-full">
+            <div class="bg-highlight_light p-4 rounded absolute top-4 ledt-4 right-4 z-50">
+                <div class="flex items-center gap-3">
+                    <i class="fa-light fa-circle-exclamation text-base cursor-pointer text-black"></i>
+                    <div>
+                        <p class="text-sm text-black">Please complete your eKYC Form to enjoy your banking services!</p>
+                    </div>
+                </div>
+            </div>
+            <h4 class="text-primary text-lg font-semibold mb-4">
+                Last Top Up
+            </h4>
+            <div class="space-y-4">
+                <div *ngFor="let beneficiary of transactions" class="flex flex-col bg-gray-50 rounded-lg px-2 py-4">
+                    <span class="w-fit h-5 rounded flex justify-center items-center mb-4 px-2.5 text-white text-xs" [ngClass]="getHighlightClass(beneficiary.type)" >
+                        {{ beneficiary.type }}
+                    </span>
+                    <p class="text-sm font-bold text-primary">{{ beneficiary.phoneNumber }}</p>
+                    <p class="text-xs text-gray-500">{{ beneficiary.date }}</p>
+                    <p class="text-sm font-bold text-black mt-4">{{ beneficiary.amount }}</p>
+                </div>
+            </div>
 
         </div>
 

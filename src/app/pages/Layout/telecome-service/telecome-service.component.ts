@@ -62,4 +62,33 @@ export class TelecomeServiceComponent {
     this.activeTab = tabId;
   }
 
+  transactions = [
+    {
+      type: 'Top Up',
+      phoneNumber: '+249123434556',
+      date: '22-4-2025',
+      amount: 'SDG 1,720.87',
+    },
+    {
+      type: 'Scratch',
+      date: '22-4-2025',
+      amount: 'SDG 1,000',
+    },
+    {
+      type: 'Scratch',
+      date: '22-4-2025',
+      amount: 'SDG 1,000',
+    }
+  ];
+
+  getHighlightClass(type: string): string {
+    if (type === 'Top Up') {
+      return 'bg-emerald-500'; // Assuming "amein-500" is a valid class
+    } else if (type === 'Scratch') {
+      return 'bg-Highlight'; // Assuming "highlth" is a valid class
+    }
+    return 'bg-gray-500'; // Default color if type doesn't match
+  }
+
+
 }
