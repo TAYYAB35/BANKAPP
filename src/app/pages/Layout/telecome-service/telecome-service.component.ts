@@ -38,10 +38,16 @@ export class TelecomeServiceComponent {
   }
 
   providers = [
-    { name: 'MTN', label: 'MTN TopUp', color: 'bg-yellow-400', textColor: 'text-black', active: true },
-    { name: 'SD', label: 'Sudani Services', color: 'bg-blue-100', textColor: 'text-blue-500', active: false },
-    { name: 'ZS', label: 'Zain Services', color: 'bg-purple-100', textColor: 'text-purple-500', active: false }
+    { name: 'MTN', label: 'MTN TopUp', color: 'bg-yellow-400', src: '../../../../assets/images/icons/image.svg', active: true },
+    { name: 'SD', label: 'Sudani Services', color: 'bg-blue-100', src: '../../../../assets/images/icons/image(1).svg', active: false },
+    { name: 'ZS', label: 'Zain Services', color: 'bg-purple-100', src: '../../../../assets/images/icons/Frame 2617.svg', active: false }
   ];
+
+  toggleProvider(selectedProvider: any) {
+    this.providers.forEach(provider => {
+      provider.active = provider === selectedProvider;
+    });
+  }
 
   tabs = [
     { id: 'topUp', label: 'Top Up' },
