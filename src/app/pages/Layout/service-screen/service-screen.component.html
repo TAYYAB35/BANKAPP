@@ -5,8 +5,8 @@
             <!-- Dynamic Sections -->
             <div *ngFor="let section of sections" class="bg-white rounded-lg py-4 px-3 shadow-custom">
                 <h2 class="text-base font-semibold mb-4 text-slate-900">{{ section.title }}</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                    <div *ngFor="let service of section.services"
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div *ngFor="let service of section.services" [routerLink]="service.router"
                         class="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 rounded-lg p-4">
                         <span class="size-12 flex-shrink bg-primary rounded-full flex justify-center items-center">
                             <img [src]="service.icon" alt="service logo">
