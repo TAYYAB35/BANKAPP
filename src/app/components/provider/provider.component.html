@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<nz-tabset class="mb-8 provider">
+<nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex">
     <nz-tab nzTitle="Top Up"> <!-- Form Fields -->
         <form [formGroup]="topForm" (ngSubmit)="onSubmit()" class="">
             <!-- Number Field -->
@@ -74,10 +74,65 @@
             <!-- Action Buttons -->
             <div class="flex gap-3 pt-4">
                 <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Next</button>
-                <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full" (click)="topForm.reset()">Cancel</button>
+                <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full"
+                    (click)="topForm.reset()">Cancel</button>
             </div>
         </form>
     </nz-tab>
-    <nz-tab nzTitle="Bill Inquiry">Content of Tab Pane 2</nz-tab>
+    <nz-tab nzTitle="Bill Inquiry">
+        <form [formGroup]="topForm" (ngSubmit)="onSubmit()" class="">
+            <!-- Number Field -->
+            <div class="relative mb-6">
+                <label class="block text-black font-normal text-sm mb-2">Your Number</label>
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
+                        'border-[#FCD759]': !(f['number'].invalid && (f['number'].touched || submitted)), 
+                        'border-[#DBA434]': f['number'].invalid && (f['number'].touched || submitted) 
+                    }">
+                    <span class="text-yellow-500">
+                        <i class="fa-regular fa-phone"></i>
+                    </span>
+                    <input type="text" formControlName="number"
+                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
+                        placeholder="Enter number">
+                </div>
+                <div class="px-1 w-100 position-absolute mt-1">
+                    <small class="error text-red d-flex flex-column space-y-1.5"
+                        *ngIf="f['number'].invalid && (f['number'].touched || submitted)">
+                        <span *ngIf="f['number'].errors?.['required']">This Field is required</span>
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <nz-select [(ngModel)]="selectedValue" class="select-number w-full h-[48px] items-center flex">
+                    @for (option of listOfOption; track option) {
+                    <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
+                    }
+                </nz-select>
+
+                <!-- Tailwind Styled Data Display -->
+                <div class="bg-gray-50 px-2 py-4 rounded-lg w-full mt-6">
+                    <p class="font-semibold text-gray-800">Number</p>
+                    <p class="font-bold text-lg text-gray-900">+2491234567</p>
+
+                    <p class="font-semibold text-gray-800 mt-3">Mount</p>
+                    <p class="font-bold text-lg text-gray-900">SDG 32,000,000</p>
+
+                    <p class="font-semibold text-gray-800 mt-3">Date</p>
+                    <p class="font-bold text-lg text-gray-900">22.3.2024</p>
+
+                    <p class="font-semibold text-gray-800 mt-3">Services</p>
+                    <p class="font-bold text-lg text-gray-900">MTN Bill Inquiry</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-3 pt-4">
+                <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Next</button>
+                <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full"
+                    (click)="topForm.reset()">Cancel</button>
+            </div>
+        </form>
+    </nz-tab>
     <nz-tab nzTitle="Scratches">Content of Tab Pane 3</nz-tab>
 </nz-tabset>

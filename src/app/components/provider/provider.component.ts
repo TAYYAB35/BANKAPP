@@ -2,13 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'app-provider',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule],
   templateUrl: './provider.component.html',
-  styles: ``
+  styles: `
+    .select-number {
+      .ant-select-selector {
+        height: 48px !important;
+      }
+    }
+  `
 })
 export class ProviderComponent {
 
@@ -16,7 +23,9 @@ export class ProviderComponent {
 
   topForm: FormGroup;
   submitted = false;
-
+  selectedIndex = 0;
+  listOfOption = ['Option 01', 'Option 02'];
+  selectedValue = 'Option 01'; // Set this to an existing option
 
   constructor(private fb: FormBuilder) {
     this.topForm = this.fb.group({
@@ -35,9 +44,10 @@ export class ProviderComponent {
       return;
     }
     console.log('Form Data:', this.topForm.value);
+    this.selectedIndex = 1;
   }
 
-  
+
 
   providers = [
     { name: 'MTN', label: 'MTN TopUp', color: 'bg-yellow-400', src: '../../../../assets/images/icons/image.svg', active: true },
