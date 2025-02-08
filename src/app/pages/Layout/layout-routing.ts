@@ -5,6 +5,7 @@ import { WelcomeComponent } from 'src/app/components';
 import { ServiceScreenComponent,BankScreenComponent ,MoneyTransferScreenComponent} from './index';
 import { SettingComponent } from './settingScreen/setting.component';
 import { HistoryComponent } from './history/history.component';
+import { TelecomeServiceComponent } from './telecome-service/telecome-service.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       {path: 'money-transfer', component: MoneyTransferScreenComponent},
       {path: 'setting', component: SettingComponent},
       {path: 'history', component: HistoryComponent},
+      {path: 'services/telecom', component: TelecomeServiceComponent},
     ],
   },
   // Redirect unknown paths to a 404 page or a default route
