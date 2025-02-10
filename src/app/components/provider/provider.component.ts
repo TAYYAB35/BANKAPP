@@ -20,7 +20,7 @@ import { OptComponent } from '../opt/opt.component';
 })
 export class ProviderComponent {
 
-  activeTab: string = 'topUp'; // Default active tab
+  activeTab: string = 'topUp';
 
   topForm: FormGroup;
   BillForm: FormGroup;
@@ -29,7 +29,7 @@ export class ProviderComponent {
   selectedIndex = 0;
   billselectedIndex = 0;
   listOfOption = ['Option 01', 'Option 02'];
-  selectedValue = 'Option 01'; // Set this to an existing option
+  selectedValue = 'Option 01';
   paymentDetails: any;
 
   constructor(private fb: FormBuilder) {
@@ -68,25 +68,24 @@ export class ProviderComponent {
       return;
     }
 
-    if (this.billselectedIndex === 0) {
-      this.billselectedIndex = 1;
-      this.Billsubmitted = false;
-      return;
-    }
-
-    if (this.billselectedIndex === 1) {
-      this.billselectedIndex = 2;
-      return;
-    }
-
-    if (this.billselectedIndex === 2) {
-      this.billselectedIndex = 3;
-      return;
-    }
-
-    if (this.billselectedIndex === 3) {
+    if (this.billselectedIndex < 3) {
+      this.billselectedIndex++;
+    } else {
       console.log('Final Form Data:', this.BillForm.value);
-      return;
+    }
+  }
+
+  goToPreviousStep() {
+    if (this.billselectedIndex > 0) {
+      this.billselectedIndex--;
+    } else {
+      this.selectedIndex = 0;
+    }
+  }
+
+  onTabClick(index: number) {
+    if (index <= this.selectedIndex) {
+      this.selectedIndex = index;
     }
   }
 

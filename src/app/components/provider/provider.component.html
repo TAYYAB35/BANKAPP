@@ -11,8 +11,8 @@
     </div>
 </div>
 
-<nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex">
-    <nz-tab nzTitle="Top Up"> <!-- Form Fields -->
+<nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex" (nzSelectedIndexChange)="onTabClick($event)">
+    <nz-tab nzTitle="Top Up">
         <form [formGroup]="topForm" (ngSubmit)="onSubmit()">
             <!-- Number Field -->
             <div class="relative mb-6">
@@ -78,7 +78,7 @@
             </div>
         </form>
     </nz-tab>
-    <nz-tab nzTitle="Bill Inquiry">
+    <nz-tab nzTitle="Bill Inquiry" [nzDisabled]="selectedIndex < 1">
         <form [formGroup]="BillForm" (ngSubmit)="onBillSubmit()">
             <!-- Number Field -->
             <div class="relative mb-6" *ngIf="billselectedIndex === 0">
@@ -181,18 +181,17 @@
             <div class="flex gap-3 pt-4">
                 <button *ngIf="billselectedIndex === 0" type="submit"
                     class="btn-primary h-12 max-w-[351px] !w-full">Next</button>
-                <button *ngIf="billselectedIndex === 1" type="submit"
+                <button *ngIf="billselectedIndex === 1 || billselectedIndex === 2" type="submit"
                     class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
-                <button *ngIf="billselectedIndex === 2" type="submit"
-                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
-                <button type="button" *ngIf="billselectedIndex < 3"
-                    class="btn-ghost h-12  max-w-[88px] !w-full">Cancel</button>
-                <button *ngIf="billselectedIndex === 3"
-                    class="mt-6 btn-primary h-12 max-w-[351px] !w-full">
+                <!-- <button *ngIf="billselectedIndex === 2" type="submit"
+                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button> -->
+                <button type="button" *ngIf="billselectedIndex < 3" class="btn-ghost h-12  max-w-[88px] !w-full"
+                    (click)="goToPreviousStep()">Cancel</button>
+                <button *ngIf="billselectedIndex === 3" class="mt-6 btn-primary h-12 max-w-[351px] !w-full">
                     Download Invoice
                 </button>
             </div>
         </form>
     </nz-tab>
-    <nz-tab nzTitle="Scratches">Content of Tab Pane 3</nz-tab>
+    <nz-tab nzTitle="Scratches" [nzDisabled]="selectedIndex < 2">Content of Tab Pane 3</nz-tab>
 </nz-tabset>
