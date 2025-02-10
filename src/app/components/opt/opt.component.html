@@ -1,5 +1,4 @@
 <div>
-
     <div class="w-full flex justify-start">
         <p class="text-[#003649] text-base font-medium mb-2 text-center">
             Please Enter Your Password In <br />
@@ -33,7 +32,7 @@
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp5}" #otp5Ref />
     </div>
 
-    <p class="text-red text-sm text-left font-normal mt-8">
+    <p *ngIf="showMessage" class="text-red text-sm text-left font-normal mt-8">
         We Just Sent One OTP To Your Email
     </p>
 </div>

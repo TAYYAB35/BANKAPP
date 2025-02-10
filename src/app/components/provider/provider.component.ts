@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { OptComponent } from '../opt/opt.component';
 
 @Component({
   selector: 'app-provider',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent],
   templateUrl: './provider.component.html',
   styles: `
     .select-number {
@@ -22,20 +23,33 @@ export class ProviderComponent {
   activeTab: string = 'topUp'; // Default active tab
 
   topForm: FormGroup;
+  BillForm: FormGroup;
   submitted = false;
+  Billsubmitted = false;
   selectedIndex = 0;
+  billselectedIndex = 0;
   listOfOption = ['Option 01', 'Option 02'];
   selectedValue = 'Option 01'; // Set this to an existing option
+  paymentDetails: any;
 
   constructor(private fb: FormBuilder) {
     this.topForm = this.fb.group({
       number: ['', Validators.required],
       amount: ['', Validators.required]
     });
+    this.BillForm = this.fb.group({
+      secondnumber: ['', Validators.required],
+      thirdnumber: ['', Validators.required],
+      fournumber: ['', Validators.required]
+    });
   }
 
   get f() {
     return this.topForm.controls;
+  }
+
+  get g() {
+    return this.BillForm.controls;
   }
 
   onSubmit() {
@@ -47,7 +61,34 @@ export class ProviderComponent {
     this.selectedIndex = 1;
   }
 
+  onBillSubmit() {
+    this.Billsubmitted = true;
 
+    if (this.billselectedIndex === 0 && this.g['secondnumber'].invalid) {
+      return;
+    }
+
+    if (this.billselectedIndex === 0) {
+      this.billselectedIndex = 1;
+      this.Billsubmitted = false;
+      return;
+    }
+
+    if (this.billselectedIndex === 1) {
+      this.billselectedIndex = 2;
+      return;
+    }
+
+    if (this.billselectedIndex === 2) {
+      this.billselectedIndex = 3;
+      return;
+    }
+
+    if (this.billselectedIndex === 3) {
+      console.log('Final Form Data:', this.BillForm.value);
+      return;
+    }
+  }
 
   providers = [
     { name: 'MTN', label: 'MTN TopUp', color: 'bg-yellow-400', src: '../../../../assets/images/icons/image.svg', active: true },

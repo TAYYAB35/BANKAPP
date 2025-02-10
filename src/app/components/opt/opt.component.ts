@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styles: ``
 })
 export class OptComponent {
-
+  @Input() showMessage: boolean = true;
   otp1: string = '';
   otp2: string = '';
   otp3: string = '';

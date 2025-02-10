@@ -1,20 +1,19 @@
 <!-- Provider Selection -->
 <div class="mb-8 ">
-    <h3 class="mb-5 text-sm font-normal">Select Provider</h3>
     <div class="flex gap-4">
         <button *ngFor="let provider of providers" class="flex items-center gap-2" [class.opacity-40]="!provider.active"
             (click)="toggleProvider(provider)">
             <div class="flex h-12 w-12 items-center justify-center rounded-full" [ngClass]="provider.color">
                 <img [src]="provider.src" alt="">
             </div>
-            <span class="text-xs font-medium">{{ provider.label }}</span>
+            <span class="text-base font-medium">{{ provider.label }}</span>
         </button>
     </div>
 </div>
 
 <nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex">
     <nz-tab nzTitle="Top Up"> <!-- Form Fields -->
-        <form [formGroup]="topForm" (ngSubmit)="onSubmit()" class="">
+        <form [formGroup]="topForm" (ngSubmit)="onSubmit()">
             <!-- Number Field -->
             <div class="relative mb-6">
                 <label class="block text-black font-normal text-sm mb-2">Number</label>
@@ -80,37 +79,37 @@
         </form>
     </nz-tab>
     <nz-tab nzTitle="Bill Inquiry">
-        <form [formGroup]="topForm" (ngSubmit)="onSubmit()" class="">
+        <form [formGroup]="BillForm" (ngSubmit)="onBillSubmit()">
             <!-- Number Field -->
-            <div class="relative mb-6">
+            <div class="relative mb-6" *ngIf="billselectedIndex === 0">
                 <label class="block text-black font-normal text-sm mb-2">Your Number</label>
                 <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(f['number'].invalid && (f['number'].touched || submitted)), 
-                        'border-[#DBA434]': f['number'].invalid && (f['number'].touched || submitted) 
+                        'border-[#FCD759]': !(g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted)), 
+                        'border-[#DBA434]': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted) 
                     }">
                     <span class="text-yellow-500">
                         <i class="fa-regular fa-phone"></i>
                     </span>
-                    <input type="text" formControlName="number"
+                    <input type="text" formControlName="secondnumber"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                         placeholder="Enter number">
                 </div>
                 <div class="px-1 w-100 position-absolute mt-1">
                     <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="f['number'].invalid && (f['number'].touched || submitted)">
-                        <span *ngIf="f['number'].errors?.['required']">This Field is required</span>
+                        *ngIf="g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted)">
+                        <span *ngIf="g['secondnumber'].errors?.['required']">This Field is required</span>
                     </small>
                 </div>
             </div>
 
-            <div>
-                <nz-select [(ngModel)]="selectedValue" class="select-number w-full h-[48px] items-center flex">
+            <div *ngIf="billselectedIndex === 1">
+                <nz-select formControlName="thirdnumber" [(ngModel)]="selectedValue"
+                    class="select-number w-full h-[48px] items-center flex">
                     @for (option of listOfOption; track option) {
                     <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
                     }
                 </nz-select>
 
-                <!-- Tailwind Styled Data Display -->
                 <div class="bg-gray-50 px-2 py-4 rounded-lg w-full mt-6">
                     <p class="font-semibold text-gray-800">Number</p>
                     <p class="font-bold text-lg text-gray-900">+2491234567</p>
@@ -126,11 +125,72 @@
                 </div>
             </div>
 
+            <div *ngIf="billselectedIndex === 2">
+                <nz-select formControlName="fournumber" [(ngModel)]="selectedValue"
+                    class="select-number w-full h-[48px] items-center flex">
+                    @for (option of listOfOption; track option) {
+                    <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
+                    }
+                </nz-select>
+                <div class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6 flex justify-center">
+                    <app-opt [showMessage]="false"></app-opt>
+                </div>
+            </div>
+
+            <div *ngIf="billselectedIndex === 3" class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6">
+                <div class="space-y-6">
+                    <h1 class="text-lg font-semibold text-gray-900 border-b-2 border-yellow-500 mb-3 pb-2">
+                        Payment Completed
+                    </h1>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Number</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.number }}</div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Account</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.account }}</div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Amount</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.amount }}</div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Date</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.date }}</div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Services</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.services }}</div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-medium text-gray-600">Transaction ID</div>
+                            <div class="text-base text-gray-900">{{ paymentDetails.transactionId }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Action Buttons -->
             <div class="flex gap-3 pt-4">
-                <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Next</button>
-                <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full"
-                    (click)="topForm.reset()">Cancel</button>
+                <button *ngIf="billselectedIndex === 0" type="submit"
+                    class="btn-primary h-12 max-w-[351px] !w-full">Next</button>
+                <button *ngIf="billselectedIndex === 1" type="submit"
+                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
+                <button *ngIf="billselectedIndex === 2" type="submit"
+                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
+                <button type="button" *ngIf="billselectedIndex < 3"
+                    class="btn-ghost h-12  max-w-[88px] !w-full">Cancel</button>
+                <button *ngIf="billselectedIndex === 3"
+                    class="mt-6 btn-primary h-12 max-w-[351px] !w-full">
+                    Download Invoice
+                </button>
             </div>
         </form>
     </nz-tab>
