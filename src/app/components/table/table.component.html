@@ -1,38 +1,38 @@
 <div class="custom-table mb-7">
-    <nz-table #headerTable [nzData]="listOfData" nzShowPagination="false" [nzScroll]="{ y: '240px' }">
+    <nz-table #headerTable [nzData]="listOfData" nzShowPagination="false" [nzScroll]="{ y: '500px' }">
         <thead>
             <tr>
                 <th>Amount</th>
-                <th></th>
-                <th><span class="uppercase"> Description</span></th>
-                <th><span class="uppercase"> services</span></th>
-                <th><span class="uppercase"> Date</span></th>
-                <th nzWidth="84px"></th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>services</th>
+                <!-- <th nzWidth="84px"></th> -->
             </tr>
         </thead>
         <tbody>
             @for (data of headerTable.data; track data) {
             <tr>
                 <td>
-                    <p class="!font-semibold text-black"> ${{ data.amount }}</p>
+                    ${{ data.amount }}
                 </td>
                 <td>
-                    <p
-                        class="font-normal bg-success_lt text-success rounded-md px-1 py-0.5 flex gap-1 items-center justify-center ">
-                        <i class="fa-solid fa-check text-success"></i>
+                    <div class="font-normal h-9 rounded-md min-w-[106px] px-2.5 w-full py-0.5 flex gap-1 items-center justify-start"
+                        [ngClass]="statusBasedBg(data.status)">
+                        <i [ngClass]="statusBasedIcon(data.status)"></i>
                         {{ data.status }}
-                    </p>
+                    </div>
                 </td>
                 <td>
-                    <p class="font-normal">{{ data.description }}</p>
+                    {{ data.date }}
                 </td>
                 <td>
-                    <p class="font-medium !text-[#003649]">{{ data.service }}</p>
+                    {{ data.description }}
                 </td>
                 <td>
-                    <p class="font-normal">{{ data.date }}</p>
+                    {{ data.service }}
                 </td>
-                <td>
+                <!-- <td>
 
                     <a nz-dropdown [nzDropdownMenu]="menu">
                         <i class="fa-solid fa-ellipsis text-Highlight text-lg"></i>
@@ -45,7 +45,7 @@
                         </ul>
                     </nz-dropdown-menu>
 
-                </td>
+                </td> -->
             </tr>
             }
         </tbody>

@@ -238,7 +238,7 @@
     </div>
     <!-- Navigation -->
     <nav class="space-y-2 z-20 relative">
-        <a *ngFor="let item of menuItems" [routerLink]="item.route" (click)="changePage(item.name)"
+        <a *ngFor="let item of menuItems" [routerLink]="item.route" (click)="changePage(item)"
             class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10" [ngClass]="{
                 'bg-[#003649]': item.name == 'Support',
                 'bg-white/20': isActive(item.route) 

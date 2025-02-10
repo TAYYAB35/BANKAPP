@@ -21,19 +21,20 @@ export class SidebarComponent {
   @Output() pageChanged = new EventEmitter<string>();
 
   menuItems = [
-    { name: 'Main', route: '/' },
-    { name: 'Services', route: '/services' },
-    { name: 'Transactions History', route: '/transactions' },
-    { name: 'Manage Beneficiaries', route: '/benefiters' },
-    { name: 'Transactions', route: '/transactions' },
-    { name: 'Settings', route: '/setting' },
-    { name: 'Logout', route: '/logout' },
-    { name: 'Support', route: '/support' },
+    { name: 'Main', route: '/',description: 'Description for  main dashboard fro the bank,description for  main dashboard fro the bank'},
+    { name: 'Services', route: '/services',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank' },
+    { name: 'Transactions History', route: '/history',description: 'Description for  main dashboard fro the bank,description for  main dashboard fro the bank'},
+    { name: 'Manage Beneficiaries', route: '/benefiters',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank'},
+    { name: 'Transactions', route: '/transactions',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank' },
+    { name: 'Settings', route: '/setting',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank' },
+    { name: 'Logout', route: '/logout',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank' },
+    { name: 'Support', route: '/support',description: 'description for  main dashboard fro the bank,description for  main dashboard fro the bank' },
   ];
 
-  changePage(page: string): void {
+  changePage(page: any): void {
     this.pageChanged.emit(page);
     this.closeMenu.emit();
+    localStorage.setItem('header-content', JSON.stringify(page));
   }
 
   router = inject(Router)
