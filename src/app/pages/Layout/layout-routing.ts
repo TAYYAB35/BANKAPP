@@ -6,6 +6,7 @@ import { ServiceScreenComponent,BankScreenComponent ,MoneyTransferScreenComponen
 import { SettingComponent } from './settingScreen/setting.component';
 import { HistoryComponent } from './history/history.component';
 import { TelecomeServiceComponent } from './telecome-service/telecome-service.component';
+import { BeneficiaryComponent } from './beneficiary/beneficiary.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path: 'money-transfer', component: MoneyTransferScreenComponent},
       {path: 'setting', component: SettingComponent},
       {path: 'history', component: HistoryComponent},
+      {path: 'benefiters', component: BeneficiaryComponent},
       {path: 'services/telecom', component: TelecomeServiceComponent},
     ],
   },
