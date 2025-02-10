@@ -44,7 +44,6 @@ a {
   font-weight: 800;
 }
 
-
 h1,
 h2,
 h3,
@@ -390,7 +389,7 @@ html {
   }
 
   .ant-table-thead>tr {
-  
+
     th {
       position: relative !important;
       transition: background 0.3s ease !important;
@@ -564,4 +563,27 @@ html {
     margin: 0 0 0 8px !important;
   }
 
+}
+
+.ant-select-selector {
+  height: 48px !important;
+  border-radius: 4px !important;
+}
+
+.ant-select-selection-search-input {
+  height: 100% !important;
+}
+
+.ant-select-selection-placeholder,
+.ant-select-selection-item {
+  padding-top: 9px !important;
+}
+
+.ant-select-selection-item {
+  font-weight: 600 !important;
+}
+
+.ant-tabs-tab-disabled .ant-tabs-tab-btn {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
 }

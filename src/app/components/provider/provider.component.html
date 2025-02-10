@@ -1,6 +1,6 @@
 <!-- Provider Selection -->
 <div class="mb-8 ">
-    <div class="flex gap-4">
+    <div class="flex flex-wrap justify-start gap-4">
         <button *ngFor="let provider of providers" class="flex items-center gap-2" [class.opacity-40]="!provider.active"
             (click)="toggleProvider(provider)">
             <div class="flex h-12 w-12 items-center justify-center rounded-full" [ngClass]="provider.color">
