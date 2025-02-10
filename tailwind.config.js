@@ -55,6 +55,8 @@ module.exports = {
         gray_100: '#e5e9eb',
         gray_150: '#e5ebed',
         gray_200: '#F1F1F0',
+        gray_250: '#EBEBEB',
+        gray_300: '#e0e3e4',
         gray_400: '#666666',
         gray_500: '#44525F',
         gray_600: '#252C32',
