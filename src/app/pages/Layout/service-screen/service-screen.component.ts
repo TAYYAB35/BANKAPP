@@ -19,7 +19,7 @@ export class ServiceScreenComponent {
     {
       title: 'Utilities Payments',
       services: [
-        { icon: './../../../../assets/images/icons/flash_on.svg', title: 'Electricity service',router : "" },
+        { icon: './../../../../assets/images/icons/flash_on.svg', title: 'Electricity service',router : "electric" },
         { icon: './../../../../assets/images/icons/cell_wifi.svg', title: 'Internet Services',router : "" },
         { icon: './../../../../assets/images/icons/school.svg', title: 'Education Services',router : "" },
         { icon: './../../../../assets/images/icons/globe_location_pin.svg', title: 'International Services',router : "" },

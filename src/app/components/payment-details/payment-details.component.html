@@ -1,0 +1,37 @@
+<div class="space-y-6">
+    <h1 class="text-lg font-semibold text-gray-900 border-b-2 border-yellow-500 mb-3 pb-2">
+        Payment Completed
+    </h1>
+
+    <div class="space-y-4">
+        <div>
+            <div class="text-sm font-medium text-gray-600">Number</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.number }}</div>
+        </div>
+
+        <div>
+            <div class="text-sm font-medium text-gray-600">Account</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.account }}</div>
+        </div>
+
+        <div>
+            <div class="text-sm font-medium text-gray-600">Amount</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.amount }}</div>
+        </div>
+
+        <div>
+            <div class="text-sm font-medium text-gray-600">Date</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.date }}</div>
+        </div>
+
+        <div>
+            <div class="text-sm font-medium text-gray-600">Services</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.services }}</div>
+        </div>
+
+        <div>
+            <div class="text-sm font-medium text-gray-600">Transaction ID</div>
+            <div class="text-base text-gray-900">{{ paymentDetails.transactionId }}</div>
+        </div>
+    </div>
+</div>

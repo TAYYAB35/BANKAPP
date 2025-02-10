@@ -5,10 +5,16 @@
         <button class="text-white bg-primary text-lg font-normal flex gap-1 h-[50px] p-3 items-center rounded-lg"><span
                 class="text-lg font-semibold">Add
                 New</span> Benefiters
-            <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M2.45553 16.6922V9.14048H0.315552V7.53549H6.20049V9.14048H4.06051V16.6922H2.45553ZM2.45553 4.98411V0.107361H4.06051V4.98411H2.45553ZM6.81788 4.98411V3.37912H8.95786V0.107361H10.5628V3.37912H12.7028V4.98411H6.81788ZM8.95786 16.6922V7.53549H10.5628V16.6922H8.95786ZM15.4602 16.6922V13.4204H13.3202V11.8155H19.2051V13.4204H17.0652V16.6922H15.4602ZM15.4602 9.26406V0.107361H17.0652V9.26406H15.4602Z"
-                    fill="#003649" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                <mask id="mask0_17_8645" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="27"
+                    height="27">
+                    <rect x="0.920532" y="0.560547" width="25.6797" height="25.6797" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_17_8645)">
+                    <path
+                        d="M6.45553 21.6923V14.1405H4.31555V12.5356H10.2005V14.1405H8.06051V21.6923H6.45553ZM6.45553 9.98417V5.10742H8.06051V9.98417H6.45553ZM10.8179 9.98417V8.37918H12.9579V5.10742H14.5628V8.37918H16.7028V9.98417H10.8179ZM12.9579 21.6923V12.5356H14.5628V21.6923H12.9579ZM19.4602 21.6923V18.4205H17.3202V16.8155H23.2051V18.4205H21.0652V21.6923H19.4602ZM19.4602 14.2641V5.10742H21.0652V14.2641H19.4602Z"
+                        fill="white" />
+                </g>
             </svg>
         </button>
     </div>
@@ -19,30 +25,17 @@
     <div class="relative">
         <nz-tabset>
 
-            <nz-tab nzTitle="Succeeded">
+            <nz-tab nzTitle="Bank Accounts">
                 <app-table></app-table>
             </nz-tab>
 
-            <nz-tab nzTitle="Failed">
+            <nz-tab nzTitle="Meters">
                 <app-table></app-table>
             </nz-tab>
 
-            <nz-tab nzTitle="Pending">
+            <nz-tab nzTitle="Phone Number">
                 <app-table></app-table>
             </nz-tab>
-
-            <nz-tab nzTitle="Dispute">
-                <app-table></app-table>
-            </nz-tab>
-
-            <nz-tab nzTitle="Invalid">
-                <app-table></app-table>
-            </nz-tab>
-
-            <nz-tab nzTitle="Cancelled">
-                <app-table></app-table>
-            </nz-tab>
-
         </nz-tabset>
     </div>
 </div>

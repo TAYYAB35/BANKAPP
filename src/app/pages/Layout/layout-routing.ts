@@ -7,6 +7,7 @@ import { SettingComponent } from './settingScreen/setting.component';
 import { HistoryComponent } from './history/history.component';
 import { TelecomeServiceComponent } from './telecome-service/telecome-service.component';
 import { BeneficiaryComponent } from './beneficiary/beneficiary.component';
+import { ElectricityServiceComponent } from './electricity-service/electricity-service.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'history', component: HistoryComponent},
       {path: 'benefiters', component: BeneficiaryComponent},
       {path: 'services/telecom', component: TelecomeServiceComponent},
+      {path: 'services/electric', component: ElectricityServiceComponent},
     ],
   },
   // Redirect unknown paths to a 404 page or a default route

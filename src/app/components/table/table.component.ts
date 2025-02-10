@@ -4,67 +4,26 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { CommonModule } from '@angular/common';
 
 interface ItemData {
-  amount: string;
-  status: string;
-  description: string;
-  service: string;
-  date: string;
+  Name: string;
+  account_number: string;
 }
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NzTableModule, NzDropDownModule,CommonModule],
+  imports: [NzTableModule, NzDropDownModule, CommonModule],
   templateUrl: './table.component.html',
   styles: ``
 })
 export class TableComponent {
 
   listOfData: ItemData[] = [
-    { amount: '23', status: 'Succeeded', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
-    { amount: '23', status: 'Failed', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
-    { amount: '23', status: 'Pending', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
-    { amount: '23', status: 'Dispute', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
-    { amount: '23', status: 'Invalid', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
-    { amount: '23', status: 'Canceled', description: "Invoice 6B1E73DA–0017", service: "telecom servers ", date: "Dec 30, 09:42 PM" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
+    { Name: "ahmed omer", account_number: "329847259252626282826525" },
   ];
-
-  statusBasedBg(status: string) {
-    switch (status) {
-      case 'Succeeded':
-        return 'bg-success_lt text-success'; // Light green background, green text
-      case 'Failed':
-        return 'bg-failure_lt text-failure'; // Light red background, red text
-      case 'Pending':
-        return 'bg-pending_lt text-pending'; // Light yellow background, yellow text
-      case 'Dispute':
-        return 'bg-dispute_lt text-dispute'; // Light orange background, orange text
-      case 'Invalid':
-        return 'bg-invalid_lt text-invalid'; // Light gray background, gray text
-      case 'Canceled':
-        return 'bg-canceled_lt text-canceled'; // Light gray background, gray text
-      default:
-        return 'bg-default_lt text-default'; // Default background and text color
-    }
-  }
-  statusBasedIcon(status: string) {
-    switch (status) {
-      case 'Succeeded':
-        return 'fa-solid fa-check'; // Light green background, green text
-      case 'Failed':
-        return 'fa-regular fa-octagon-xmark'; // Light red background, red text
-      case 'Pending':
-        return 'fa-regular fa-clock'; // Light yellow background, yellow text
-      case 'Dispute':
-        return 'fa-regular fa-bug'; // Light orange background, orange text
-      case 'Invalid':
-        return 'bg-invalid_lt text-invalid'; // Light gray background, gray text
-      case 'Canceled':
-        return 'bg-canceled_lt text-canceled'; // Light gray background, gray text
-      default:
-        return 'bg-default_lt text-default'; // Default background and text color
-    }
-  }
-
 
 }

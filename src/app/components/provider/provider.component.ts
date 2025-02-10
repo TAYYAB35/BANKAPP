@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { OptComponent } from '../opt/opt.component';
+import { PaymentDetailsComponent } from "../payment-details/payment-details.component";
 
 @Component({
   selector: 'app-provider',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
   templateUrl: './provider.component.html',
   styles: `
     .select-number {
