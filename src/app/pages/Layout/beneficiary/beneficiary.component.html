@@ -26,7 +26,49 @@
         <nz-tabset>
 
             <nz-tab nzTitle="Bank Accounts">
-                <app-table></app-table>
+                <div class="custom-table mb-7">
+                    <nz-table #headerTable [nzData]="listOfData" nzShowPagination="false" [nzScroll]="{ y: '500px' }"
+                        class="w-full border border-gray-200 rounded-lg">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-3 !text-left w-1/5"><span class="text-sm font-semibold">Name</span>
+                                </th>
+                                <th class="px-4 py-3 w-4/5"><span class="text-sm font-semibold">Account Number</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of headerTable.data; track data) {
+                            <tr class="border-b border-gray-200 even:bg-gray-100">
+                                <td class="px-4 py-3 text-gray-800 capitalize w-1/5"><span
+                                        class="text-sm font-medium">{{ data.Name }}</span></td>
+                                <td class="px-4 py-3 text-gray-800 w-1/2"><span class="text-sm font-medium">{{
+                                        data.account_number }}</span></td>
+                                <td class="px-4 py-3 space-x-2 flex justify-end">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 32 32" fill="none">
+                                            <rect width="32" height="32" rx="6" fill="#FE4400" />
+                                            <path
+                                                d="M11.3077 24.4423C10.8091 24.4423 10.3831 24.2657 10.0298 23.9125C9.67658 23.5592 9.5 23.1332 9.5 22.6345V9.94225H8.5V8.44225H13V7.55775H19V8.44225H23.5V9.94225H22.5V22.6345C22.5 23.1397 22.325 23.5673 21.975 23.9173C21.625 24.2673 21.1974 24.4423 20.6923 24.4423H11.3077ZM21 9.94225H11V22.6345C11 22.7243 11.0288 22.7981 11.0865 22.8558C11.1442 22.9134 11.2179 22.9423 11.3077 22.9423H20.6923C20.7692 22.9423 20.8398 22.9102 20.9038 22.846C20.9679 22.782 21 22.7115 21 22.6345V9.94225ZM13.404 20.9423H14.9037V11.9423H13.404V20.9423ZM17.0962 20.9423H18.596V11.9423H17.0962V20.9423Z"
+                                                fill="white" />
+                                        </svg>
+                                    </button>
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 32 32" fill="none">
+                                            <rect width="32" height="32" rx="6" fill="#08C487" />
+                                            <path
+                                                d="M6 26.548V23.548H26V26.548H6ZM10 18.9615H11.2365L19.5365 10.6767L18.9078 10.0385L18.2848 9.425L10 17.725V18.9615ZM8.5 20.4615V17.0865L19.7098 5.89225C19.8546 5.74741 20.019 5.63783 20.203 5.5635C20.3868 5.48916 20.5782 5.452 20.777 5.452C20.976 5.452 21.1687 5.48916 21.355 5.5635C21.5413 5.63783 21.7121 5.75258 21.8673 5.90775L23.0693 7.125C23.2244 7.26983 23.3366 7.43575 23.4058 7.62275C23.4749 7.80958 23.5095 8.00275 23.5095 8.20225C23.5095 8.38925 23.4744 8.57516 23.4042 8.76C23.3341 8.945 23.2224 9.11408 23.0693 9.26725L11.875 20.4615H8.5ZM19.5365 10.6767L18.9078 10.0385L18.2848 9.425L19.5365 10.6767Z"
+                                                fill="white" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </nz-table>
+                </div>
             </nz-tab>
 
             <nz-tab nzTitle="Meters">
