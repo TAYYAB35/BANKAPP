@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { OptComponent } from '../opt/opt.component';
 
 @Component({
   selector: 'app-provider',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent],
   templateUrl: './provider.component.html',
   styles: `
     .select-number {
@@ -19,23 +20,36 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 })
 export class ProviderComponent {
 
-  activeTab: string = 'topUp'; // Default active tab
+  activeTab: string = 'topUp';
 
   topForm: FormGroup;
+  BillForm: FormGroup;
   submitted = false;
+  Billsubmitted = false;
   selectedIndex = 0;
+  billselectedIndex = 0;
   listOfOption = ['Option 01', 'Option 02'];
-  selectedValue = 'Option 01'; // Set this to an existing option
+  selectedValue = 'Option 01';
+  paymentDetails: any;
 
   constructor(private fb: FormBuilder) {
     this.topForm = this.fb.group({
       number: ['', Validators.required],
       amount: ['', Validators.required]
     });
+    this.BillForm = this.fb.group({
+      secondnumber: ['', Validators.required],
+      thirdnumber: ['', Validators.required],
+      fournumber: ['', Validators.required]
+    });
   }
 
   get f() {
     return this.topForm.controls;
+  }
+
+  get g() {
+    return this.BillForm.controls;
   }
 
   onSubmit() {
@@ -47,7 +61,33 @@ export class ProviderComponent {
     this.selectedIndex = 1;
   }
 
+  onBillSubmit() {
+    this.Billsubmitted = true;
 
+    if (this.billselectedIndex === 0 && this.g['secondnumber'].invalid) {
+      return;
+    }
+
+    if (this.billselectedIndex < 3) {
+      this.billselectedIndex++;
+    } else {
+      console.log('Final Form Data:', this.BillForm.value);
+    }
+  }
+
+  goToPreviousStep() {
+    if (this.billselectedIndex > 0) {
+      this.billselectedIndex--;
+    } else {
+      this.selectedIndex = 0;
+    }
+  }
+
+  onTabClick(index: number) {
+    if (index <= this.selectedIndex) {
+      this.selectedIndex = index;
+    }
+  }
 
   providers = [
     { name: 'MTN', label: 'MTN TopUp', color: 'bg-yellow-400', src: '../../../../assets/images/icons/image.svg', active: true },

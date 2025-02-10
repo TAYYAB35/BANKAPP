@@ -44,7 +44,7 @@
                             </div>
 
                             <div *ngIf="showStep1 && !showStep2" class="w-full mt-8">
-                                <app-opt (nextStepChange)="onNextStepChange($event)" ></app-opt>
+                                <app-opt [showMessage]="true" (nextStepChange)="onNextStepChange($event)" ></app-opt>
                             </div>
 
                             <div *ngIf="showStep2" class="mt-8">

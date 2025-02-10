@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { ProviderComponent } from 'src/app/components/provider/provider.component';
@@ -7,12 +7,13 @@ import { ProviderComponent } from 'src/app/components/provider/provider.componen
 @Component({
   selector: 'app-telecome-service',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule,ProviderComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, ProviderComponent],
   templateUrl: './telecome-service.component.html',
   styles: ``
 })
 export class TelecomeServiceComponent {
-
+  @Input() billselectedIndex: number = 0;
+  
   transactions = [
     {
       type: 'Top Up',
