@@ -1,10 +1,9 @@
 <div class="max-h-screen h-full flex flex-col lg:flex-row overflow-hidden">
   <!-- Mobile Header -->
-  <header class="lg:hidden bg-[#003049] text-white p-4 flex justify-between items-center">
+  <header class="lg:hidden bg-primary text-white p-4 flex justify-between items-center">
     <img src="../.././../assets/images/logo (2).svg" alt="Bank Logo" class="h-8">
     <button (click)="toggleMobileMenu()">
-      <!-- <lucide-x *ngIf="isMobileMenuOpen" class="w-6 h-6"></lucide-x> -->
-      <!-- <lucide-menu *ngIf="!isMobileMenuOpen" class="w-6 h-6"></lucide-menu> -->
+      <i class="fa-solid fa-bars text-2xl" *ngIf="!isMobileMenuOpen"></i>
     </button>
   </header>
 

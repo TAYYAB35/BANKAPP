@@ -12,7 +12,7 @@ export class HeaderComponent {
 
   ngOnInit() {
     const storedData = JSON.parse(localStorage.getItem("header-content") || "null");
-    this.activePage = this.activePage || storedData;
+    this.activePage =  storedData;
     console.log(storedData,this.activePage,'123 content');
   }
 

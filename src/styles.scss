@@ -587,3 +587,9 @@ html {
   cursor: not-allowed !important;
   pointer-events: none !important;
 }
+
+.nav-link.active {
+  svg {
+    fill: var(--Highlight);
+  }
+}

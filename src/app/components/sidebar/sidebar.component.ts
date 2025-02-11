@@ -37,8 +37,16 @@ export class SidebarComponent {
     localStorage.setItem('header-content', JSON.stringify(page));
   }
 
+  hideMenu(){
+    this.closeMenu.emit();
+  }
+
   router = inject(Router)
   modal = inject(NzModalService)
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 
   isActive(route: string): boolean {
     return this.router.isActive(route, {
