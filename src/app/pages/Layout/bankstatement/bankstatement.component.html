@@ -1,0 +1,166 @@
+<div class="mb-2.5">
+    <button class="rounded-lg p-3 bg-[#F1F1F1]" *ngIf="activeStep != 2">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="text-base font-semibold ml-4">Back</span>
+    </button>
+
+    <!-- Main Screen Button (Visible in Step 3) -->
+    <button class="rounded-lg p-3 bg-[#F1F1F1]" *ngIf="activeStep == 2">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="text-base font-semibold ml-4">Main Screen</span>
+    </button>
+</div>
+
+<div class="p-4 bg-gray-50 rounded-xl relative">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-[106px] mb-4">
+
+        <!-- left Sections -->
+        <div class="flex-1 space-y-4 lg:col-span-2 w-full min-h-full bg-white py-6 px-3 shadow-custom">
+
+            <div *ngIf="activeStep !== 2">
+                <!-- Provider  -->
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <button class="flex items-center gap-2">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
+                                <i class="fa-sharp fa-regular fa-building-columns text-2xl text-yellow-500"></i>
+                            </div>
+                            <span class="text-base font-medium">Bank Statement</span>
+                        </button>
+
+                        <button *ngIf="activeStep === 0"
+                            class="text-white bg-primary text-lg font-semibold flex gap-1 h-[50px] p-3 items-center rounded-lg">
+                            Time Filter
+                            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27"
+                                fill="#003649">
+                                <mask id="mask0_17_8645" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="27" height="27">
+                                    <rect x="0.920532" y="0.560547" width="25.6797" height="25.6797" fill="#003649" />
+                                </mask>
+                                <g mask="url(#mask0_17_8645)">
+                                    <path
+                                        d="M6.45553 21.6923V14.1405H4.31555V12.5356H10.2005V14.1405H8.06051V21.6923H6.45553ZM6.45553 9.98417V5.10742H8.06051V9.98417H6.45553ZM10.8179 9.98417V8.37918H12.9579V5.10742H14.5628V8.37918H16.7028V9.98417H10.8179ZM12.9579 21.6923V12.5356H14.5628V21.6923H12.9579ZM19.4602 21.6923V18.4205H17.3202V16.8155H23.2051V18.4205H21.0652V21.6923H19.4602ZM19.4602 14.2641V5.10742H21.0652V14.2641H19.4602Z"
+                                        fill="white" />
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <form [formGroup]="statementForm" (ngSubmit)="onSubmit()" *ngIf="activeStep === 0">
+                    <!-- Number Field -->
+                    <div>
+                        <label class="block text-black font-normal text-sm mb-2">Select Account</label>
+                        <nz-select formControlName="TarrifNumber" nzPlaceHolder="Tarrif Number"
+                            class="select-number w-full h-[48px] items-center flex max-w-[341px]">
+                            @for (option of listOfTarrif; track option) {
+                            <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
+                            }
+                        </nz-select>
+                    </div>
+
+                    <!-- Amount Field -->
+                    <div class="relative my-6">
+                        <label class="block text-black font-normal text-sm mb-2">Amount</label>
+                        <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
+                            [ngClass]="{ 'border-[#FCD759]': !statementForm.controls['amount'].invalid, 'border-[#DBA434]': statementForm.controls['amount'].invalid }">
+                            <span class="text-yellow-500">
+                                <i class="fa-sharp fa-light fa-circle-dollar text-lg"></i>
+                            </span>
+                            <input type="text" formControlName="amount"
+                                class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
+                                placeholder="Enter Amount">
+                        </div>
+                    </div>
+
+                    <!-- Component: Primary checkboxes -->
+                    <label class="block text-black font-normal text-sm mb-2">Statement Formate:</label>
+                    <fieldset class="flex gap-10 mb-6">
+                        <div class="relative flex items-center">
+                            <input
+                                class="w-4 h-4 transition-colors bg-white border-2 rounded-full appearance-none cursor-pointer peer border-slate-500 checked:border-primary checked:bg-primary checked:hover:border-primary_dark checked:hover:bg-primary_dark focus:outline-none checked:focus:border-primary checked:focus:bg-primary_dark focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                                type="radio" value="huey" id="huey" name="drone" />
+                            <label
+                                class="pl-2 cursor-pointer font-medium font-Alexandria text-slate-900 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                                for="huey">
+                                Download as PDF
+                            </label>
+                            <svg class="absolute left-0 w-4 h-4 transition-all duration-300 scale-50 opacity-0 pointer-events-none fill-white peer-checked:scale-100 peer-checked:opacity-100 peer-disabled:cursor-not-allowed"
+                                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                aria-labelledby="title-1 description-1" role="graphics-symbol">
+                                <title id="title-1">Circle Shape</title>
+                                <desc id="description-1">
+                                    Circle shape to indicate whether the radio input is checked or
+                                    not.
+                                </desc>
+                                <circle cx="8" cy="8" r="4" />
+                            </svg>
+                        </div>
+                        <div class="relative flex items-center">
+                            <input
+                                class="w-4 h-4 transition-colors bg-white border-2 rounded-full appearance-none cursor-pointer peer border-slate-500 checked:border-primary checked:bg-primary checked:hover:border-primary_dark checked:hover:bg-primary_dark focus:outline-none checked:focus:border-primary checked:focus:bg-primary_dark focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                                type="radio" value="dewey" id="dewey" name="drone" />
+                            <label
+                                class="pl-2 cursor-pointer font-medium font-Alexandria text-slate-900 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                                for="dewey">
+                                Sent to Email
+                            </label>
+                            <svg class="absolute left-0 w-4 h-4 transition-all duration-300 scale-50 opacity-0 pointer-events-none fill-white peer-checked:scale-100 peer-checked:opacity-100 peer-disabled:cursor-not-allowed"
+                                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                aria-labelledby="title-2 description-2" role="graphics-symbol">
+                                <title id="title-2">Circle Shape</title>
+                                <desc id="description-2">
+                                    Circle shape to indicate whether the radio input is checked or
+                                    not.
+                                </desc>
+                                <circle cx="8" cy="8" r="4" />
+                            </svg>
+                        </div>
+                    </fieldset>
+                    <!-- End Primary checkboxes -->
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3 pt-4">
+                        <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Next</button>
+                        <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full"
+                            (click)="statementForm.reset()">Cancel</button>
+                    </div>
+                </form>
+                <div *ngIf="activeStep === 1" class="w-full">
+                    <div class="w-full bg-gray-50 rounded-sm flex justify-center items-center py-4 px-1">
+                        <app-opt></app-opt>
+                    </div>
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3 pt-4">
+                        <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full"
+                            (click)="confirm()">Confirm</button>
+                        <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full"
+                            (click)="statementForm.reset()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="activeStep === 2" class="w-full px-2 py-4 rounded-lg" >
+                <app-payment-details></app-payment-details>
+            </div>
+        </div>
+
+        <!-- right Section -->
+        <div
+            class="lg:w-80 relative flex-shrink-0 hidden flex-col lg:col-span-1 justify-between bg-white rounded-lg h-full py-4 px-2 shadow-custom min-h-full">
+
+        </div>
+
+    </div>
+
+
+    <div class="space-y-2 bg-green-50 py-1 !w-fit rounded-sm px-2.5">
+        <h6 class="text-primary font-popin font-medium text-sm">Account Number : 6472647383748938744</h6>
+        <p class="text-primary font-popin font-normal text-xs">
+            Account Type : Saving Account
+        </p>
+        <p class="text-primary font-popin font-normal text-xs">
+            filler tome duration : <span class="text-red">22/02/2024</span> to <span class="text-red">22/03/2024</span>
+        </p>
+    </div>
+</div>
