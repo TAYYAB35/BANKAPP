@@ -1,8 +1,7 @@
 <div class="mb-8" *ngIf="stepIndex === 0">
     <div class="flex flex-wrap justify-start gap-4">
-        <button *ngFor="let provider of providers" class="flex items-center gap-2" [class.opacity-40]="!provider.active"
-            (click)="toggleProvider(provider)">
-
+        <button *ngFor="let provider of getFilteredProviders()" class="flex items-center gap-2"
+            [class.opacity-40]="!provider.active" (click)="toggleProvider(provider)">
             <div class="flex h-12 w-12 items-center justify-center rounded-full" [ngClass]="provider.color">
                 <img [src]="provider.src" alt="">
             </div>
@@ -13,7 +12,6 @@
 
 <div *ngIf="selectedIndex === 0">
     <form [formGroup]="topForm" (ngSubmit)="onSubmit()">
-        <!-- Number Field -->
         <div class="relative mb-6">
             <label class="block text-black font-normal text-sm mb-2">Inter Your Meter Number</label>
             <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
@@ -46,7 +44,7 @@
         </div>
 
         <div class="relative mt-12">
-            <nz-select formControlName="thirdnumber" [(ngModel)]="selectedValue"
+            <nz-select [(ngModel)]="selectedValue"
                 class="select-number w-full max-w-[390px] h-[48px] items-center flex">
                 @for (option of listOfOption; track option) {
                 <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
@@ -54,7 +52,6 @@
             </nz-select>
         </div>
 
-        <!-- Action Buttons -->
         <div class="flex gap-3 pt-16">
             <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Next</button>
             <button type="button" class="btn-ghost h-12  max-w-[88px] !w-full" (click)="topForm.reset()">Cancel</button>
@@ -82,7 +79,8 @@
         </div>
 
         <div class="flex gap-3 pt-4">
-            <button *ngIf="stepIndex === 0" type="submit" class="btn-primary h-12 max-w-[351px] !w-full">
+            <button *ngIf="stepIndex === 0" type="submit" class="btn-primary h-12 max-w-[351px] !w-full"
+                (click)="onConfirm()">
                 Confirm
             </button>
 

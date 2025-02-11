@@ -1,11 +1,10 @@
 <div class="mb-[10px]">
-    <button *ngIf="stepIndex >= 0 && stepIndex <= 2" class="rounded-lg p-3 bg-[#F1F1F1]">
+    <button *ngIf="stepIndex !== 1" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToPreviousStep()">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="text-base font-semibold ml-4">Back</span>
     </button>
 
-    <!-- Main Screen Button (Visible in Step 3) -->
-    <button *ngIf="stepIndex === 3" class="rounded-lg p-3 bg-[#F1F1F1]">
+    <button *ngIf="stepIndex === 1" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToMainScreen()">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="text-base font-semibold ml-4">Main Screen</span>
     </button>
@@ -13,9 +12,8 @@
 
 <div class="p-4 bg-gray-50 rounded-xl relative">
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-[106px] mb-4">
-        <!-- left Sections -->
         <div class="flex-1 space-y-4 lg:col-span-2 w-full min-h-full bg-white py-6 px-3">
-            <app-electric-data></app-electric-data>
+            <app-electric-data [stepIndex]="stepIndex" (confirmClicked)="onConfirmClicked()"></app-electric-data>
         </div>
     </div>
 </div>

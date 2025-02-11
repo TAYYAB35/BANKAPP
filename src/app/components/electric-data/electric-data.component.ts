@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -16,7 +16,9 @@ import { PaymentDetailsComponent } from '../payment-details/payment-details.comp
 export class ElectricDataComponent {
   activeTab: string = 'electricity';
   selectedIndex: number = 0;
-  stepIndex: number = 0;
+  // stepIndex: number = 0;
+  @Input() stepIndex: number = 0;
+  @Output() confirmClicked = new EventEmitter<void>();
   topForm: FormGroup;
   BillForm: FormGroup;
   submitted = false;
@@ -50,10 +52,9 @@ export class ElectricDataComponent {
     }
     console.log('Form Data:', this.topForm.value);
 
-    this.isFirstFormValid = true; // Enable the second form
-    this.selectedIndex = 1; // Move to next tab
+    this.isFirstFormValid = true;
+    this.selectedIndex = 1;
 
-    // Activate the second provider when moving to the next form
     this.providers.forEach(provider => {
       provider.active = provider.id === 1;
     });
@@ -92,6 +93,17 @@ export class ElectricDataComponent {
     }
   ];
 
+  getFilteredProviders() {
+    return this.providers.filter(provider =>
+      (this.selectedIndex === 0 && provider.label === 'Electricity Services') ||
+      (this.selectedIndex === 1 && provider.label === 'MTN Bill Inquiry')
+    );
+  }
+
+  onConfirm() {
+    this.confirmClicked.emit();
+  }
+
   toggleProvider(selectedProvider: any) {
     if (selectedProvider.id === 1 && !this.isFirstFormValid) {
       return;
@@ -109,12 +121,6 @@ export class ElectricDataComponent {
       this.stepIndex--;
     } else {
       this.selectedIndex = 0;
-    }
-  }
-
-  onNext() {
-    if (this.stepIndex < 1) {
-      this.stepIndex++;
     }
   }
 }

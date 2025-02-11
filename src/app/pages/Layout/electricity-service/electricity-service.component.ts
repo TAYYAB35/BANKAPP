@@ -13,4 +13,28 @@ import { ElectricDataComponent } from "../../../components/electric-data/electri
 })
 export class ElectricityServiceComponent {
   @Input() stepIndex: number = 0;
+  selectedIndex: number = 0;
+
+  onConfirmClicked() {
+    this.stepIndex = 1;
+    console.log('Confirm Clicked: stepIndex =', this.stepIndex);
+  }
+
+  goToPreviousStep() {
+    console.log('Before Back: stepIndex =', this.stepIndex, ', selectedIndex =', this.selectedIndex);
+
+    if (this.stepIndex > 0) {
+      this.stepIndex--; // Go to previous step
+    } else if (this.selectedIndex > 0) {
+      this.selectedIndex--; // Go to previous form
+    }
+
+    console.log('After Back: stepIndex =', this.stepIndex, ', selectedIndex =', this.selectedIndex);
+  }
+
+  goToMainScreen() {
+    console.log('Main Screen Button Clicked');
+    this.stepIndex = 0;
+    this.selectedIndex = 0; // Reset to first screen
+  }
 }
