@@ -1,4 +1,4 @@
-<div class="mb-8">
+<div class="mb-8" *ngIf="currentStep < 1">
     <div class="flex flex-wrap justify-start gap-4">
         <button *ngFor="let provider of providers" class="flex items-center gap-2"
             [class.opacity-40]="!provider.active">
@@ -10,7 +10,8 @@
     </div>
 </div>
 
-<nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex" (nzSelectedIndexChange)="onTabClick($event)">
+<nz-tabset class="mb-8 provider" [(nzSelectedIndex)]="selectedIndex" (nzSelectedIndexChange)="onTabClick($event)"
+    *ngIf="currentStep < 1">
     <nz-tab nzTitle="Bank Account">
         <form [formGroup]="firstForm" (ngSubmit)="firstonSubmit()">
             <div class="relative mb-6">
@@ -195,27 +196,12 @@
                 </div>
             </div>
 
-            <div *ngIf="currentStep === 1">
-                <nz-select formControlName="fournumber" [(ngModel)]="selectedValue"
-                    class="select-number w-full h-[48px] items-center flex">
-                    @for (option of listOfOption; track option) {
-                    <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
-                    }
-                </nz-select>
-                <div class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6 flex justify-center">
-                    <app-opt [showMessage]="false"></app-opt>
-                </div>
-            </div>
-
-            <div *ngIf="currentStep === 2" class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6">
-                <app-payment-details></app-payment-details>
-            </div>
 
             <div class="flex gap-3 pt-4">
                 <button *ngIf="currentStep === 0" type="submit"
                     class="btn-primary h-12 max-w-[351px] !w-full">Save</button>
-                <button *ngIf="currentStep === 1" type="submit"
-                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
+                <!-- <button *ngIf="currentStep === 1" type="submit"
+                    class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button> -->
                 <button type="button" *ngIf="currentStep < 2" class="btn-ghost h-12  max-w-[88px] !w-full"
                     (click)="goToPreviousStep()">Cancel</button>
             </div>
@@ -223,3 +209,28 @@
 
     </nz-tab>
 </nz-tabset>
+
+<!-- OTP and Payment Details Section -->
+<div *ngIf="currentStep >= 1">
+    <div *ngIf="currentStep === 1">
+        <nz-select formControlName="fournumber" [(ngModel)]="selectedValue"
+            class="select-number w-full h-[48px] items-center flex">
+            @for (option of listOfOption; track option) {
+            <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
+            }
+        </nz-select>
+        <div class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6 flex justify-center">
+            <app-opt [showMessage]="false"></app-opt>
+        </div>
+    </div>
+
+    <div *ngIf="currentStep === 2" class="w-full bg-gray-50 px-2 py-4 rounded-lg mt-6">
+        <app-payment-details></app-payment-details>
+    </div>
+
+    <div class="flex gap-3 pt-4">
+        <button *ngIf="currentStep === 1" type="submit" class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
+        <button type="button" *ngIf="currentStep < 2" class="btn-ghost h-12 max-w-[88px] !w-full"
+            (click)="goToPreviousStep()">Cancel</button>
+    </div>
+</div>

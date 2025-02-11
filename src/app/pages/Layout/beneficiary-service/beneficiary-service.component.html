@@ -1,10 +1,10 @@
 <div class="mb-[10px]">
-    <button *ngIf="selectedIndex !== 1" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToPreviousStep()">
+    <button *ngIf="currentStep !== 2" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToPreviousStep()">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="text-base font-semibold ml-4">Back</span>
     </button>
 
-    <button *ngIf="selectedIndex === 1" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToMainScreen()">
+    <button *ngIf="currentStep === 2" class="rounded-lg p-3 bg-[#F1F1F1]" (click)="goToMainScreen()">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="text-base font-semibold ml-4">Main Screen</span>
     </button>
@@ -15,8 +15,8 @@
 
         <!-- left Sections -->
         <div class="flex-1 space-y-4 lg:col-span-2 w-full min-h-full bg-white py-6 px-3">
-            <app-beneficiary-data (confirmClicked)="onConfirmClicked()"></app-beneficiary-data>
+            <app-beneficiary-data [currentStep]="currentStep"
+                (confirmClicked)="onConfirmClicked()"></app-beneficiary-data>
         </div>
     </div>
-
 </div>

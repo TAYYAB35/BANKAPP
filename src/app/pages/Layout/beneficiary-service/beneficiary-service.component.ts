@@ -10,28 +10,29 @@ import { BeneficiaryDataComponent } from "../../../components/beneficiary-data/b
   styles: ``
 })
 export class BeneficiaryServiceComponent {
-  @Input() selectedIndex: number = 0;
+  @Input() currentStep: number = 0;
+  selectedIndex: number = 0;
 
   onConfirmClicked() {
-    this.selectedIndex = 1;
-    console.log('Confirm Clicked: selectedIndex =', this.selectedIndex);
+    this.currentStep = 1;
+    console.log('Confirm Clicked: currentStep =', this.currentStep);
   }
 
   goToPreviousStep() {
-    console.log('Before Back: selectedIndex =', this.selectedIndex, ', selectedIndex =', this.selectedIndex);
+    console.log('Before Back: currentStep =', this.currentStep, ', selectedIndex =', this.selectedIndex);
 
-    if (this.selectedIndex > 0) {
-      this.selectedIndex--; // Go to previous step
+    if (this.currentStep > 0) {
+      this.currentStep--; // Go to previous step
     } else if (this.selectedIndex > 0) {
       this.selectedIndex--; // Go to previous form
     }
 
-    console.log('After Back: selectedIndex =', this.selectedIndex, ', selectedIndex =', this.selectedIndex);
+    console.log('After Back: currentStep =', this.currentStep, ', selectedIndex =', this.selectedIndex);
   }
 
   goToMainScreen() {
     console.log('Main Screen Button Clicked');
-    this.selectedIndex = 0;
+    this.currentStep = 0;
     this.selectedIndex = 0; // Reset to first screen
   }
 }

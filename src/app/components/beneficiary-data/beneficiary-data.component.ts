@@ -22,7 +22,8 @@ import { PaymentDetailsComponent } from '../payment-details/payment-details.comp
 export class BeneficiaryDataComponent {
   activeTab: string = 'account';
   selectedIndex: number = 0;
-  currentStep = 0;
+  @Input() currentStep: number = 0;
+  @Output() confirmClicked = new EventEmitter<void>();
   firstForm: FormGroup;
   secondForm: FormGroup;
   thirdForm: FormGroup;
