@@ -210,7 +210,6 @@
     </nz-tab>
 </nz-tabset>
 
-<!-- OTP and Payment Details Section -->
 <div *ngIf="currentStep >= 1">
     <div *ngIf="currentStep === 1">
         <nz-select formControlName="fournumber" [(ngModel)]="selectedValue"
@@ -229,7 +228,9 @@
     </div>
 
     <div class="flex gap-3 pt-4">
-        <button *ngIf="currentStep === 1" type="submit" class="btn-primary h-12 max-w-[351px] !w-full">Confirm</button>
+        <button *ngIf="currentStep === 1" type="submit" class="btn-primary h-12 max-w-[351px] !w-full"
+            (click)="confirmOtp()">Confirm</button>
+
         <button type="button" *ngIf="currentStep < 2" class="btn-ghost h-12 max-w-[88px] !w-full"
             (click)="goToPreviousStep()">Cancel</button>
     </div>

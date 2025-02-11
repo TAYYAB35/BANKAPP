@@ -44,7 +44,7 @@
                             </div>
 
                             <div *ngIf="showStep1 && !showStep2" class="w-full mt-8">
-                                <app-opt [showMessage]="true" (nextStepChange)="onNextStepChange($event)" ></app-opt>
+                                <app-opt [showMessage]="true" (nextStepChange)="onNextStepChange($event)"></app-opt>
                             </div>
 
                             <div *ngIf="showStep2" class="mt-8">
@@ -178,33 +178,39 @@
                 <div class="bg-white px-3 py-4 rounded-lg shadow flex justify-between items-center">
                     <span class="text-base font-semibold">Language</span>
                     <div class="flex bg-transparent border border-gray-400 rounded-full p-1 gap-[5px]">
-                        <button
-                            class="w-full px-3 py-2 bg-[#F5F5F5] text-gray-500 rounded-full focus:outline-none"><span
-                                class="text-xs font-medium">العربية</span></button>
-                        <button class="w-full px-3 py-2 bg-[#003649] text-white rounded-full focus:outline-none">
+                        <button (click)="setLanguage('ar')"
+                            [ngClass]="selectedLanguage === 'ar' ? 'bg-[#003649] text-white' : 'bg-[#F5F5F5] text-gray-500'"
+                            class="w-full px-3 py-2 rounded-full focus:outline-none">
+                            <span class="text-xs font-medium">العربية</span>
+                        </button>
+
+                        <button (click)="setLanguage('en')"
+                            [ngClass]="selectedLanguage === 'en' ? 'bg-[#003649] text-white' : 'bg-[#F5F5F5] text-gray-500'"
+                            class="w-full px-3 py-2 rounded-full focus:outline-none">
                             <span class="text-xs font-medium">English</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Terms And Conditions -->
-                <details class="bg-white px-3 py-4 rounded-lg shadow">
+                <details class="bg-white px-3 py-4 rounded-lg shadow group">
                     <summary
-                        class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900 ">
+                        class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900">
                         Terms And Conditions
-                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300"></i>
+                        <i
+                            class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
                     </summary>
                     <p class="mt-4 text-slate-500">
                         Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other
-                        templates for class names, generating the corresponding styles and then writing them to a static
-                        CSS file.
+                        templates for class
+                        names, generating the corresponding styles and then writing them to a static CSS file.
                     </p>
                 </details>
-                <details class="bg-white px-3 py-4 rounded-lg shadow">
+                <details class="bg-white px-3 py-4 rounded-lg shadow group">
                     <summary
                         class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900 ">
                         policy
-                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300"></i>
+                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
                     </summary>
                     <p class="mt-4 text-slate-500">
                         Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other
@@ -212,11 +218,11 @@
                         CSS file.
                     </p>
                 </details>
-                <details class="bg-white px-3 py-4 rounded-lg shadow">
+                <details class="bg-white px-3 py-4 rounded-lg shadow group">
                     <summary
                         class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900 ">
                         About the Bank
-                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300"></i>
+                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
                     </summary>
                     <p class="mt-4 text-slate-500">
                         Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other

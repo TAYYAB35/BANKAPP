@@ -105,6 +105,10 @@ export class BeneficiaryDataComponent {
     }
   }
 
+  confirmOtp() {
+    this.currentStep = 2;
+  }
+
   providers = [
     { name: 'Benefiters', label: 'Add New Benefiters', color: 'bg-yellow-400', src: '../../../../assets/images/icons/beneficiary.svg', active: true },
   ];
