@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { TableComponent } from 'src/app/components';
@@ -11,7 +12,7 @@ interface ItemData {
 @Component({
   selector: 'app-beneficiary',
   standalone: true,
-  imports: [NzTabsModule, NzTableModule, TableComponent],
+  imports: [NzTabsModule, NzTableModule, TableComponent, RouterLink],
   templateUrl: './beneficiary.component.html',
   styles: ``
 })
