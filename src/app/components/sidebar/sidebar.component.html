@@ -212,6 +212,8 @@
     class="bg-[#003049] text-white p-6 w-full lg:w-[288px] fixed inset-0 z-50 transform transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0 h-full"
     [class.translate-x-0]="isMobileMenuOpen" [class.-translate-x-full]="!isMobileMenuOpen">
 
+    <i class="fa-solid fa-x text-2xl absolute right-5 top-5 text-white cursor-pointer " (click)="hideMenu()" *ngIf="isMobileMenuOpen"></i>
+
     <!-- Logo -->
     <div class="hidden lg:block mb-6">
         <img src="../.././../assets/images/logo (2).svg" alt="Bank Logo" class="h-8">
@@ -239,13 +241,13 @@
     <!-- Navigation -->
     <nav class="space-y-2 z-20 relative">
         <a *ngFor="let item of menuItems" [routerLink]="item.route" (click)="changePage(item)"
-            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10" [ngClass]="{
+            class="flex nav-link items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10" [ngClass]="{
                 'bg-[#003649]': item.name == 'Support',
-                'bg-white/20': isActive(item.route) 
+                'bg-white/20 active': isActive(item.route) 
              }" [routerLink]="item.route">
 
             <!-- Switch for Icons -->
-            <span [ngSwitch]="item.name" class="w-7 h-7 rounded-md  flex justify-center items-center" [ngClass]="{
+            <span [ngSwitch]="item.name" class="w-7 h-7 rounded-md flex justify-center items-center" [ngClass]="{
                 'bg-[#fe4400]': item.name == 'Logout',
                 'bg-[#003649]': item.name != 'Logout'
               }">

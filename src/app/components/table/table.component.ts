@@ -36,31 +36,31 @@ export class TableComponent {
       case 'Failed':
         return 'bg-failure_lt text-failure'; // Light red background, red text
       case 'Pending':
-        return 'bg-pending_lt text-pending'; // Light yellow background, yellow text
+        return 'bg-blue-100 text-blue-600'; // Light yellow background, yellow text
       case 'Dispute':
-        return 'bg-dispute_lt text-dispute'; // Light orange background, orange text
+        return 'bg-purple-100 text-purple-600'; // Light orange background, orange text
       case 'Invalid':
-        return 'bg-invalid_lt text-invalid'; // Light gray background, gray text
+        return 'bg-orange-100 text-orange-600'; // Light gray background, gray text
       case 'Canceled':
         return 'bg-canceled_lt text-canceled'; // Light gray background, gray text
       default:
-        return 'bg-default_lt text-default'; // Default background and text color
+        return 'bg-gray-100 text-gray-600'; // Default background and text color
     }
   }
   statusBasedIcon(status: string) {
     switch (status) {
       case 'Succeeded':
-        return 'fa-solid fa-check'; // Light green background, green text
+        return 'fa-check'; // Light green background, green text
       case 'Failed':
-        return 'fa-regular fa-octagon-xmark'; // Light red background, red text
+        return 'fa-octagon-xmark'; // Light red background, red text
       case 'Pending':
-        return 'fa-regular fa-clock'; // Light yellow background, yellow text
+        return 'fa-clock'; // Light yellow background, yellow text
       case 'Dispute':
-        return 'fa-regular fa-bug'; // Light orange background, orange text
+        return 'fa-balance-scale'; // Light orange background, orange text
       case 'Invalid':
-        return 'bg-invalid_lt text-invalid'; // Light gray background, gray text
+        return 'fa-exclamation-triangle'; // Light gray background, gray text
       case 'Canceled':
-        return 'bg-canceled_lt text-canceled'; // Light gray background, gray text
+        return 'fa-ban'; // Light gray background, gray text
       default:
         return 'bg-default_lt text-default'; // Default background and text color
     }
