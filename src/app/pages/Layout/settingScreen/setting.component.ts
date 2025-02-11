@@ -6,7 +6,7 @@ import { OptComponent } from 'src/app/components/opt/opt.component';
 @Component({
   selector: 'app-setting',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,OptComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, OptComponent],
   templateUrl: './setting.component.html',
   styles: `
   .card{
@@ -15,6 +15,7 @@ import { OptComponent } from 'src/app/components/opt/opt.component';
   `
 })
 export class SettingComponent {
+  selectedLanguage: string = 'en';
   showStep1: boolean = false; // Pehla step dikhane ke liye
   showStep2: boolean = false;
   resetFlow: boolean = true;
@@ -37,8 +38,12 @@ export class SettingComponent {
       { validator: this.passwordMatchValidator('password', 'confirmPassword') }
     );
 
-     // Effect runs automatically when nextStep changes
-    
+    // Effect runs automatically when nextStep changes
+
+  }
+
+  setLanguage(lang: string) {
+    this.selectedLanguage = lang;
   }
 
   onNextStepChange(nextStep: boolean) {
@@ -87,7 +92,7 @@ export class SettingComponent {
     this.resetFlow = false;
   }
 
-  
+
 
   savePassword() {
     this.submitted = true;
