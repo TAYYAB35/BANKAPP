@@ -31,7 +31,6 @@ export class ProviderComponent {
   billselectedIndex = 0;
   listOfOption = ['Option 01', 'Option 02'];
   selectedValue = 'Option 01';
-  paymentDetails: any;
 
   constructor(private fb: FormBuilder) {
     this.topForm = this.fb.group({
