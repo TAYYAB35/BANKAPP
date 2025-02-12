@@ -15,58 +15,14 @@
     <nz-tab nzTitle="Top Up">
         <form [formGroup]="topForm" (ngSubmit)="onSubmit()">
             <!-- Number Field -->
-            <div class="relative mb-6">
-                <label class="block text-black font-normal text-sm mb-2">Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                        'border-red': f['number'].invalid && (f['number'].touched || submitted),
-                        'border-[#FCD759]': f['number'].valid && f['number'].value,
-                        'border-primary_dark': !f['number'].value && !f['number'].touched && !submitted
-                    }">
-                    <span [ngClass]="{
-                            'text-red': f['number'].invalid && (f['number'].touched || submitted),
-                            'text-[#FCD759]': f['number'].valid && f['number'].value,
-                            'text-primary_dark': !f['number'].value
-                        }">
-                        <i class="fa-regular fa-phone text-lg"></i>
-                    </span>
-                    <input type="text" formControlName="number"
-                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                        placeholder="Enter number">
-                </div>
-                <div class="px-1 w-100 position-absolute mt-1">
-                    <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="f['number'].invalid && (f['number'].touched || submitted)">
-                        <span *ngIf="f['number'].errors?.['required']">This Field is required</span>
-                    </small>
-                </div>
-            </div>
+            <app-input-field [control]="gettopForm('number')" [submitted]="submitted" label="Number" type="number"
+                placeholder="Enter number">
+            </app-input-field>
 
             <!-- Amount Field -->
-            <div class="relative mb-6">
-                <label class="block text-black font-normal text-sm mb-2">Amount</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                        'border-red': f['amount'].invalid && (f['amount'].touched || submitted),
-                        'border-[#FCD759]': f['amount'].valid && f['amount'].value,
-                        'border-primary_dark': !f['amount'].value && !f['amount'].touched && !submitted
-                    }">
-                    <span [ngClass]="{
-                            'text-red': f['amount'].invalid && (f['amount'].touched || submitted),
-                            'text-[#FCD759]': f['amount'].valid && f['amount'].value,
-                            'text-primary_dark': !f['amount'].value
-                        }">
-                        <i class="fa-regular fa-money-bill text-lg"></i>
-                    </span>
-                    <input type="text" formControlName="amount"
-                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                        placeholder="Enter amount">
-                </div>
-                <div class="px-1 w-100 position-absolute mt-1">
-                    <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="f['amount'].invalid && (f['amount'].touched || submitted)">
-                        <span *ngIf="f['amount'].errors?.['required']">Amount is required</span>
-                    </small>
-                </div>
-            </div>
+            <app-input-field [control]="gettopForm('amount')" [submitted]="submitted" label="Amount" type="number"
+                placeholder="Enter amount">
+            </app-input-field>
 
             <!-- Action Buttons -->
             <div class="flex gap-3 pt-4">
@@ -79,31 +35,9 @@
     <nz-tab nzTitle="Bill Inquiry" [nzDisabled]="selectedIndex < 1">
         <form [formGroup]="BillForm" (ngSubmit)="onBillSubmit()">
             <!-- Number Field -->
-            <div class="relative mb-6" *ngIf="billselectedIndex === 0">
-                <label class="block text-black font-normal text-sm mb-2">Your Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                        'border-red': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted),
-                        'border-[#FCD759]': g['secondnumber'].valid && g['secondnumber'].value,
-                        'border-primary_dark': !g['secondnumber'].value && !g['secondnumber'].touched && !Billsubmitted
-                    }">
-                    <span [ngClass]="{
-                            'text-red': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted),
-                            'text-[#FCD759]': g['secondnumber'].valid && g['secondnumber'].value,
-                            'text-primary_dark': !g['secondnumber'].value
-                        }">
-                        <i class="fa-regular fa-phone text-lg"></i>
-                    </span>
-                    <input type="text" formControlName="secondnumber"
-                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                        placeholder="Enter number">
-                </div>
-                <div class="px-1 w-100 position-absolute mt-1">
-                    <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted)">
-                        <span *ngIf="g['secondnumber'].errors?.['required']">This Field is required</span>
-                    </small>
-                </div>
-            </div>
+            <app-input-field *ngIf="billselectedIndex === 0" [control]="getBillForm('secondnumber')"
+                [submitted]="Billsubmitted" label="Number" type="number" placeholder="Enter number">
+            </app-input-field>
 
             <div *ngIf="billselectedIndex === 1">
                 <nz-select formControlName="thirdnumber" [(ngModel)]="selectedValue"

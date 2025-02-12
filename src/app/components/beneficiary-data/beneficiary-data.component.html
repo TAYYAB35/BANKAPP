@@ -24,57 +24,13 @@
                 </nz-select>
             </div>
 
-            <div class="relative mb-6">
-                <label class="block text-black font-normal text-sm mb-2">CIF Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                        'border-red': f['cif'].invalid && (f['cif'].touched || firstsubmitted),
-                        'border-[#FCD759]': f['cif'].valid && f['cif'].value,
-                        'border-primary_dark': !f['cif'].value && !f['cif'].touched && !firstsubmitted
-                    }">
-                    <span [ngClass]="{
-                            'text-red': f['cif'].invalid && (f['cif'].touched || firstsubmitted),
-                            'text-[#FCD759]': f['cif'].valid && f['cif'].value,
-                            'text-primary_dark': !f['cif'].value
-                        }">
-                        <i class="fa-light fa-building-columns text-lg"></i>
-                    </span>
-                    <input type="text" formControlName="cif"
-                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                        placeholder="Enter number">
-                </div>
-                <div class="px-1 w-100 position-absolute mt-1">
-                    <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="f['cif'].invalid && (f['cif'].touched || firstsubmitted)">
-                        <span *ngIf="f['cif'].errors?.['required']">This Field is required</span>
-                    </small>
-                </div>
-            </div>
+            <app-input-field [control]="getfirstForm('cif')" [submitted]="firstsubmitted" label="CIF Number"
+                type="number" placeholder="Enter number">
+            </app-input-field>
 
-            <div class="relative mb-6">
-                <label class="block text-black font-normal text-sm mb-2">Benefiter Label</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                        'border-red': f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted),
-                        'border-[#FCD759]': f['benefiter'].valid && f['benefiter'].value,
-                        'border-primary_dark': !f['benefiter'].value && !f['benefiter'].touched && !firstsubmitted
-                    }">
-                    <span [ngClass]="{
-                            'text-red': f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted),
-                            'text-[#FCD759]': f['benefiter'].valid && f['benefiter'].value,
-                            'text-primary_dark': !f['benefiter'].value
-                        }">
-                        <i class="fa-regular fa-user-plus text-lg"></i>
-                    </span>
-                    <input type="text" formControlName="benefiter"
-                        class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                        placeholder="Enter Benefiter">
-                </div>
-                <div class="px-1 w-100 position-absolute mt-1">
-                    <small class="error text-red d-flex flex-column space-y-1.5"
-                        *ngIf="f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted)">
-                        <span *ngIf="f['benefiter'].errors?.['required']">This Field is required</span>
-                    </small>
-                </div>
-            </div>
+            <app-input-field [control]="getfirstForm('benefiter')" [submitted]="firstsubmitted" label="Benefiter Label"
+                type="text" placeholder="Enter Benefiter">
+            </app-input-field>
 
             <div class="flex gap-3 pt-4">
                 <button type="submit" class="btn-primary  h-12 max-w-[351px] !w-full">Save</button>
@@ -87,57 +43,13 @@
         <form [formGroup]="secondForm" (ngSubmit)="secondonSubmit()">
             <!-- Number Field -->
             <div>
-                <div class="relative mb-6">
-                    <label class="block text-black font-normal text-sm mb-2">Name</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                            'border-red': g['name'].invalid && (g['name'].touched || secondsubmitted),
-                            'border-[#FCD759]': g['name'].valid && g['name'].value,
-                            'border-primary_dark': !g['name'].value && !g['name'].touched && !secondsubmitted
-                        }">
-                        <span [ngClass]="{
-                                'text-red': g['name'].invalid && (g['name'].touched || secondsubmitted),
-                                'text-[#FCD759]': g['name'].valid && g['name'].value,
-                                'text-primary_dark': !g['name'].value
-                            }">
-                            <i class="fa-regular fa-user-plus text-lg"></i>
-                        </span>
-                        <input type="text" formControlName="name"
-                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                            placeholder="Enter name">
-                    </div>
-                    <div class="px-1 w-100 position-absolute mt-1">
-                        <small class="error text-red d-flex flex-column space-y-1.5"
-                            *ngIf="g['name'].invalid && (g['name'].touched || secondsubmitted)">
-                            <span *ngIf="g['name'].errors?.['required']">This Field is required</span>
-                        </small>
-                    </div>
-                </div>
+                <app-input-field [control]="getsecondForm('name')" [submitted]="secondsubmitted" label="Name"
+                    type="text" placeholder="Enter name">
+                </app-input-field>
 
-                <div class="relative mb-6">
-                    <label class="block text-black font-normal text-sm mb-2">Phone number</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                            'border-red': g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted),
-                            'border-[#FCD759]': g['mnumber'].valid && g['mnumber'].value,
-                            'border-primary_dark': !g['mnumber'].value && !g['mnumber'].touched && !secondsubmitted
-                        }">
-                        <span [ngClass]="{
-                                'text-red': g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted),
-                                'text-[#FCD759]': g['mnumber'].valid && g['mnumber'].value,
-                                'text-primary_dark': !g['mnumber'].value
-                            }">
-                            <i class="fa-regular fa-phone text-lg"></i>
-                        </span>
-                        <input type="text" formControlName="mnumber"
-                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                            placeholder="Enter number">
-                    </div>
-                    <div class="px-1 w-100 position-absolute mt-1">
-                        <small class="error text-red d-flex flex-column space-y-1.5"
-                            *ngIf="g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted)">
-                            <span *ngIf="g['mnumber'].errors?.['required']">This Field is required</span>
-                        </small>
-                    </div>
-                </div>
+                <app-input-field [control]="getsecondForm('mnumber')" [submitted]="secondsubmitted" label="Phone number"
+                    type="number" placeholder="Enter Phone Number">
+                </app-input-field>
             </div>
 
             <!-- Action Buttons -->
@@ -151,57 +63,13 @@
     <nz-tab nzTitle="Meter" [nzDisabled]="!secondsubmitted">
         <form [formGroup]="thirdForm" (ngSubmit)="thirdSubmit()">
             <div *ngIf="currentStep === 0">
-                <div class="relative mb-6">
-                    <label class="block text-black font-normal text-sm mb-2">Meter Name</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                            'border-red': h['metername'].invalid && (h['metername'].touched || thirdsubmitted),
-                            'border-[#FCD759]': h['metername'].valid && h['metername'].value,
-                            'border-primary_dark': !h['metername'].value && !h['metername'].touched && !thirdsubmitted
-                        }">
-                        <span [ngClass]="{
-                                'text-red': h['metername'].invalid && (h['metername'].touched || thirdsubmitted),
-                                'text-[#FCD759]': h['metername'].valid && h['metername'].value,
-                                'text-primary_dark': !h['metername'].value
-                            }">
-                            <i class="fa-regular fa-user-plus text-lg"></i>
-                        </span>
-                        <input type="text" formControlName="metername"
-                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                            placeholder="Enter number">
-                    </div>
-                    <div class="px-1 w-100 position-absolute mt-1">
-                        <small class="error text-red d-flex flex-column space-y-1.5"
-                            *ngIf="h['metername'].invalid && (h['metername'].touched || thirdsubmitted)">
-                            <span *ngIf="h['metername'].errors?.['required']">This Field is required</span>
-                        </small>
-                    </div>
-                </div>
+                <app-input-field [control]="getthirdForm('metername')" [submitted]="thirdsubmitted" label="Meter Name"
+                    type="text" placeholder="Enter name">
+                </app-input-field>
 
-                <div class="relative mb-6">
-                    <label class="block text-black font-normal text-sm mb-2">Meter Number</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
-                            'border-red': h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted),
-                            'border-[#FCD759]': h['meternumber'].valid && h['meternumber'].value,
-                            'border-primary_dark': !h['meternumber'].value && !h['meternumber'].touched && !thirdsubmitted
-                        }">
-                        <span [ngClass]="{
-                                'text-red': h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted),
-                                'text-[#FCD759]': h['meternumber'].valid && h['meternumber'].value,
-                                'text-primary_dark': !h['meternumber'].value
-                            }">
-                            <i class="fa-regular fa-phone text-lg"></i>
-                        </span>
-                        <input type="text" formControlName="meternumber"
-                            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                            placeholder="Enter number">
-                    </div>
-                    <div class="px-1 w-100 position-absolute mt-1">
-                        <small class="error text-red d-flex flex-column space-y-1.5"
-                            *ngIf="h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted)">
-                            <span *ngIf="h['meternumber'].errors?.['required']">This Field is required</span>
-                        </small>
-                    </div>
-                </div>
+                <app-input-field [control]="getthirdForm('meternumber')" [submitted]="thirdsubmitted"
+                    label="Meter Number" type="number" placeholder="Enter number">
+                </app-input-field>
             </div>
 
 

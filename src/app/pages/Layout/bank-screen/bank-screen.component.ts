@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { OptComponent } from 'src/app/components/opt/opt.component';
 import { PaymentDetailsComponent } from 'src/app/components/payment-details/payment-details.component';
 import { ProviderComponent } from 'src/app/components/provider/provider.component';
+import { InputFieldComponent } from "../../../components/input-field/input-field.component";
 
 @Component({
   selector: 'app-bank-screen',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, RouterLink, InputFieldComponent],
   templateUrl: './bank-screen.component.html',
   styles: ``
 })
@@ -94,6 +95,16 @@ export class BankScreenComponent {
     this.bankCardForm = this.fb.group({
       TarrifNumber: ['', Validators.required],
     });
+  }
+
+  getalkhaleejMainForm(controlName: string): FormControl {
+    return this.alkhaleejMainForm.get(controlName) as FormControl;
+  }
+  getsubAccountMainForm(controlName: string): FormControl {
+    return this.subAccountMainForm.get(controlName) as FormControl;
+  }
+  getbankCardFormMain(controlName: string): FormControl {
+    return this.bankCardFormMain.get(controlName) as FormControl;
   }
 
   listOfTarrif = [

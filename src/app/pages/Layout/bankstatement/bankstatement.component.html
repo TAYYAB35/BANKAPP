@@ -60,26 +60,9 @@
                     </div>
 
                     <!-- Amount Field -->
-                    <div class="relative my-6">
-                        <label class="block text-black font-normal text-sm mb-2">Amount</label>
-                        <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                            [ngClass]="{
-                                'border-red': statementForm.controls['amount'].invalid && (statementForm.controls['amount'].touched || submitted),
-                                'border-[#FCD759]': statementForm.controls['amount'].valid && statementForm.controls['amount'].value,
-                                'border-primary_dark': !statementForm.controls['amount'].value && !statementForm.controls['amount'].touched && !submitted
-                            }">
-                            <span [ngClass]="{
-                                    'text-red': statementForm.controls['amount'].invalid && (statementForm.controls['amount'].touched || submitted),
-                                    'text-[#FCD759]': statementForm.controls['amount'].valid && statementForm.controls['amount'].value,
-                                    'text-primary_dark': !statementForm.controls['amount'].value
-                                }">
-                                <i class="fa-sharp fa-light fa-circle-dollar text-lg"></i>
-                            </span>
-                            <input type="text" formControlName="amount"
-                                class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
-                                placeholder="Enter Amount">
-                        </div>
-                    </div>
+                    <app-input-field [control]="getstatementForm('amount')" [submitted]="submitted" label="Amount"
+                        type="number" placeholder="Enter Amount">
+                    </app-input-field>
 
                     <!-- Component: Primary checkboxes -->
                     <label class="block text-black font-normal text-sm mb-2">Statement Formate:</label>

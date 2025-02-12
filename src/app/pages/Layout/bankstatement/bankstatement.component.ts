@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { OptComponent } from 'src/app/components/opt/opt.component';
 import { PaymentDetailsComponent } from 'src/app/components/payment-details/payment-details.component';
+import { InputFieldComponent } from "../../../components/input-field/input-field.component";
 
 @Component({
   selector: 'app-bankstatement',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, InputFieldComponent],
   templateUrl: './bankstatement.component.html',
   styles: ``
 })
@@ -22,6 +23,10 @@ export class BankstatementComponent {
       TarrifNumber: ['', Validators.required],
       amount: ['', Validators.required],
     });
+  }
+
+  getstatementForm(controlName: string): FormControl {
+    return this.statementForm.get(controlName) as FormControl;
   }
 
   onSubmit() {

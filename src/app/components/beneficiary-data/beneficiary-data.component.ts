@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { OptComponent } from '../opt/opt.component';
 import { PaymentDetailsComponent } from '../payment-details/payment-details.component';
+import { InputFieldComponent } from "../input-field/input-field.component";
 
 @Component({
   selector: 'app-beneficiary-data',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, InputFieldComponent],
   templateUrl: './beneficiary-data.component.html',
   styles: `
     .select-number {
@@ -49,16 +50,16 @@ export class BeneficiaryDataComponent {
     });
   }
 
-  get f() {
-    return this.firstForm.controls;
+  getfirstForm(controlName: string): FormControl {
+    return this.firstForm.get(controlName) as FormControl;
   }
 
-  get g() {
-    return this.secondForm.controls;
+  getsecondForm(controlName: string): FormControl {
+    return this.secondForm.get(controlName) as FormControl;
   }
 
-  get h() {
-    return this.thirdForm.controls;
+  getthirdForm(controlName: string): FormControl {
+    return this.thirdForm.get(controlName) as FormControl;
   }
 
   firstonSubmit() {

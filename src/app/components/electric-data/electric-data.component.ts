@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { OptComponent } from '../opt/opt.component';
 import { PaymentDetailsComponent } from '../payment-details/payment-details.component';
+import { InputFieldComponent } from "../input-field/input-field.component";
 
 @Component({
   selector: 'app-electric-data',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, InputFieldComponent],
   templateUrl: './electric-data.component.html',
   styles: ``
 })
 export class ElectricDataComponent {
   activeTab: string = 'electricity';
   selectedIndex: number = 0;
-  // stepIndex: number = 0;
   @Input() stepIndex: number = 0;
   @Output() confirmClicked = new EventEmitter<void>();
   topForm: FormGroup;
@@ -37,8 +37,8 @@ export class ElectricDataComponent {
     });
   }
 
-  get f() {
-    return this.topForm.controls;
+  gettopForm(controlName: string): FormControl {
+    return this.topForm.get(controlName) as FormControl;
   }
 
   get g() {

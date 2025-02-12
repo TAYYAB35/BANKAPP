@@ -1,0 +1,25 @@
+<div class="relative mb-6">
+    <label *ngIf="label" class="block text-black font-normal text-sm mb-2">{{ label }}</label>
+    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid transition-colors duration-300"
+        [ngClass]="{
+            'border-red': control.invalid && (control.touched || submitted),
+            'border-[#FCD759]': control.valid && control.value,
+            'border-primary_dark': !control.value && !control.touched && !submitted
+        }">
+        <span [ngClass]="{
+                'text-red': control.invalid && (control.touched || submitted),
+                'text-[#FCD759]': control.valid && control.value,
+                'text-primary_dark': !control.value
+            }">
+            <i class="fa-regular fa-bolt-lightning text-lg"></i>
+        </span>
+        <input [type]="type" [formControl]="control"
+            class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent" [placeholder]="placeholder">
+    </div>
+    <div class="px-1 w-100 position-absolute mt-1">
+        <small class="error text-red d-flex flex-column space-y-1.5"
+            *ngIf="control.invalid && (control.touched || submitted)">
+            <span *ngIf="control.errors?.['required']">This Field is required</span>
+        </small>
+    </div>
+</div>

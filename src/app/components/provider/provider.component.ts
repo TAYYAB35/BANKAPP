@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { OptComponent } from '../opt/opt.component';
 import { PaymentDetailsComponent } from "../payment-details/payment-details.component";
+import { InputFieldComponent } from "../input-field/input-field.component";
 
 @Component({
   selector: 'app-provider',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, NzTabsModule, NzSelectModule, OptComponent, PaymentDetailsComponent, InputFieldComponent],
   templateUrl: './provider.component.html',
   styles: `
     .select-number {
@@ -44,12 +45,12 @@ export class ProviderComponent {
     });
   }
 
-  get f() {
-    return this.topForm.controls;
+  gettopForm(controlName: string): FormControl {
+    return this.topForm.get(controlName) as FormControl;
   }
 
-  get g() {
-    return this.BillForm.controls;
+  getBillForm(controlName: string): FormControl {
+    return this.BillForm.get(controlName) as FormControl;
   }
 
   onSubmit() {
@@ -64,7 +65,9 @@ export class ProviderComponent {
   onBillSubmit() {
     this.Billsubmitted = true;
 
-    if (this.billselectedIndex === 0 && this.g['secondnumber'].invalid) {
+    const fieldNames = ['secondnumber', 'thirdnumber', 'fournumber'];
+
+    if (this.billselectedIndex < fieldNames.length && this.getBillForm(fieldNames[this.billselectedIndex]).invalid) {
       return;
     }
 
