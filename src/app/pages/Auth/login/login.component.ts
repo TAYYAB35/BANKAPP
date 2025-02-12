@@ -91,21 +91,21 @@ export class LoginComponent implements OnInit {
       obj['picture'] = user.picture;
       obj['email'] = user.email;
       obj['usertype'] = 'google';
-      this.authService.login('LOGIN', obj).subscribe(
-        (response) => {
-          if (response.successFlag) {
-            this.isLoading = false;
-            this.authService.setToken(response.data);
-            this.router.navigate(['/home']);
-          } else {
-            this.sharedService.createNotification('error', response?.message);
-            this.isLoading = false;
-          }
-        },
-        (error) => {
-          console.error('failed', error);
-        },
-      );
+      // this.authService.login('LOGIN', obj).subscribe(
+      //   (response) => {
+      //     if (response.successFlag) {
+      //       this.isLoading = false;
+      //       this.authService.setToken(response.data);
+      //       this.router.navigate(['/home']);
+      //     } else {
+      //       this.sharedService.createNotification('error', response?.message);
+      //       this.isLoading = false;
+      //     }
+      //   },
+      //   (error) => {
+      //     console.error('failed', error);
+      //   },
+      // );
       // navigate to home
       // this.router.navigate(['/home']);
     }
@@ -132,23 +132,23 @@ export class LoginComponent implements OnInit {
       this.isLoading = true;
       this.sharedService.hideLoader();
       this.loginForm.value['gRecaptchaResponse'] = this.recaptchaResponse;
-      this.authService.login('LOGIN', this.loginForm.value).subscribe(
-        (response) => {
-          if (response.successFlag) {
-            this.authService.setToken(response.data);
-            this.router.navigate(['/home']);
-            this.isLoading = false;
-          } else {
-            this.sharedService.createNotification('error', response?.message);
-            this.isLoading = false;
-          }
-        },
-        (error) => {
-          this.isLoading = false;
-          this.sharedService.createNotification('error', error?.message);
-          console.error('failed', error);
-        },
-      );
+      // this.authService.login('LOGIN', this.loginForm.value).subscribe(
+      //   (response) => {
+      //     if (response.successFlag) {
+      //       this.authService.setToken(response.data);
+      //       this.router.navigate(['/home']);
+      //       this.isLoading = false;
+      //     } else {
+      //       this.sharedService.createNotification('error', response?.message);
+      //       this.isLoading = false;
+      //     }
+      //   },
+      //   (error) => {
+      //     this.isLoading = false;
+      //     this.sharedService.createNotification('error', error?.message);
+      //     console.error('failed', error);
+      //   },
+      // );
     }
   }
 

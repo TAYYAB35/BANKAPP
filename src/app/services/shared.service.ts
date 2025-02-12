@@ -7,7 +7,10 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  constructor(private notification: NzNotificationService, private http: HttpClient) { }
+  private readonly GUID_KEY = 'guid';
+
+  constructor(private notification: NzNotificationService, private http: HttpClient) { 
+  }
 
   public updatedUserData: Subject<any> = new Subject();
   private breadcrumbSubject = new BehaviorSubject<any[]>([]);
@@ -93,5 +96,19 @@ export class SharedService {
       return true;
     return false;
   }
+
+  generateGUID(): string {
+    let guid = localStorage.getItem(this.GUID_KEY);
+    if (!guid) {
+      guid = crypto.randomUUID();
+      localStorage.setItem(this.GUID_KEY, guid);
+    }
+    return guid;
+  }
+
+  getGUID(): string | null {
+    return localStorage.getItem(this.GUID_KEY);
+  }
+  
 
 }
