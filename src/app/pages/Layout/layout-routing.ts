@@ -26,7 +26,7 @@ const routes: Routes = [
       {path: 'services/electric', component: ElectricityServiceComponent},
       {path: 'history/statement', component: BankstatementComponent},
 
-      {path: 'services/beneficiary', component: BeneficiaryServiceComponent},
+      {path: 'beneficiary/add', component: BeneficiaryServiceComponent},
     ],
   },
   // Redirect unknown paths to a 404 page or a default route

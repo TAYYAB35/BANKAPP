@@ -13,6 +13,7 @@ import {
   SocialAuthService,
 } from '@abacritt/angularx-social-login';
 import { LoaderComponent } from '@shared/loader/loader.component';
+import { SharedService } from '@services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +25,13 @@ import { LoaderComponent } from '@shared/loader/loader.component';
 export class AppComponent {
   constructor(
     private authService: SocialAuthService,
+    private sharedService: SharedService,
     private router: Router,
   ) {}
 
   ngOnInit() {
+    this.sharedService.generateGUID();
+
     // const userDetails = localStorage.getItem('userDetails');
     // if (userDetails && window.location.pathname == '/auth/login') {
     //   this.router.navigate(['/home']);

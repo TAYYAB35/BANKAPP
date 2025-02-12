@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PagesService } from '@services/pages.service';
 import { OptComponent } from 'src/app/components/opt/opt.component';
 
 @Component({
@@ -29,7 +30,7 @@ export class SettingComponent {
   isshowPassword: boolean = false;
   isshowConfirmPassword: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private pageService: PagesService) {
     this.passwordForm = this.fb.group(
       {
         password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/)]],
@@ -90,6 +91,18 @@ export class SettingComponent {
   showFirstStep() {
     this.showStep1 = true;
     this.resetFlow = false;
+
+    const body = {
+      requestId: "123",
+      cif: "2886",
+      mobileNo: "0912978588"
+    }
+
+    this.pageService.update('FORGOT_PASSWORD', body).subscribe((response) => {
+      console.log(response);
+    }, (err) => {
+      console.error(err);
+    })
   }
 
 
