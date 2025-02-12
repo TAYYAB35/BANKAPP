@@ -98,7 +98,7 @@
                         </form>
                         <form [formGroup]="subAccountForm" (ngSubmit)="onSubAccount()" *ngIf="subAccountStep === 1">
                             <label class="block text-black font-normal text-sm mb-2">Transfer from Acoount</label>
-                            <nz-select formControlName="thirdnumber" nzPlaceHolder="Tarrif Number"
+                            <nz-select formControlName="TarrifNumber" nzPlaceHolder="Tarrif Number"
                                 class="select-number w-full h-[48px] items-center flex max-w-[341px]">
                                 @for (option of listOfTarrif; track option) {
                                 <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
@@ -136,7 +136,7 @@
                         </form>
                         <form [formGroup]="bankCardForm" (ngSubmit)="onBankCardSubmit()" *ngIf="bankCardStep === 1">
                             <label class="block text-black font-normal text-sm mb-2">Transfer from Acoount</label>
-                            <nz-select formControlName="thirdnumber" nzPlaceHolder="Tarrif Number"
+                            <nz-select formControlName="TarrifNumber" nzPlaceHolder="Tarrif Number"
                                 class="select-number w-full h-[48px] items-center flex max-w-[341px]">
                                 @for (option of listOfTarrif; track option) {
                                 <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
