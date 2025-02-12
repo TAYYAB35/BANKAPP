@@ -38,28 +38,58 @@
                             <!-- Number Field -->
                             <div class="relative mb-6">
                                 <label class="block text-black font-normal text-sm mb-2">CIF Number</label>
-                                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                                    [ngClass]="{ 'border-[#FCD759]': !alkhaleejMainForm.controls['cifNumber'].invalid, 'border-[#DBA434]': alkhaleejMainForm.controls['cifNumber'].invalid }">
-                                    <span class="text-yellow-500">
+                                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid"
+                                    [ngClass]="{
+                                        'border-red': alkhaleejMainForm.controls['cifNumber'].invalid && (alkhaleejMainForm.controls['cifNumber'].touched || submitted),
+                                        'border-[#FCD759]': alkhaleejMainForm.controls['cifNumber'].valid,
+                                        'border-primary_dark': !alkhaleejMainForm.controls['cifNumber'].value && !alkhaleejMainForm.controls['cifNumber'].touched && !submitted
+                                    }">
+                                    <span [ngClass]="{
+                                            'text-red': alkhaleejMainForm.controls['cifNumber'].invalid && (alkhaleejMainForm.controls['cifNumber'].touched || submitted),
+                                            'text-[#FCD759]': alkhaleejMainForm.controls['cifNumber'].valid,
+                                            'text-primary_dark': !alkhaleejMainForm.controls['cifNumber'].value && !alkhaleejMainForm.controls['cifNumber'].touched && !submitted
+                                        }">
                                         <i class="fa-sharp fa-regular fa-building-columns text-lg"></i>
                                     </span>
                                     <input type="text" formControlName="cifNumber"
                                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                                         placeholder="Enter CIF Number">
                                 </div>
+                                <div class="px-1 w-100 position-absolute mt-1">
+                                    <small class="error text-red d-flex flex-column space-y-1.5"
+                                        *ngIf="alkhaleejMainForm.controls['cifNumber'].invalid && (alkhaleejMainForm.controls['cifNumber'].touched || submitted)">
+                                        <span *ngIf="alkhaleejMainForm.controls['cifNumber'].errors?.['required']">This
+                                            Field is required</span>
+                                    </small>
+                                </div>
                             </div>
 
                             <!-- Amount Field -->
                             <div class="relative mb-6">
                                 <label class="block text-black font-normal text-sm mb-2">Amount</label>
-                                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                                    [ngClass]="{ 'border-[#FCD759]': !alkhaleejMainForm.controls['amount'].invalid, 'border-[#DBA434]': alkhaleejMainForm.controls['amount'].invalid }">
-                                    <span class="text-yellow-500">
+                                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid"
+                                    [ngClass]="{
+                                        'border-red': alkhaleejMainForm.controls['amount'].invalid && (alkhaleejMainForm.controls['amount'].touched || submitted),
+                                        'border-[#FCD759]': alkhaleejMainForm.controls['amount'].valid,
+                                        'border-primary_dark': !alkhaleejMainForm.controls['amount'].value && !alkhaleejMainForm.controls['amount'].touched && !submitted
+                                    }">
+                                    <span [ngClass]="{
+                                            'text-red': alkhaleejMainForm.controls['amount'].invalid && (alkhaleejMainForm.controls['amount'].touched || submitted),
+                                            'text-[#FCD759]': alkhaleejMainForm.controls['amount'].valid,
+                                            'text-primary_dark': !alkhaleejMainForm.controls['amount'].value && !alkhaleejMainForm.controls['cifNumber'].touched && !submitted
+                                        }">
                                         <i class="fa-sharp fa-light fa-circle-dollar text-lg"></i>
                                     </span>
                                     <input type="text" formControlName="amount"
                                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                                         placeholder="Enter Amount">
+                                </div>
+                                <div class="px-1 w-100 position-absolute mt-1">
+                                    <small class="error text-red d-flex flex-column space-y-1.5"
+                                        *ngIf="alkhaleejMainForm.controls['amount'].invalid && (alkhaleejMainForm.controls['amount'].touched || submitted)">
+                                        <span *ngIf="alkhaleejMainForm.controls['amount'].errors?.['required']">This
+                                            Field is required</span>
+                                    </small>
                                 </div>
                             </div>
 
@@ -105,13 +135,28 @@
                             <div class="relative mb-6">
                                 <label class="block text-black font-normal text-sm mb-2">Amount</label>
                                 <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                                    [ngClass]="{ 'border-[#FCD759]': !alkhaleejMainForm.controls['amount'].invalid, 'border-[#DBA434]': alkhaleejMainForm.controls['amount'].invalid }">
-                                    <span class="text-yellow-500">
+                                    [ngClass]="{
+                                        'border-red': subAccountMainForm.controls['amount'].invalid && (subAccountMainForm.controls['amount'].dirty || subAccountMainForm.controls['amount'].touched || banksubmitted),
+                                        'border-[#FCD759]': subAccountMainForm.controls['amount'].valid,
+                                        'border-primary_dark': !subAccountMainForm.controls['amount'].value && !subAccountMainForm.controls['amount'].touched && !banksubmitted
+                                    }">
+                                    <span [ngClass]="{
+                                            'text-red': subAccountMainForm.controls['amount'].invalid && (subAccountMainForm.controls['amount'].dirty || subAccountMainForm.controls['amount'].touched || banksubmitted),
+                                            'text-[#FCD759]': subAccountMainForm.controls['amount'].valid,
+                                            'text-primary_dark': !subAccountMainForm.controls['amount'].value
+                                        }">
                                         <i class="fa-sharp fa-light fa-circle-dollar text-lg"></i>
                                     </span>
                                     <input type="text" formControlName="amount"
                                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                                         placeholder="Enter Amount">
+                                </div>
+                                <div class="px-1 w-100 position-absolute mt-1">
+                                    <small class="error text-red d-flex flex-column space-y-1.5"
+                                        *ngIf="subAccountMainForm.controls['amount'].invalid && (subAccountMainForm.controls['amount'].dirty || subAccountMainForm.controls['amount'].touched || banksubmitted)">
+                                        <span *ngIf="subAccountMainForm.controls['amount'].errors?.['required']">This
+                                            Field is required</span>
+                                    </small>
                                 </div>
                             </div>
 
@@ -147,13 +192,28 @@
                             <div class="relative mb-6">
                                 <label class="block text-black font-normal text-sm mb-2">CIF Number</label>
                                 <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                                    [ngClass]="{ 'border-[#FCD759]': !bankCardFormMain.controls['cifNumber'].invalid, 'border-[#DBA434]': bankCardFormMain.controls['cifNumber'].invalid }">
-                                    <span class="text-yellow-500">
+                                    [ngClass]="{
+                                        'border-red': bankCardFormMain.controls['cifNumber'].invalid && (bankCardFormMain.controls['cifNumber'].dirty || bankCardFormMain.controls['cifNumber'].touched || cardsubmitted),
+                                        'border-[#FCD759]': bankCardFormMain.controls['cifNumber'].valid,
+                                        'border-primary_dark': !bankCardFormMain.controls['cifNumber'].value && !bankCardFormMain.controls['cifNumber'].touched && !cardsubmitted
+                                    }">
+                                    <span [ngClass]="{
+                                            'text-red': bankCardFormMain.controls['cifNumber'].invalid && (bankCardFormMain.controls['cifNumber'].dirty || bankCardFormMain.controls['cifNumber'].touched || cardsubmitted),
+                                            'text-[#FCD759]': bankCardFormMain.controls['cifNumber'].valid,
+                                            'text-primary_dark': !bankCardFormMain.controls['cifNumber'].value
+                                        }">
                                         <i class="fa-sharp fa-regular fa-building-columns text-lg"></i>
                                     </span>
                                     <input type="text" formControlName="cifNumber"
                                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                                         placeholder="Enter CIF Number">
+                                </div>
+                                <div class="px-1 w-100 position-absolute mt-1">
+                                    <small class="error text-red d-flex flex-column space-y-1.5"
+                                        *ngIf="bankCardFormMain.controls['cifNumber'].invalid && (bankCardFormMain.controls['cifNumber'].dirty || bankCardFormMain.controls['cifNumber'].touched || cardsubmitted)">
+                                        <span *ngIf="bankCardFormMain.controls['cifNumber'].errors?.['required']">This
+                                            Field is required</span>
+                                    </small>
                                 </div>
                             </div>
 
@@ -161,13 +221,28 @@
                             <div class="relative mb-6">
                                 <label class="block text-black font-normal text-sm mb-2">Amount</label>
                                 <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid focus:border-yellow-500"
-                                    [ngClass]="{ 'border-[#FCD759]': !bankCardFormMain.controls['amount'].invalid, 'border-[#DBA434]': bankCardFormMain.controls['amount'].invalid }">
-                                    <span class="text-yellow-500">
+                                    [ngClass]="{
+                                        'border-red': bankCardFormMain.controls['amount'].invalid && (bankCardFormMain.controls['amount'].dirty || bankCardFormMain.controls['amount'].touched || cardsubmitted),
+                                        'border-[#FCD759]': bankCardFormMain.controls['amount'].valid,
+                                        'border-primary_dark': !bankCardFormMain.controls['amount'].value && !bankCardFormMain.controls['amount'].touched && !cardsubmitted
+                                    }">
+                                    <span [ngClass]="{
+                                        'text-red': bankCardFormMain.controls['amount'].invalid && (bankCardFormMain.controls['amount'].dirty || bankCardFormMain.controls['amount'].touched || cardsubmitted),
+                                        'text-[#FCD759]': bankCardFormMain.controls['amount'].valid,
+                                        'text-primary_dark': !bankCardFormMain.controls['amount'].value
+                                    }">
                                         <i class="fa-sharp fa-light fa-circle-dollar text-lg"></i>
                                     </span>
                                     <input type="text" formControlName="amount"
                                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
                                         placeholder="Enter Amount">
+                                </div>
+                                <div class="px-1 w-100 position-absolute mt-1">
+                                    <small class="error text-red d-flex flex-column space-y-1.5"
+                                        *ngIf="bankCardFormMain.controls['amount'].invalid && (bankCardFormMain.controls['amount'].dirty || bankCardFormMain.controls['amount'].touched || cardsubmitted)">
+                                        <span *ngIf="bankCardFormMain.controls['amount'].errors?.['required']">This
+                                            Field is required</span>
+                                    </small>
                                 </div>
                             </div>
 

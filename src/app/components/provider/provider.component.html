@@ -17,12 +17,17 @@
             <!-- Number Field -->
             <div class="relative mb-6">
                 <label class="block text-black font-normal text-sm mb-2">Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(f['number'].invalid && (f['number'].touched || submitted)), 
-                        'border-[#DBA434]': f['number'].invalid && (f['number'].touched || submitted) 
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                        'border-red': f['number'].invalid && (f['number'].touched || submitted),
+                        'border-[#FCD759]': f['number'].valid && f['number'].value,
+                        'border-primary_dark': !f['number'].value && !f['number'].touched && !submitted
                     }">
-                    <span class="text-yellow-500">
-                        <i class="fa-regular fa-phone"></i>
+                    <span [ngClass]="{
+                            'text-red': f['number'].invalid && (f['number'].touched || submitted),
+                            'text-[#FCD759]': f['number'].valid && f['number'].value,
+                            'text-primary_dark': !f['number'].value
+                        }">
+                        <i class="fa-regular fa-phone text-lg"></i>
                     </span>
                     <input type="text" formControlName="number"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -39,12 +44,17 @@
             <!-- Amount Field -->
             <div class="relative mb-6">
                 <label class="block text-black font-normal text-sm mb-2">Amount</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(f['amount'].invalid && (f['amount'].touched || submitted)), 
-                        'border-[#DBA434]': f['amount'].invalid && (f['amount'].touched || submitted) 
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                        'border-red': f['amount'].invalid && (f['amount'].touched || submitted),
+                        'border-[#FCD759]': f['amount'].valid && f['amount'].value,
+                        'border-primary_dark': !f['amount'].value && !f['amount'].touched && !submitted
                     }">
-                    <span class="text-yellow-500">
-                        <i class="fa-regular fa-money-bill"></i>
+                    <span [ngClass]="{
+                            'text-red': f['amount'].invalid && (f['amount'].touched || submitted),
+                            'text-[#FCD759]': f['amount'].valid && f['amount'].value,
+                            'text-primary_dark': !f['amount'].value
+                        }">
+                        <i class="fa-regular fa-money-bill text-lg"></i>
                     </span>
                     <input type="text" formControlName="amount"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -71,12 +81,17 @@
             <!-- Number Field -->
             <div class="relative mb-6" *ngIf="billselectedIndex === 0">
                 <label class="block text-black font-normal text-sm mb-2">Your Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted)), 
-                        'border-[#DBA434]': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted) 
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                        'border-red': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted),
+                        'border-[#FCD759]': g['secondnumber'].valid && g['secondnumber'].value,
+                        'border-primary_dark': !g['secondnumber'].value && !g['secondnumber'].touched && !Billsubmitted
                     }">
-                    <span class="text-yellow-500">
-                        <i class="fa-regular fa-phone"></i>
+                    <span [ngClass]="{
+                            'text-red': g['secondnumber'].invalid && (g['secondnumber'].touched || Billsubmitted),
+                            'text-[#FCD759]': g['secondnumber'].valid && g['secondnumber'].value,
+                            'text-primary_dark': !g['secondnumber'].value
+                        }">
+                        <i class="fa-regular fa-phone text-lg"></i>
                     </span>
                     <input type="text" formControlName="secondnumber"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"

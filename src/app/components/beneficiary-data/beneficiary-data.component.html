@@ -26,23 +26,17 @@
 
             <div class="relative mb-6">
                 <label class="block text-black font-normal text-sm mb-2">CIF Number</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(f['cif'].invalid && (f['cif'].touched || firstsubmitted)), 
-                        'border-[#DBA434]': f['cif'].invalid && (f['cif'].touched || firstsubmitted) 
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                        'border-red': f['cif'].invalid && (f['cif'].touched || firstsubmitted),
+                        'border-[#FCD759]': f['cif'].valid && f['cif'].value,
+                        'border-primary_dark': !f['cif'].value && !f['cif'].touched && !firstsubmitted
                     }">
-                    <span class="text-yellow-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
-                            <path
-                                d="M2.98075 16.3309V8.83092H4.48075V16.3309H2.98075ZM8.48075 16.3309V8.83092H9.98075V16.3309H8.48075ZM0 19.8309V18.3309H18.4615V19.8309H0ZM13.9808 16.3309V8.83092H15.4808V16.3309H13.9808ZM0 6.83092V5.40792L9.23075 0.888672L18.4615 5.40792V6.83092H0ZM3.546 5.33092H14.9155L9.23075 2.58092L3.546 5.33092Z"
-                                fill="url(#paint0_linear_22_1705)" />
-                            <defs>
-                                <linearGradient id="paint0_linear_22_1705" x1="0.680496" y1="0.888671" x2="24.549"
-                                    y2="30.0811" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                    <stop offset="1" stop-color="#DBA434" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                    <span [ngClass]="{
+                            'text-red': f['cif'].invalid && (f['cif'].touched || firstsubmitted),
+                            'text-[#FCD759]': f['cif'].valid && f['cif'].value,
+                            'text-primary_dark': !f['cif'].value
+                        }">
+                        <i class="fa-light fa-building-columns text-lg"></i>
                     </span>
                     <input type="text" formControlName="cif"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -58,23 +52,17 @@
 
             <div class="relative mb-6">
                 <label class="block text-black font-normal text-sm mb-2">Benefiter Label</label>
-                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                        'border-[#FCD759]': !(f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted)), 
-                        'border-[#DBA434]': f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted) 
+                <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                        'border-red': f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted),
+                        'border-[#FCD759]': f['benefiter'].valid && f['benefiter'].value,
+                        'border-primary_dark': !f['benefiter'].value && !f['benefiter'].touched && !firstsubmitted
                     }">
-                    <span class="text-yellow-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15" fill="none">
-                            <path
-                                d="M10.5346 7.01669C10.9161 6.57335 11.1983 6.06431 11.3811 5.48958C11.5639 4.91485 11.6553 4.32231 11.6553 3.71198C11.6553 3.10165 11.5639 2.50911 11.3811 1.93438C11.1983 1.35965 10.9161 0.850612 10.5346 0.407269C11.3219 0.504335 11.9756 0.867534 12.4958 1.49687C13.0158 2.12636 13.2758 2.86473 13.2758 3.71198C13.2758 4.55939 13.0158 5.29776 12.4958 5.92709C11.9756 6.55643 11.3219 6.91963 10.5346 7.01669ZM15.2415 14.3594V12.1119C15.2415 11.5897 15.1421 11.0929 14.9432 10.6215C14.7443 10.15 14.4621 9.74547 14.0966 9.40782C14.784 9.65224 15.4167 9.98199 15.9948 10.3971C16.573 10.8122 16.862 11.3838 16.862 12.1119V14.3594H15.2415ZM16.862 8.07779V6.16202H15.0689V4.72519H16.862V2.80941H18.2069V4.72519H20V6.16202H18.2069V8.07779H16.862ZM6.7242 7.06459C5.86126 7.06459 5.12249 6.73635 4.5079 6.07988C3.89346 5.42325 3.58624 4.63395 3.58624 3.71198C3.58624 2.79001 3.89346 2.00079 4.5079 1.34432C5.12249 0.687691 5.86126 0.359375 6.7242 0.359375C7.58713 0.359375 8.32582 0.687691 8.94027 1.34432C9.55486 2.00079 9.86215 2.79001 9.86215 3.71198C9.86215 4.63395 9.55486 5.42325 8.94027 6.07988C8.32582 6.73635 7.58713 7.06459 6.7242 7.06459ZM0 14.3594V12.2298C0 11.7607 0.119242 11.3263 0.357727 10.9265C0.596212 10.5268 0.914864 10.2195 1.31368 10.0046C2.19993 9.54048 3.09395 9.19237 3.99574 8.96024C4.89738 8.72812 5.80687 8.61205 6.7242 8.61205C7.64138 8.61205 8.55086 8.72812 9.45265 8.96024C10.3543 9.19237 11.2482 9.54048 12.1345 10.0046C12.5333 10.2195 12.852 10.5268 13.0904 10.9265C13.3291 11.3263 13.4484 11.7607 13.4484 12.2298V14.3594H0ZM6.7242 5.62775C7.2173 5.62775 7.63943 5.44017 7.99059 5.065C8.34174 4.68982 8.51731 4.23882 8.51731 3.71198C8.51731 3.18514 8.34174 2.73414 7.99059 2.35896C7.63943 1.98379 7.2173 1.79621 6.7242 1.79621C6.23109 1.79621 5.80896 1.98379 5.45781 2.35896C5.10665 2.73414 4.93108 3.18514 4.93108 3.71198C4.93108 4.23882 5.10665 4.68982 5.45781 5.065C5.80896 5.44017 6.23109 5.62775 6.7242 5.62775ZM1.34484 12.9225H12.1036V12.2298C12.1036 12.0358 12.051 11.8562 11.9458 11.6909C11.8406 11.5259 11.6977 11.3911 11.5172 11.2867C10.7448 10.8802 9.95726 10.5723 9.15454 10.3628C8.35168 10.1535 7.54156 10.0489 6.7242 10.0489C5.90668 10.0489 5.09657 10.1535 4.29385 10.3628C3.49098 10.5723 2.70335 10.8802 1.93097 11.2867C1.75046 11.3911 1.60768 11.5259 1.50263 11.6909C1.39744 11.8562 1.34484 12.0358 1.34484 12.2298V12.9225Z"
-                                fill="url(#paint0_linear_22_1665)" />
-                            <defs>
-                                <linearGradient id="paint0_linear_22_1665" x1="0.737206" y1="0.359375" x2="16.0527"
-                                    y2="27.8156" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                    <stop offset="1" stop-color="#DBA434" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                    <span [ngClass]="{
+                            'text-red': f['benefiter'].invalid && (f['benefiter'].touched || firstsubmitted),
+                            'text-[#FCD759]': f['benefiter'].valid && f['benefiter'].value,
+                            'text-primary_dark': !f['benefiter'].value
+                        }">
+                        <i class="fa-regular fa-user-plus text-lg"></i>
                     </span>
                     <input type="text" formControlName="benefiter"
                         class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -101,12 +89,17 @@
             <div>
                 <div class="relative mb-6">
                     <label class="block text-black font-normal text-sm mb-2">Name</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                             'border-[#FCD759]': !(g['name'].invalid && (g['name'].touched || secondsubmitted)), 
-                             'border-[#DBA434]': g['name'].invalid && (g['name'].touched || secondsubmitted) 
-                         }">
-                        <span class="text-yellow-500">
-                            <i class="fa-regular fa-user-plus"></i>
+                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                            'border-red': g['name'].invalid && (g['name'].touched || secondsubmitted),
+                            'border-[#FCD759]': g['name'].valid && g['name'].value,
+                            'border-primary_dark': !g['name'].value && !g['name'].touched && !secondsubmitted
+                        }">
+                        <span [ngClass]="{
+                                'text-red': g['name'].invalid && (g['name'].touched || secondsubmitted),
+                                'text-[#FCD759]': g['name'].valid && g['name'].value,
+                                'text-primary_dark': !g['name'].value
+                            }">
+                            <i class="fa-regular fa-user-plus text-lg"></i>
                         </span>
                         <input type="text" formControlName="name"
                             class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -122,12 +115,17 @@
 
                 <div class="relative mb-6">
                     <label class="block text-black font-normal text-sm mb-2">Phone number</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                             'border-[#FCD759]': !(g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted)), 
-                             'border-[#DBA434]': g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted) 
-                         }">
-                        <span class="text-yellow-500">
-                            <i class="fa-regular fa-phone"></i>
+                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                            'border-red': g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted),
+                            'border-[#FCD759]': g['mnumber'].valid && g['mnumber'].value,
+                            'border-primary_dark': !g['mnumber'].value && !g['mnumber'].touched && !secondsubmitted
+                        }">
+                        <span [ngClass]="{
+                                'text-red': g['mnumber'].invalid && (g['mnumber'].touched || secondsubmitted),
+                                'text-[#FCD759]': g['mnumber'].valid && g['mnumber'].value,
+                                'text-primary_dark': !g['mnumber'].value
+                            }">
+                            <i class="fa-regular fa-phone text-lg"></i>
                         </span>
                         <input type="text" formControlName="mnumber"
                             class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -155,12 +153,17 @@
             <div *ngIf="currentStep === 0">
                 <div class="relative mb-6">
                     <label class="block text-black font-normal text-sm mb-2">Meter Name</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                            'border-[#FCD759]': !(h['metername'].invalid && (h['metername'].touched || thirdsubmitted)), 
-                            'border-[#DBA434]': h['metername'].invalid && (h['metername'].touched || thirdsubmitted) 
+                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                            'border-red': h['metername'].invalid && (h['metername'].touched || thirdsubmitted),
+                            'border-[#FCD759]': h['metername'].valid && h['metername'].value,
+                            'border-primary_dark': !h['metername'].value && !h['metername'].touched && !thirdsubmitted
                         }">
-                        <span class="text-yellow-500">
-                            <i class="fa-regular fa-user-plus"></i>
+                        <span [ngClass]="{
+                                'text-red': h['metername'].invalid && (h['metername'].touched || thirdsubmitted),
+                                'text-[#FCD759]': h['metername'].valid && h['metername'].value,
+                                'text-primary_dark': !h['metername'].value
+                            }">
+                            <i class="fa-regular fa-user-plus text-lg"></i>
                         </span>
                         <input type="text" formControlName="metername"
                             class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"
@@ -176,12 +179,17 @@
 
                 <div class="relative mb-6">
                     <label class="block text-black font-normal text-sm mb-2">Meter Number</label>
-                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                            'border-[#FCD759]': !(h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted)), 
-                            'border-[#DBA434]': h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted) 
+                    <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{
+                            'border-red': h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted),
+                            'border-[#FCD759]': h['meternumber'].valid && h['meternumber'].value,
+                            'border-primary_dark': !h['meternumber'].value && !h['meternumber'].touched && !thirdsubmitted
                         }">
-                        <span class="text-yellow-500">
-                            <i class="fa-regular fa-phone"></i>
+                        <span [ngClass]="{
+                                'text-red': h['meternumber'].invalid && (h['meternumber'].touched || thirdsubmitted),
+                                'text-[#FCD759]': h['meternumber'].valid && h['meternumber'].value,
+                                'text-primary_dark': !h['meternumber'].value
+                            }">
+                            <i class="fa-regular fa-phone text-lg"></i>
                         </span>
                         <input type="text" formControlName="meternumber"
                             class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent"

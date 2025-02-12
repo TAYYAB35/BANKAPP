@@ -8,27 +8,27 @@
     <div class="flex gap-2 mt-8">
         <input type="text" maxlength="1"
             class="w-12 h-12 text-center border-b border-gray-400 bg-transparent outline-none transition-all duration-200"
-            [(ngModel)]="otp1" (input)="moveToNext($event, otp2Ref)"
+            [(ngModel)]="otp1" (input)="moveToNext($event, otp2Ref)" (keypress)="allowOnlyNumbers($event)"
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp1}" #otp1Ref />
 
         <input type="text" maxlength="1"
             class="w-12 h-12 text-center border-b border-gray-400 bg-transparent outline-none transition-all duration-200"
-            [(ngModel)]="otp2" (input)="moveToNext($event, otp3Ref)"
+            [(ngModel)]="otp2" (input)="moveToNext($event, otp3Ref)" (keypress)="allowOnlyNumbers($event)"
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp2}" #otp2Ref />
 
         <input type="text" maxlength="1"
             class="w-12 h-12 text-center border-b border-gray-400 bg-transparent outline-none transition-all duration-200"
-            [(ngModel)]="otp3" (input)="moveToNext($event, otp4Ref)"
+            [(ngModel)]="otp3" (input)="moveToNext($event, otp4Ref)" (keypress)="allowOnlyNumbers($event)"
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp3}" #otp3Ref />
 
         <input type="text" maxlength="1"
             class="w-12 h-12 text-center border-b border-gray-400 bg-transparent outline-none transition-all duration-200"
-            [(ngModel)]="otp4" (input)="moveToNext($event, otp5Ref)"
+            [(ngModel)]="otp4" (input)="moveToNext($event, otp5Ref)" (keypress)="allowOnlyNumbers($event)"
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp4}" #otp4Ref />
 
         <input type="text" maxlength="1"
             class="w-12 h-12 text-center border-b border-gray-400 bg-transparent outline-none transition-all duration-200"
-            [(ngModel)]="otp5" (input)="moveToNext($event, null)"
+            [(ngModel)]="otp5" (input)="moveToNext($event, null)" (keypress)="allowOnlyNumbers($event)"
             [ngClass]="{'!bg-[#EFF1F2] rounded-t-[3px] border-b-4 border-gray-800': otp5}" #otp5Ref />
     </div>
 

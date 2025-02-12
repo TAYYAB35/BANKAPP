@@ -52,12 +52,17 @@
                                     <div class="relative mb-6">
                                         <label class="block text-black font-normal text-sm mb-2">New Password</label>
                                         <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid"
-                                            [ngClass]="{ 
-                                                'border-[#FCD759]': !(f['password'].invalid && (f['password'].touched || submitted)), 
-                                                'border-[#DBA434]': f['password'].invalid && (f['password'].touched || submitted) 
+                                            [ngClass]="{
+                                                'border-red': f['password'].invalid && (f['password'].touched || submitted),
+                                                'border-[#FCD759]': f['password'].valid && f['password'].value,
+                                                'border-primary_dark': !f['password'].value && !f['password'].touched && !submitted
                                             }">
-                                            <span class="text-yellow-500">
-                                                <i class="fa-regular fa-lock"></i>
+                                            <span [ngClass]="{
+                                                    'text-red': f['password'].invalid && (f['password'].touched || submitted),
+                                                    'text-[#FCD759]': f['password'].valid && f['password'].value,
+                                                    'text-primary_dark': !f['password'].value
+                                                }">
+                                                <i class="fa-regular fa-lock text-lg"></i>
                                             </span>
                                             <input [type]="isshowPassword ? 'text' : 'password'" id="changePassword"
                                                 formControlName="password"
@@ -93,12 +98,17 @@
                                     <div class="mb-6">
                                         <label class="block text-black font-normal text-sm mb-2">Re-New Password</label>
                                         <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid"
-                                            [ngClass]="{ 
-                                                'border-[#FCD759]': !(f['confirmPassword'].invalid && (f['confirmPassword'].touched || submitted)), 
-                                                'border-[#DBA434]': f['confirmPassword'].invalid && (f['confirmPassword'].touched || submitted) 
+                                            [ngClass]="{
+                                                'border-red': f['confirmPassword'].invalid && (f['confirmPassword'].touched || submitted),
+                                                'border-[#FCD759]': f['confirmPassword'].valid && f['confirmPassword'].value,
+                                                'border-primary_dark': !f['confirmPassword'].value && !f['confirmPassword'].touched && !submitted
                                             }">
-                                            <span class="text-yellow-500">
-                                                <i class="fa-regular fa-lock"></i>
+                                            <span [ngClass]="{
+                                                    'text-red': f['confirmPassword'].invalid && (f['confirmPassword'].touched || submitted),
+                                                    'text-[#FCD759]': f['confirmPassword'].valid && f['confirmPassword'].value,
+                                                    'text-primary_dark': !f['confirmPassword'].value
+                                                }">
+                                                <i class="fa-regular fa-lock text-lg"></i>
                                             </span>
                                             <input [type]="isshowConfirmPassword ? 'text' : 'password'"
                                                 formControlName="confirmPassword"
@@ -210,7 +220,8 @@
                     <summary
                         class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900 ">
                         policy
-                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
+                        <i
+                            class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
                     </summary>
                     <p class="mt-4 text-slate-500">
                         Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other
@@ -222,7 +233,8 @@
                     <summary
                         class="relative flex justify-between items-center text-base font-semibold list-none text-black cursor-pointer focus-visible:outline-none transition-colors duration-300 group-hover:text-slate-900 ">
                         About the Bank
-                        <i class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
+                        <i
+                            class="fa-regular fa-arrow-down text-[#003649] transition-transform duration-300 group-open:rotate-180"></i>
                     </summary>
                     <p class="mt-4 text-slate-500">
                         Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other
