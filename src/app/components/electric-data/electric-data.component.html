@@ -13,24 +13,19 @@
 <div *ngIf="selectedIndex === 0">
     <form [formGroup]="topForm" (ngSubmit)="onSubmit()">
         <div class="relative mb-6">
-            <label class="block text-black font-normal text-sm mb-2">Inter Your Meter Number</label>
-            <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid" [ngClass]="{ 
-                            'border-[#FCD759]': !(f['number'].invalid && (f['number'].touched || submitted)), 
-                            'border-[#DBA434]': f['number'].invalid && (f['number'].touched || submitted) 
-                        }">
-                <span class="text-yellow-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="25" viewBox="0 0 14 25" fill="none">
-                        <path
-                            d="M6.28214 19.4792L11.2995 12.2378C11.3462 12.1632 11.3508 12.0861 11.3134 12.0067C11.276 11.9272 11.2106 11.8874 11.1172 11.8874H7.03099L9.58307 3.02516C9.6205 2.91311 9.60179 2.80799 9.52693 2.70979C9.45207 2.6116 9.35861 2.5625 9.24656 2.5625H2.6363C2.50554 2.5625 2.39799 2.60455 2.31365 2.68865C2.22955 2.77274 2.1875 2.8803 2.1875 3.0113V13.7804C2.1875 13.9114 2.22955 14.0189 2.31365 14.103C2.39799 14.1871 2.50554 14.2292 2.6363 14.2292H6.28214V19.4792ZM13.5596 12.7905L5.9037 23.899C5.7671 24.099 5.59745 24.2308 5.39474 24.2942C5.19179 24.3579 4.99029 24.3579 4.79026 24.2942C4.59023 24.2308 4.42422 24.1148 4.29224 23.9464C4.1605 23.7782 4.09464 23.5745 4.09464 23.3354V16.4167H2.6363C1.90908 16.4167 1.28795 16.1591 0.772917 15.6441C0.257639 15.1288 0 14.5076 0 13.7804V3.0113C0 2.28408 0.257639 1.66283 0.772917 1.14755C1.28795 0.632517 1.90908 0.375 2.6363 0.375H9.695C10.4169 0.375 11.003 0.648437 11.4534 1.19531C11.904 1.74219 12.0368 2.34752 11.8519 3.0113L9.92797 9.69995H11.919C12.7099 9.69995 13.2947 10.0491 13.6733 10.7474C14.052 11.4457 14.0141 12.1267 13.5596 12.7905Z"
-                            fill="url(#paint0_linear_17_7278)" />
-                        <defs>
-                            <linearGradient id="paint0_linear_17_7278" x1="0.513519" y1="0.374999" x2="29.8555"
-                                y2="21.7785" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#FCD759" stop-opacity="0.9686" />
-                                <stop offset="1" stop-color="#DBA434" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+            <label class="block text-black font-normal text-sm mb-2">Enter Your Meter Number</label>
+            <div class="flex items-center py-2 w-full max-w-[327px] border-b-2 border-solid transition-colors duration-300"
+                [ngClass]="{
+                    'border-red': f['number'].invalid && (f['number'].touched || submitted),
+                    'border-[#FCD759]': f['number'].valid && f['number'].value,
+                    'border-primary_dark': !f['number'].value && !f['number'].touched && !submitted
+                }">
+                <span [ngClass]="{
+                        'text-red': f['number'].invalid && (f['number'].touched || submitted),
+                        'text-[#FCD759]': f['number'].valid && f['number'].value,
+                        'text-primary_dark': !f['number'].value
+                    }">
+                    <i class="fa-regular fa-bolt-lightning text-lg"></i>
                 </span>
                 <input type="text" formControlName="number"
                     class="ml-2 w-full outline-none text-lg text-gray-900 bg-transparent" placeholder="Enter number">

@@ -56,6 +56,8 @@ export class BankScreenComponent {
   }
 
   submitted = false;
+  banksubmitted = false;
+  cardsubmitted = false;
 
   alkhaleejMainForm: FormGroup;
   alkhaleejTransferForm: FormGroup;
@@ -69,28 +71,28 @@ export class BankScreenComponent {
 
   constructor(private fb: FormBuilder) {
     this.alkhaleejMainForm = this.fb.group({
-      cifNumber: [null],
-      amount: [null]
+      cifNumber: ['', Validators.required],
+      amount: ['', Validators.required]
     });
     this.alkhaleejTransferForm = this.fb.group({
-      TarrifNumber: [null,],
+      TarrifNumber: ['', Validators.required],
     });
 
     this.subAccountMainForm = this.fb.group({
-      thirdnumber: [null],
-      amount: [null]
+      thirdnumber: ['', Validators.required],
+      amount: ['', Validators.required]
     });
     this.subAccountForm = this.fb.group({
-      TarrifNumber: [null,],
+      TarrifNumber: ['', Validators.required],
     });
 
     this.bankCardFormMain = this.fb.group({
-      cifNumber: [null],
-      amount: [null]
+      cifNumber: ['', Validators.required],
+      amount: ['', Validators.required]
     });
 
     this.bankCardForm = this.fb.group({
-      TarrifNumber: [null],
+      TarrifNumber: ['', Validators.required],
     });
   }
 
@@ -101,41 +103,65 @@ export class BankScreenComponent {
   ];
 
   onAlkhaleejMainSubmit() {
+    this.submitted = true;
+
     if (this.alkhaleejMainForm.valid) {
       console.log("Alkhaleej Form Submitted", this.alkhaleejMainForm.value);
       this.alkhaleejStep = 1;
+    } else {
+      this.alkhaleejMainForm.markAllAsTouched();
     }
   }
   onAlkhaleejTransfer() {
+    this.submitted = true;
+
     if (this.alkhaleejMainForm.valid) {
       console.log("Alkhaleej Form Submitted", this.alkhaleejMainForm.value);
       this.alkhaleejStep = 2;
+    } else {
+      this.alkhaleejMainForm.markAllAsTouched();
     }
   }
 
   onSubAccountMain() {
+    this.banksubmitted = true;
+
     if (this.subAccountMainForm.valid) {
       console.log("Sub Account Form Submitted", this.subAccountMainForm.value);
       this.subAccountStep = 1;
+    } else {
+      this.subAccountMainForm.markAllAsTouched();
     }
   }
   onSubAccount() {
+    this.banksubmitted = true;
+
     if (this.subAccountMainForm.valid) {
       console.log("Sub Account Form Submitted", this.subAccountMainForm.value);
       this.subAccountStep = 2;
+    } else {
+      this.subAccountMainForm.markAllAsTouched();
     }
   }
 
   onBankCardMain() {
+    this.cardsubmitted = true;
+
     if (this.bankCardFormMain.valid) {
       console.log("Bank Card Form Submitted", this.bankCardFormMain.value);
       this.bankCardStep = 1;
+    } else {
+      this.bankCardFormMain.markAllAsTouched();
     }
   }
   onBankCardSubmit() {
+    this.cardsubmitted = true;
+
     if (this.bankCardForm.valid) {
       console.log("Bank Card Form Submitted", this.bankCardForm.value);
       this.bankCardStep = 2;
+    } else {
+      this.bankCardForm.markAllAsTouched();
     }
   }
 
@@ -163,7 +189,7 @@ export class BankScreenComponent {
     }
   }
 
-  hideBackBtn(){
+  hideBackBtn() {
     if (this.selectedIndex == 0) {
       return this.alkhaleejStep == 2
     } else if (this.selectedIndex == 1) {

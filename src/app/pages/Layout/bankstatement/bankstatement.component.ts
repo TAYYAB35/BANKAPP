@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { OptComponent } from 'src/app/components/opt/opt.component';
 import { PaymentDetailsComponent } from 'src/app/components/payment-details/payment-details.component';
@@ -8,23 +8,29 @@ import { PaymentDetailsComponent } from 'src/app/components/payment-details/paym
 @Component({
   selector: 'app-bankstatement',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NzSelectModule ,OptComponent,PaymentDetailsComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NzSelectModule, OptComponent, PaymentDetailsComponent],
   templateUrl: './bankstatement.component.html',
   styles: ``
 })
 export class BankstatementComponent {
   activeStep: number = 0;
   statementForm: FormGroup
+  submitted = false;
 
   constructor(private fb: FormBuilder) {
     this.statementForm = this.fb.group({
-      TarrifNumber: [''],
-      amount: [''],
+      TarrifNumber: ['', Validators.required],
+      amount: ['', Validators.required],
     });
   }
 
   onSubmit() {
-    console.log(this.statementForm.value);
+    this.submitted = true;
+
+    if (this.statementForm.invalid) {
+      return;
+    }
+    console.log('Form Data:', this.statementForm.value);
     this.activeStep = 1;
   }
 
@@ -34,7 +40,7 @@ export class BankstatementComponent {
     "Saving Account 2 : CIF 94823529"
   ];
 
-  confirm(){
+  confirm() {
     this.activeStep = 2;
   }
 
